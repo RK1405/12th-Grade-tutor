@@ -4,8 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Kavi CS Tutor</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Hind+Madurai:wght@400;600&family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -22,7 +21,7 @@
       <button id="progressBtn" class="chip">📈 Progress</button>
     </div>
   </header>
-  <div id="demoBanner" class="demo-banner" hidden>Demo mode: no AI. Responses are canned, so you can try the screens. Set ANTHROPIC_API_KEY for real teaching.</div>
+  <div id="demoBanner" class="demo-banner" hidden>Sample chapter only: the full textbook appears after the lessons are generated (see README).</div>
 
   <main class="layout">
     <section class="tutor-panel">
@@ -57,12 +56,16 @@
         <button id="repeatBtn" disabled>↺ Repeat</button>
         <button id="nextBtn" disabled>Next page →</button>
       </div>
+      <div class="actions help">
+        <button id="explainBtn" disabled>💡 Explain again</button>
+        <button id="exampleBtn" disabled>✏️ Example</button>
+      </div>
 
       <div class="talk">
         <button id="micBtn" class="mic" title="Hold a conversation: tap and speak" aria-label="Speak">🎤</button>
         <form id="chatForm" class="chat-form">
-          <input id="chatInput" placeholder="Ask a doubt or answer here…" autocomplete="off" />
-          <button type="submit">Send</button>
+          <input id="chatInput" placeholder="Answer here…" autocomplete="off" />
+          <button type="submit" id="sendBtn">Send</button>
         </form>
       </div>
       <details class="log"><summary>Conversation</summary><div id="log"></div></details>
@@ -84,6 +87,7 @@
     <div id="progressBody"></div>
   </dialog>
 
+  <script src="content/index.js"></script>
   <script type="module" src="app.js"></script>
 </body>
 </html>

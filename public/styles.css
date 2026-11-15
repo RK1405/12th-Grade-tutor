@@ -1,3 +1,10 @@
+@font-face { font-family: Kalam; src: url(fonts/kalam-latin-400-normal.woff2) format("woff2"); font-weight: 400; }
+@font-face { font-family: Kalam; src: url(fonts/kalam-latin-700-normal.woff2) format("woff2"); font-weight: 700; }
+@font-face { font-family: "Hind Madurai"; src: url(fonts/hind-madurai-tamil-400-normal.woff2) format("woff2"); font-weight: 400; unicode-range: U+0B80-0BFF, U+200C-200D; }
+@font-face { font-family: "Hind Madurai"; src: url(fonts/hind-madurai-tamil-600-normal.woff2) format("woff2"); font-weight: 600 700; unicode-range: U+0B80-0BFF, U+200C-200D; }
+@font-face { font-family: "Hind Madurai"; src: url(fonts/hind-madurai-latin-400-normal.woff2) format("woff2"); font-weight: 400; unicode-range: U+0000-00FF; }
+@font-face { font-family: "Hind Madurai"; src: url(fonts/hind-madurai-latin-600-normal.woff2) format("woff2"); font-weight: 600 700; unicode-range: U+0000-00FF; }
+
 :root {
   --bg: #eef2f7;
   --panel: #ffffff;
@@ -34,7 +41,7 @@
 html, body { margin: 0; }
 body {
   background: var(--bg); color: var(--ink);
-  font-family: Inter, "Hind Madurai", system-ui, sans-serif; font-size: 15px;
+  font-family: "Segoe UI", "Hind Madurai", "Nirmala UI", system-ui, sans-serif; font-size: 15px;
   min-height: 100vh; display: flex; flex-direction: column;
 }
 button, select, input, textarea { font: inherit; color: inherit; }
@@ -113,11 +120,11 @@ select { border: 1px solid var(--line); background: var(--panel); border-radius:
 .board {
   flex: 1; min-height: 520px; max-height: calc(100vh - 140px); overflow: auto;
   background: var(--board); border: 10px solid var(--board-frame); border-radius: 14px;
-  padding: 22px 26px; font-family: Kalam, "Hind Madurai", cursive; font-size: 21px; line-height: 1.5;
+  padding: 22px 26px; font-family: Kalam, "Hind Madurai", "Nirmala UI", cursive; font-size: 21px; line-height: 1.5;
   box-shadow: inset 0 0 30px rgba(0,0,0,.04);
 }
 @media (max-width: 820px) { .board { min-height: 360px; max-height: none; font-size: 18px; padding: 16px; } }
-.board-empty { color: var(--muted); font-family: Inter, sans-serif; font-size: 15px; }
+.board-empty { color: var(--muted); font-family: "Segoe UI", "Hind Madurai", sans-serif; font-size: 15px; }
 .bi { margin: 0 0 14px; animation: write .9s ease-out both; }
 @keyframes write { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
 .bi.heading { font-size: 1.45em; font-weight: 700; color: var(--marker-blue); border-bottom: 3px solid var(--marker-blue); width: fit-content; max-width: 100%; padding-bottom: 2px; }
@@ -137,8 +144,8 @@ select { border: 1px solid var(--line); background: var(--panel); border-radius:
 .bi.check { border: 3px solid var(--accent); border-radius: 12px; padding: 10px 14px; }
 
 /* quiz */
-.quiz { font-family: Inter, "Hind Madurai", sans-serif; font-size: 16px; }
-.quiz h3 { font-family: Kalam, "Hind Madurai", cursive; font-size: 26px; margin: 0 0 6px; color: var(--marker-blue); }
+.quiz { font-family: "Segoe UI", "Hind Madurai", "Nirmala UI", sans-serif; font-size: 16px; }
+.quiz h3 { font-family: Kalam, "Hind Madurai", "Nirmala UI", cursive; font-size: 26px; margin: 0 0 6px; color: var(--marker-blue); }
 .q-meta { color: var(--muted); font-size: 13px; margin-bottom: 10px; }
 .q-text { font-size: 19px; margin: 8px 0 12px; line-height: 1.5; }
 .opts { display: grid; gap: 8px; }
@@ -168,3 +175,6 @@ dialog::backdrop { background: rgba(0,0,0,.35); }
 .bar { height: 8px; background: var(--line); border-radius: 99px; overflow: hidden; margin: 4px 0 8px; }
 .bar > i { display: block; height: 100%; background: var(--accent); }
 .bi.check::before { content: none; }
+
+.actions.help button { font-size: 14px; }
+[hidden] { display: none !important; }

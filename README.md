@@ -1,63 +1,63 @@
-# 12th Grade Tutor: Kavi, a CS tutor
+# 12th Grade Tutor: Kavi, an offline CS tutor
 
-A voice- and whiteboard-based AI tutor for **Class 12 Computer Science (Tamil Nadu State Board)**, in **English, Tamil, or Tamil + English**.
+A Windows app that tutors **Class 12 Computer Science (Tamil Nadu State Board)** in **English, Tamil, or Tamil + English**. It is fully **offline**: no internet, no AI and no API key while the student uses it.
 
-- **Teaches one page at a time.** A talking avatar explains the textbook page while points, key terms, code and diagrams are written on a whiteboard. After each page it asks a quick check question. The student can interrupt at any time with a doubt, by voice or by typing.
-- **Chapter quiz.** When the chapter is finished, it builds a quiz (MCQ, short answer, predict the output) covering every important concept.
-- **Re-teaches mistakes.** For every concept answered wrongly, the tutor explains it again in a new way, then gives 2 fresh practice questions. If the student still gets it wrong, it explains it once more, differently (up to 3 tries), before marking the concept for revision.
-- **Progress.** Records pages studied, quiz scores and the status of each concept (mastered / needs practice).
+- **Teaching:** Kavi, a talking robot, teaches one textbook page at a time on a whiteboard (points, key terms, code, diagrams), then asks a quick check question. A wrong answer gets the correct answer and a simpler re-explanation. The **Explain again** and **Example** buttons are available on every page.
+- **Chapter quiz:** after each chapter there is a quiz (multiple choice, short answer, predict the output). Questions are picked from a question bank, so every attempt is different and covers every concept.
+- **Re-teaching mistakes:** for each concept answered wrongly, Kavi re-teaches it and gives 2 practice questions. If the student is still wrong, a second explanation, then a third, each done differently, before the concept is marked for revision.
+- **Progress:** pages studied, quiz scores and the status of each concept, saved on the computer.
 
-## Run it
+## Use the app (student)
 
-Requirements: Node.js 20+, Chrome or Edge (for voice).
+Run `Kavi-CS-Tutor-<version>.exe`. There's nothing to install and no internet is needed.
 
-```bash
-npm install
-```
+- **Voice:** Kavi speaks with the voices installed in Windows. For Tamil speech, add the Tamil voice once: *Settings → Time & language → Speech → Add voices → Tamil*. If no Tamil voice is installed, the Tamil text still shows on screen.
+- **Answering:** type your answer. To speak instead, press **Windows key + H** (Windows voice typing) while the answer box is selected.
 
-```bash
-cp .env.example .env
-```
+## Build the content (once, needs the API key)
 
-Put your Anthropic API key in `.env` (one line: `ANTHROPIC_API_KEY=...`, no quotes). Check that it works with `npm run check-key`, which also tells you if your key must be set as `ANTHROPIC_AUTH_TOKEN` instead. Then:
+The app teaches from content generated **once** from the textbook by Claude. After that it never needs the API again. Until this is done, the app shows a hand-written **sample chapter**.
 
-```bash
-npm start
-```
+Requirements: Node.js 22+, and an Anthropic API key from console.anthropic.com with some credit.
 
-Open http://localhost:3000.
+1. Install the tools:
+   ```bash
+   npm install
+   ```
+2. Create a file named `.env` containing one line, `ANTHROPIC_API_KEY=sk-ant-api03-...`, then test the key:
+   ```bash
+   npm run check-key
+   ```
+3. Read the textbook PDFs (in `content/textbook/`). Claude reads each page image because the PDF's Tamil text layer is garbled. Test with one chapter first, then run it for the whole book:
+   ```bash
+   npm run ingest -- --only ch01
+   ```
+   ```bash
+   npm run ingest
+   ```
+4. Generate the lessons, question banks and re-teaching material. Test with one chapter first:
+   ```bash
+   npm run build-content -- --only ch01
+   ```
+   ```bash
+   npm run build-content
+   ```
+   - Choose languages: `--langs ta,en` (the default is `en,ta,mix`).
+   - Use a cheaper model: `TUTOR_MODEL=claude-haiku-5-5 npm run build-content`. Compare the quality on one chapter first.
+   - Both steps save every piece as soon as it's made. If a run stops, run the same command again and it continues.
+5. Try it with `npm start`, then build the Windows app (it's written to `dist/`):
+   ```bash
+   npm run dist
+   ```
 
-To try the screens without an API key, run `npm run demo`. Demo mode uses canned responses, not AI.
+Commit `content/transcripts/`, `content/chapters/`, `content/generated/` and `public/content/` so the generation never has to be repeated. Future versions only need `npm run dist`.
 
-## Load your textbook
+## Project layout
 
-The Tamil-medium textbook (360 pages, in 4 parts) is in `content/textbook/`, and `content/book.config.json` already maps its 16 chapters to their pages. Until the import has been run, the app teaches a short sample chapter.
-
-Run the import once (it needs your API key in `.env`):
-
-```bash
-npm run ingest
-```
-
-The PDF's built-in Tamil text is garbled (old font encoding), so the import has Claude **read each page as an image** and write clean Tamil text, keeping code and English terms unchanged and describing figures. It reads about 330 pages, takes roughly 15–30 minutes, and costs roughly US$10–15 once. Each page is saved to `content/transcripts/` as soon as it's read, so if it stops, run the same command again and it continues from where it stopped. Commit `content/transcripts/` and `content/chapters/` afterwards so you never need to repeat the import.
-
-- Test one chapter first: `npm run ingest -- --only ch01`
-- Use a cheaper model for the import: `TUTOR_INGEST_MODEL=claude-sonnet-5-5 npm run ingest`
-- For an English PDF with a clean text layer (no API cost): `npm run ingest -- --text`
-
-The textbook's exercise pages are kept separately, and the tutor uses them as a guide when writing quiz questions. Lessons are cached in `data/cache/`, so each page is generated only once per language.
-
-## How it works
-
-| Part | Where |
+| Folder | What it holds |
 |---|---|
-| Lessons, answers to doubts, quizzes, grading, re-teaching (Claude API, structured JSON output) | `server/tutor.js`, `server/schemas.js` |
-| HTTP API and quiz grading (MCQs checked locally, written answers graded by Claude) | `server/index.js` |
-| Progress and lesson cache (JSON files in `data/`) | `server/store.js` |
-| Avatar, whiteboard, quiz screens, teach → quiz → re-teach loop | `public/app.js` |
-| Voice in and out (the browser's built-in Web Speech API, free) | `public/speech.js` |
-| Textbook import (Claude reads each page) | `scripts/ingest-pdf.js`, `content/book.config.json` |
-
-**Voice notes:** Tamil speech output needs a Tamil voice on the device. Microsoft Edge on Windows and Chrome on Android have one; desktop Chrome often doesn't, and then the Tamil text still shows on screen. Voice commands: "next page" / "அடுத்த பக்கம்", "repeat" / "மீண்டும்"; in quizzes, say "A", "B", "C" or "D".
-
-The model defaults to `claude-opus-5-5`; set `TUTOR_MODEL` to change it.
+| `app/main.cjs` | Electron window (the desktop app) |
+| `public/` | The app: robot, whiteboard, quiz, re-teach loop (`app.js`), offline engine (`engine.js`), voice (`speech.js`) and the generated content (`content/`) |
+| `generator/` | Prompts and schemas used once to generate content with Claude |
+| `scripts/` | `ingest-pdf.js` (textbook → text), `build-content.js` (text → lessons), `check-key.js` |
+| `content/` | Textbook PDFs, chapter map (`book.config.json`), sample chapter, generated files |

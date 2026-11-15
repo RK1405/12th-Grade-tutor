@@ -45,9 +45,18 @@ export function speak(text, lang, { onStart, onBoundary, onEnd } = {}) {
         u.lang = voice.lang;
       } else u.lang = lang === "en" ? "en-IN" : "ta-IN";
       u.rate = 0.95;
+      // Safety net: if no voice is installed, onend may never fire; move on after a reading-time delay.
+      let finished = false;
+      const done = () => {
+        if (finished) return;
+        finished = true;
+        clearTimeout(timer);
+        next();
+      };
+      const timer = setTimeout(done, 3000 + u.text.length * 120);
       u.onboundary = () => onBoundary?.();
-      u.onend = next;
-      u.onerror = next;
+      u.onend = done;
+      u.onerror = done;
       synth.speak(u);
     };
     next();
@@ -60,7 +69,8 @@ export function stopSpeaking() {
 }
 
 const Recognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-export const canListen = !!Recognition;
+// Electron exposes the API but it cannot work there (it needs Google's online service), so treat it as unavailable.
+export const canListen = !!Recognition && !/Electron/.test(navigator.userAgent);
 let rec = null;
 
 // Listen once; resolves with the transcript ("" if nothing was heard).

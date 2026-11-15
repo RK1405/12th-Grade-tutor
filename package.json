@@ -1,24 +1,56 @@
 {
-  "name": "cs-tutor",
+  "name": "kavi-cs-tutor",
   "version": "1.0.0",
-  "description": "Voice + whiteboard AI tutor for 12th grade Computer Science (Tamil/English)",
-  "main": "index.js",
+  "description": "Offline voice + whiteboard tutor for Class 12 Computer Science (Tamil Nadu State Board)",
+  "main": "app/main.cjs",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node --env-file-if-exists=.env server/index.js",
-    "ingest": "node scripts/ingest-pdf.js",
-    "demo": "TUTOR_DEMO=1 node server/index.js",
-    "check-key": "node --env-file-if-exists=.env scripts/check-key.js"
+    "start": "electron .",
+    "check-key": "node --env-file-if-exists=.env scripts/check-key.js",
+    "ingest": "node --env-file-if-exists=.env scripts/ingest-pdf.js",
+    "build-content": "node --env-file-if-exists=.env scripts/build-content.js",
+    "dist": "electron-builder --win portable --x64"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "RK1405",
+  "license": "UNLICENSED",
   "type": "module",
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
     "@anthropic-ai/sdk": "^1.8.0",
-    "express": "^5.3.0",
+    "@fontsource/hind-madurai": "^5.0.13",
+    "@fontsource/kalam": "^5.0.13",
+    "electron": "^33.4.11",
+    "electron-builder": "^25.1.8",
+    "mermaid": "^10.9.1",
     "pdf-lib": "^1.17.1",
     "pdfjs-dist": "^6.5.438",
     "zod": "^4.6.7"
+  },
+  "productName": "Kavi CS Tutor",
+  "private": true,
+  "build": {
+    "appId": "in.rk1405.kavi-cs-tutor",
+    "productName": "Kavi CS Tutor",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "app/**",
+      "public/**",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "signAndEditExecutable": false
+    },
+    "portable": {
+      "artifactName": "Kavi-CS-Tutor-${version}.exe"
+    }
   }
 }

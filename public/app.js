@@ -1,10 +1,12 @@
 import { speak, stopSpeaking, listen, stopListening, canListen, hasTamilVoice } from "./speech.js";
+import { api } from "./engine.js";
 
 const $ = (id) => document.getElementById(id);
 const els = {
   chapter: $("chapterSelect"), lang: $("langSelect"), voice: $("voiceToggle"), progressBtn: $("progressBtn"),
   avatarWrap: $("avatarWrap"), avStatus: $("avStatus"), mouth: $("mouth"), caption: $("caption"),
   start: $("startBtn"), repeat: $("repeatBtn"), next: $("nextBtn"), mic: $("micBtn"),
+  explain: $("explainBtn"), example: $("exampleBtn"),
   form: $("chatForm"), input: $("chatInput"), log: $("log"), board: $("board"),
   boardTitle: $("boardTitle"), pageInfo: $("pageInfo"), dialog: $("progressDialog"), progressBody: $("progressBody"),
 };
@@ -27,12 +29,6 @@ const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "
 const lang = () => els.lang.value;
 const T = (en, ta) => (lang() === "en" ? en : ta);
 
-async function api(path, body) {
-  const res = await fetch(path, body === undefined ? {} : { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
-  const data = await res.json().catch(() => ({}));
-  if (!res.ok) throw new Error(data.error || `Request failed (${res.status})`);
-  return data;
-}
 
 // ---------- avatar + voice ----------
 function setAvatar(st, label) {
@@ -55,7 +51,7 @@ async function say(text) {
     return;
   }
   setAvatar("speaking");
-  await speak(text, lang(), { onStart: () => mouthMove(true), onEnd: () => mouthMove(false) });
+  await speak(text, state.contentLang || lang(), { onStart: () => mouthMove(true), onEnd: () => mouthMove(false) });
   mouthMove(false);
   setAvatar("idle");
 }
@@ -99,7 +95,14 @@ function clearBoard(title) {
 let mermaidLib = null;
 async function renderMermaid(el, src) {
   try {
-    mermaidLib ||= (await import("https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.esm.min.mjs")).default;
+    mermaidLib ||= await new Promise((resolve, reject) => {
+      if (window.mermaid) return resolve(window.mermaid);
+      const s = document.createElement("script");
+      s.src = "vendor/mermaid.min.js"; // bundled, works offline
+      s.onload = () => resolve(window.mermaid);
+      s.onerror = reject;
+      document.head.append(s);
+    });
     mermaidLib.initialize({ startOnLoad: false, theme: "default", securityLevel: "strict" });
     const { svg } = await mermaidLib.render("m" + Math.random().toString(36).slice(2), src);
     el.innerHTML = svg;
@@ -153,6 +156,10 @@ async function loadPage(i) {
   updateButtons();
   const lesson = await thinking(() => api("/api/lesson", { chapterId: ch.id, pageIndex: i, lang: lang() }));
   state.lesson = lesson;
+  if (lesson.lang !== lang() && state.contentLang !== lesson.lang) {
+    els.caption.textContent = T("", "ℹ இந்தப் பாடம் இன்னும் தமிழில் தயாராகவில்லை; ஆங்கிலத்தில் கற்பிக்கிறேன்.") || "ℹ This chapter isn't available in English yet.";
+  }
+  state.contentLang = lesson.lang;
   updateButtons();
   if (await playSteps(lesson.steps)) await askCheck();
 }
@@ -165,7 +172,7 @@ async function askCheck() {
   els.board.lastChild.classList.add("check");
   await say(cq.question);
   els.mic.classList.add("pulse");
-  els.input.placeholder = T("Type or speak your answer…", "உங்கள் பதிலைச் சொல்லுங்கள் அல்லது தட்டச்சு செய்யுங்கள்…");
+  els.input.placeholder = canListen ? T("Type or speak your answer…", "உங்கள் பதிலைச் சொல்லுங்கள் அல்லது தட்டச்சு செய்யுங்கள்…") : T("Type your answer (Win+H to speak)…", "பதிலைத் தட்டச்சு செய்யுங்கள் (பேச Win+H)…");
   updateButtons();
 }
 
@@ -187,6 +194,8 @@ async function handleStudent(text) {
   const t = text.toLowerCase();
   if (state.mode === "lesson" && /^(next( page)?|அடுத்த(து)?( பக்கம்)?|அடுத்த பக்கம்)[.!]?$/.test(t)) return nextPage();
   if (state.mode === "lesson" && /^(repeat|again|மீண்டும்|திரும்ப)[.!]?$/.test(t)) return repeatPage();
+  if (state.mode === "lesson" && /^(explain( again)?|விளக்கு(ங்கள்)?|மீண்டும் விளக்கு(ங்கள்)?)[.!]?$/.test(t)) return playExtra("explainAgain");
+  if (state.mode === "lesson" && /^(example|எடுத்துக்காட்டு)[.!]?$/.test(t)) return playExtra("example");
   if (state.mode === "quiz") return quizVoiceAnswer(text);
 
   if (!state.chapter) return;
@@ -201,6 +210,17 @@ async function handleStudent(text) {
   await playSteps(r.steps);
   if (r.verdict === "understood") els.next.classList.add("pulse");
   else if (r.verdict === "not_yet") els.mic.classList.add("pulse");
+}
+
+// "Explain again" / "Example": pre-made extra steps for the current page.
+async function playExtra(kind) {
+  if (!state.lesson?.[kind]?.length) return;
+  interrupt();
+  drawItem({ kind: "heading", title: kind === "example" ? T("Example", "எடுத்துக்காட்டு") : T("Let me explain again", "மீண்டும் விளக்குகிறேன்"), body: "" });
+  if ((await playSteps(state.lesson[kind])) && state.checkQuestion) {
+    await say(state.checkQuestion.question);
+    els.mic.classList.add("pulse");
+  }
 }
 
 async function repeatPage() {
@@ -392,12 +412,19 @@ async function showProgress() {
 function updateButtons() {
   const lessonOn = state.mode === "lesson" && !!state.lesson;
   els.repeat.disabled = !lessonOn;
+  els.explain.disabled = !lessonOn;
+  els.example.disabled = !lessonOn;
   els.next.disabled = !lessonOn;
   els.next.classList.remove("pulse");
   if (state.chapter && lessonOn) {
     els.next.textContent = state.pageIndex + 1 < state.chapter.pages ? T("Next page →", "அடுத்த பக்கம் →") : T("Start quiz →", "தேர்வு தொடங்கு →");
   }
   els.start.textContent = state.mode === "idle" ? T("▶ Start lesson", "▶ பாடம் தொடங்கு") : T("↻ Restart chapter", "↻ மீண்டும் தொடங்கு");
+  els.repeat.textContent = T("↺ Repeat", "↺ மீண்டும் கேள்");
+  els.explain.textContent = T("💡 Explain again", "💡 மீண்டும் விளக்கு");
+  els.example.textContent = T("✏️ Example", "✏️ எடுத்துக்காட்டு");
+  $("sendBtn").textContent = T("Send", "அனுப்பு");
+  els.progressBtn.textContent = T("📈 Progress", "📈 முன்னேற்றம்");
 }
 
 function selectChapter() {
@@ -435,8 +462,8 @@ function setVoiceLabel() {
 }
 
 async function init() {
-  const [cfg, chapters] = await Promise.all([api("/api/config"), api("/api/chapters")]);
-  $("demoBanner").hidden = !cfg.demo;
+  const chapters = await api("/api/chapters");
+  $("demoBanner").hidden = !chapters.some((c) => c.sample);
   state.chapters = chapters;
   els.chapter.innerHTML = chapters.map((c, i) => `<option value="${esc(c.id)}">${i + 1}. ${esc(c.title)}${c.titleTa ? " · " + esc(c.titleTa) : ""}</option>`).join("");
   const saved = localGet("chapter", "");
@@ -444,11 +471,16 @@ async function init() {
   els.lang.value = localGet("lang", "en");
   setVoiceLabel();
   selectChapter();
-  if (!canListen) els.mic.title = "Voice input needs Chrome or Edge. You can type instead.";
+  if (!canListen) {
+    // The desktop app has no built-in speech recognition: type, or use Windows voice typing (Win + H).
+    els.mic.hidden = true;
+    els.input.title = "Tip: press Windows key + H to speak instead of typing";
+  }
 
   els.chapter.onchange = selectChapter;
   els.lang.onchange = () => {
     localSet("lang", lang());
+    state.contentLang = null;
     updateButtons();
     if (lang() !== "en" && !hasTamilVoice()) els.caption.textContent = "ℹ This browser has no Tamil voice. Tamil text will still show; for Tamil speech use Microsoft Edge or Chrome on Android.";
   };
@@ -456,6 +488,8 @@ async function init() {
   els.start.onclick = () => state.chapter && loadPage(0).catch(() => {});
   els.repeat.onclick = () => repeatPage().catch(() => {});
   els.next.onclick = () => nextPage().catch(() => {});
+  els.explain.onclick = () => playExtra("explainAgain").catch(() => {});
+  els.example.onclick = () => playExtra("example").catch(() => {});
   els.mic.onclick = onMic;
   els.avatarWrap.onclick = () => stopTalking(); // skip the current sentence
   els.form.onsubmit = (e) => { e.preventDefault(); const t = els.input.value; els.input.value = ""; handleStudent(t).catch(() => {}); };
