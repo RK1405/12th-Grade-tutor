@@ -31,18 +31,21 @@ To try the screens without an API key, run `npm run demo`. Demo mode uses canned
 
 ## Load your textbook
 
-The app ships with a short **sample** chapter ("Function") written for testing. To teach from the real textbook:
+The Tamil-medium textbook (360 pages, in 4 parts) is in `content/textbook/`, and `content/book.config.json` already maps its 16 chapters to their pages. Until the import has been run, the app teaches a short sample chapter.
 
-1. Find where each chapter starts:
-   ```bash
-   npm run ingest -- path/to/textbook.pdf
-   ```
-   This writes `content/pdf-pages.txt`, listing the first lines of every PDF page.
-2. Copy `content/book.config.example.json` to `content/book.config.json` and fill in each chapter's title (English and Tamil) and its first and last PDF page.
-3. Run `npm run ingest -- path/to/textbook.pdf` again. Chapters are written to `content/chapters/`, and they replace the sample.
-4. Restart with `npm start`.
+Run the import once (it needs your API key in `.env`):
 
-Lessons are cached in `data/cache/`, so each page is generated only once per language.
+```bash
+npm run ingest
+```
+
+The PDF's built-in Tamil text is garbled (old font encoding), so the import has Claude **read each page as an image** and write clean Tamil text, keeping code and English terms unchanged and describing figures. It reads about 330 pages, takes roughly 15–30 minutes, and costs roughly US$10–15 once. Each page is saved to `content/transcripts/` as soon as it's read, so if it stops, run the same command again and it continues from where it stopped. Commit `content/transcripts/` and `content/chapters/` afterwards so you never need to repeat the import.
+
+- Test one chapter first: `npm run ingest -- --only ch01`
+- Use a cheaper model for the import: `TUTOR_INGEST_MODEL=claude-sonnet-5-5 npm run ingest`
+- For an English PDF with a clean text layer (no API cost): `npm run ingest -- --text`
+
+The textbook's exercise pages are kept separately, and the tutor uses them as a guide when writing quiz questions. Lessons are cached in `data/cache/`, so each page is generated only once per language.
 
 ## How it works
 
@@ -53,7 +56,7 @@ Lessons are cached in `data/cache/`, so each page is generated only once per lan
 | Progress and lesson cache (JSON files in `data/`) | `server/store.js` |
 | Avatar, whiteboard, quiz screens, teach → quiz → re-teach loop | `public/app.js` |
 | Voice in and out (the browser's built-in Web Speech API, free) | `public/speech.js` |
-| PDF import | `scripts/ingest-pdf.js` |
+| Textbook import (Claude reads each page) | `scripts/ingest-pdf.js`, `content/book.config.json` |
 
 **Voice notes:** Tamil speech output needs a Tamil voice on the device. Microsoft Edge on Windows and Chrome on Android have one; desktop Chrome often doesn't, and then the Tamil text still shows on screen. Voice commands: "next page" / "அடுத்த பக்கம்", "repeat" / "மீண்டும்"; in quizzes, say "A", "B", "C" or "D".
 

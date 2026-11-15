@@ -1,5 +1,3 @@
 node_modules/
 data/
 .env
-content/pdf-pages.txt
-*.pdf

@@ -35,9 +35,12 @@ function langRule(lang) {
 // Chapter text goes in its own cached block so repeated calls on the same chapter are cheaper.
 function chapterBlock(chapter) {
   const pages = chapter.pages.map((p) => `--- Page ${p.page} ---\n${p.text}`).join("\n\n");
+  const exercises = (chapter.exercises || []).map((p) => `--- Page ${p.page} ---\n${p.text}`).join("\n\n");
   return {
     type: "text",
-    text: `TEXTBOOK CHAPTER: ${chapter.title}\n\n${pages}`,
+    text:
+      `TEXTBOOK CHAPTER: ${chapter.title}${chapter.titleTa ? ` (${chapter.titleTa})` : ""}\n\n${pages}` +
+      (exercises ? `\n\nTEXTBOOK EXERCISES FOR THIS CHAPTER (use them as a guide for exam-style quiz questions):\n\n${exercises}` : ""),
     cache_control: { type: "ephemeral" },
   };
 }

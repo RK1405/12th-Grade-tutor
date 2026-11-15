@@ -1,0 +1,29 @@
+{
+  "book": "Class 12 Computer Science, Tamil Nadu State Board, Tamil medium",
+  "parts": [
+    "content/textbook/Class12_CS_Tamil_Part1_p1-100.pdf",
+    "content/textbook/Class12_CS_Tamil_Part2_p101-200.pdf",
+    "content/textbook/Class12_CS_Tamil_Part3_p201-300.pdf",
+    "content/textbook/Class12_CS_Tamil_Part4_p301-360.pdf"
+  ],
+  "note": "Page ranges are PDF page numbers across all parts joined (1-360). Printed page = PDF page - pageOffset.",
+  "pageOffset": 6,
+  "chapters": [
+    { "id": "ch01", "title": "Function", "titleTa": "செயற்கூறு", "startPage": 7, "endPage": 17 },
+    { "id": "ch02", "title": "Data Abstraction", "titleTa": "தரவு அருவமாக்கம்", "startPage": 18, "endPage": 27 },
+    { "id": "ch03", "title": "Scoping", "titleTa": "வரையெல்லை", "startPage": 28, "endPage": 37 },
+    { "id": "ch04", "title": "Algorithmic Strategies", "titleTa": "படிமுறை உத்திகள்", "startPage": 38, "endPage": 54 },
+    { "id": "ch05", "title": "Python - Variables and Operators", "titleTa": "பைத்தான் - மாறிகள் மற்றும் செயற்குறிகள்", "startPage": 55, "endPage": 76 },
+    { "id": "ch06", "title": "Control Structures", "titleTa": "கட்டுப்பாட்டு அமைப்புகள்", "startPage": 77, "endPage": 98 },
+    { "id": "ch07", "title": "Python Functions", "titleTa": "பைத்தான் செயற்கூறுகள்", "startPage": 99, "endPage": 123 },
+    { "id": "ch08", "title": "Strings and String Manipulation", "titleTa": "சரங்கள் மற்றும் சரங்களைக் கையாளுதல்", "startPage": 124, "endPage": 141 },
+    { "id": "ch09", "title": "Lists, Tuples, Sets and Dictionary", "titleTa": "பட்டியல், Tuples, கணம் மற்றும் அகராதி", "startPage": 142, "endPage": 179 },
+    { "id": "ch10", "title": "Python Classes and Objects", "titleTa": "பைத்தான் இனக்குழுக்கள் மற்றும் பொருள்கள்", "startPage": 180, "endPage": 192 },
+    { "id": "ch11", "title": "Database Concepts", "titleTa": "தரவுதள கருத்துருக்கள்", "startPage": 193, "endPage": 208 },
+    { "id": "ch12", "title": "Structured Query Language (SQL)", "titleTa": "கட்டமைப்பு வினவல் மொழி (SQL)", "startPage": 209, "endPage": 236 },
+    { "id": "ch13", "title": "Python and CSV Files", "titleTa": "பைத்தான் மற்றும் CSV கோப்புகள்", "startPage": 237, "endPage": 271 },
+    { "id": "ch14", "title": "Importing C++ Programs in Python", "titleTa": "பைத்தானில் C++ நிரல்களை இறக்குமதி செய்தல்", "startPage": 272, "endPage": 290 },
+    { "id": "ch15", "title": "Data Manipulation Through SQL", "titleTa": "SQL மூலம் தரவுகளைக் கையாளுதல்", "startPage": 291, "endPage": 318 },
+    { "id": "ch16", "title": "Data Visualization Using PyPlot", "titleTa": "PyPlot மூலம் தரவு காட்சிப்படுத்துதல்", "startPage": 319, "endPage": 335 }
+  ]
+}

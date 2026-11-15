@@ -26,7 +26,8 @@ export function listChapters() {
   for (const dir of CHAPTER_DIRS) {
     if (!fs.existsSync(dir)) continue;
     const files = fs.readdirSync(dir).filter((f) => f.endsWith(".json")).sort();
-    if (files.length) return files.map((f) => readJson(path.join(dir, f))).filter((c) => c && c.pages?.length);
+    const chapters = files.map((f) => readJson(path.join(dir, f))).filter((c) => c && c.pages?.length);
+    if (chapters.length) return chapters;
   }
   return [];
 }
