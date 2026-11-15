@@ -9,7 +9,7 @@
 // written to content/chapters/chNN.json. Restart the server afterwards.
 import fs from "node:fs";
 import path from "node:path";
-import { Anthropic, client as apiClient, BETAS } from "../server/client.js";
+import { Anthropic, client as apiClient, BETAS } from "../generator/client.js";
 import { betaZodOutputFormat } from "@anthropic-ai/sdk/helpers/beta/zod";
 import { z } from "zod";
 import { PDFDocument } from "pdf-lib";
@@ -147,4 +147,4 @@ for (const ch of chapters) {
   console.log(`${ch.id} ${ch.title}: ${pages.length} lesson page(s), ${exercises.length} exercise page(s)${missing ? `, ${missing} skipped/unread` : ""}`);
 }
 if (failed) console.log(`${failed} page(s) failed. Run the same command again to retry them.`);
-console.log("Restart the server (npm start) to use the chapters.");
+console.log("Next step: npm run build-content");
