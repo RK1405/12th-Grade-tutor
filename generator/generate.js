@@ -50,7 +50,7 @@ async function ask(schema, chapter, instruction, effort = "medium") {
     fallbacks: "default", // a declined request is retried on a fallback model
     output_config: { effort, format: betaZodOutputFormat(schema) },
     messages: [{ role: "user", content: [chapterBlock(chapter), { type: "text", text: instruction }] }],
-  });
+  }, { timeout: 15 * 60 * 1000 }); // long Tamil outputs can take minutes
   if (response.stop_reason === "refusal") throw new Error("Claude declined this request");
   if (response.stop_reason === "max_tokens" || !response.parsed_output) throw new Error("Incomplete answer");
   return response.parsed_output;

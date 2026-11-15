@@ -88,7 +88,7 @@ async function readPage(n) {
             ],
           },
         ],
-      });
+      }, { timeout: 15 * 60 * 1000 });
       if (res.stop_reason === "refusal" || !res.parsed_output) throw new Error(`no transcription (stop_reason ${res.stop_reason})`);
       return res.parsed_output;
     } catch (err) {
