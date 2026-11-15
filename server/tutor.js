@@ -1,10 +1,9 @@
 // All Claude calls live here. Each function returns plain JSON for the frontend.
-import Anthropic from "@anthropic-ai/sdk";
+import { client, BETAS } from "./client.js";
 import { betaZodOutputFormat } from "@anthropic-ai/sdk/helpers/beta/zod";
 import { PageLesson, TutorReply, Quiz, Grades, Remediation } from "./schemas.js";
 
 const MODEL = process.env.TUTOR_MODEL || "claude-opus-5-5";
-const client = new Anthropic(); // reads ANTHROPIC_API_KEY from the environment
 
 const LANG_RULES = {
   en: "Speak and write in simple Indian English.",
@@ -50,7 +49,7 @@ async function ask(schema, userContent, { effort = "medium", maxTokens = 16000, 
     model: MODEL,
     max_tokens: maxTokens,
     system: SYSTEM,
-    betas: ["server-side-fallback-2026-07-01"],
+    betas: BETAS,
     fallbacks: "default", // if a request is declined, the API retries it on a fallback model
     output_config: { effort, format: betaZodOutputFormat(schema) },
     messages: [...history, { role: "user", content: userContent }],

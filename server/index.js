@@ -6,8 +6,8 @@ import * as store from "./store.js";
 
 const DEMO = process.env.TUTOR_DEMO === "1";
 const tutor = DEMO ? await import("./demo.js") : await import("./tutor.js");
-if (!DEMO && !process.env.ANTHROPIC_API_KEY) {
-  console.warn("ANTHROPIC_API_KEY is not set. Set it, or run with TUTOR_DEMO=1 to try the app without AI.");
+if (!DEMO && !process.env.ANTHROPIC_API_KEY && !process.env.ANTHROPIC_AUTH_TOKEN) {
+  console.warn("No key: put ANTHROPIC_API_KEY=... in .env (run `npm run check-key` to test it), or run `npm run demo` to try the app without AI.");
 }
 
 const here = path.dirname(fileURLToPath(import.meta.url));
@@ -24,7 +24,7 @@ const route = (fn) => async (req, res) => {
   } catch (err) {
     console.error(err);
     const message =
-      err.status === 401 ? "The AI key is missing or invalid. Check ANTHROPIC_API_KEY in .env." :
+      err.status === 401 ? "The AI key is missing or invalid. Run `npm run check-key` in the project folder to see why." :
       err.status === 429 ? "The tutor is busy right now. Please wait a moment and try again." :
       err.message || "Something went wrong";
     res.status(err.status === 404 ? 404 : 500).json({ error: message });

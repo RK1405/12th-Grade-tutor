@@ -9,7 +9,7 @@
 // written to content/chapters/chNN.json. Restart the server afterwards.
 import fs from "node:fs";
 import path from "node:path";
-import Anthropic from "@anthropic-ai/sdk";
+import { Anthropic, client as apiClient, BETAS } from "../server/client.js";
 import { betaZodOutputFormat } from "@anthropic-ai/sdk/helpers/beta/zod";
 import { z } from "zod";
 import { PDFDocument } from "pdf-lib";
@@ -49,7 +49,7 @@ const PageSchema = z.object({
   text: z.string().describe("Faithful transcription of the page in clean Unicode"),
 });
 
-const client = TEXT_MODE ? null : new Anthropic();
+const client = TEXT_MODE ? null : apiClient;
 const PROMPT = `This is one page of a Class 12 Computer Science textbook (Tamil Nadu State Board, ${config.book.includes("Tamil") ? "Tamil medium" : "English medium"}).
 Transcribe it faithfully into clean Unicode text:
 - Keep the original language and wording. Fix nothing except obvious print artefacts. Do not translate or summarise.
@@ -76,7 +76,7 @@ async function readPage(n) {
       const res = await client.beta.messages.parse({
         model: MODEL,
         max_tokens: 16000,
-        betas: ["server-side-fallback-2026-07-01"],
+        betas: BETAS,
         fallbacks: "default",
         output_config: { effort: "low", format: betaZodOutputFormat(PageSchema) },
         messages: [

@@ -19,7 +19,7 @@ npm install
 cp .env.example .env
 ```
 
-Put your Anthropic API key in `.env`, then:
+Put your Anthropic API key in `.env` (one line: `ANTHROPIC_API_KEY=...`, no quotes). Check that it works with `npm run check-key`, which also tells you if your key must be set as `ANTHROPIC_AUTH_TOKEN` instead. Then:
 
 ```bash
 npm start
