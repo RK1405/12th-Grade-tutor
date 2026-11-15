@@ -1,0 +1,22 @@
+{
+  "name": "cs-tutor",
+  "version": "1.0.0",
+  "description": "Voice + whiteboard AI tutor for 12th grade Computer Science (Tamil/English)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node --env-file-if-exists=.env server/index.js",
+    "ingest": "node scripts/ingest-pdf.js",
+    "demo": "TUTOR_DEMO=1 node server/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^1.8.0",
+    "express": "^5.3.0",
+    "pdfjs-dist": "^6.5.438",
+    "zod": "^4.6.7"
+  }
+}

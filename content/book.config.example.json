@@ -1,0 +1,7 @@
+{
+  "pageOffset": 0,
+  "chapters": [
+    { "id": "ch01", "title": "Function", "titleTa": "செயற்கூறு", "startPage": 1, "endPage": 14 },
+    { "id": "ch02", "title": "Data Abstraction", "titleTa": "தரவு அருவமாக்கம்", "startPage": 15, "endPage": 26 }
+  ]
+}

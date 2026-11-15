@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kavi CS Tutor</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Hind+Madurai:wght@400;600&family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">Kavi <span>CS Tutor · Class 12</span></div>
+    <div class="controls">
+      <select id="chapterSelect" aria-label="Chapter"></select>
+      <select id="langSelect" aria-label="Language">
+        <option value="en">English</option>
+        <option value="ta">தமிழ்</option>
+        <option value="mix">தமிழ் + English</option>
+      </select>
+      <button id="voiceToggle" class="chip" title="Turn the tutor's voice on or off">🔊 Voice on</button>
+      <button id="progressBtn" class="chip">📈 Progress</button>
+    </div>
+  </header>
+  <div id="demoBanner" class="demo-banner" hidden>Demo mode: no AI. Responses are canned, so you can try the screens. Set ANTHROPIC_API_KEY for real teaching.</div>
+
+  <main class="layout">
+    <section class="tutor-panel">
+      <div class="avatar-wrap" id="avatarWrap" data-state="idle" title="Tap to stop talking">
+        <svg id="avatar" viewBox="0 0 220 220" aria-label="Kavi, the robot tutor">
+          <defs>
+            <linearGradient id="avBg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e8f0ff"/><stop offset="1" stop-color="#c9d9fb"/></linearGradient>
+            <linearGradient id="avHead" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#dfe7f5"/></linearGradient>
+          </defs>
+          <circle cx="110" cy="110" r="104" fill="url(#avBg)" />
+          <line x1="110" y1="38" x2="110" y2="56" stroke="#5b6b85" stroke-width="4" stroke-linecap="round" />
+          <circle cx="110" cy="34" r="8" class="av-antenna" />
+          <rect x="46" y="56" width="128" height="104" rx="34" fill="url(#avHead)" stroke="#9fb2d1" stroke-width="3" />
+          <rect x="34" y="92" width="14" height="34" rx="7" class="av-ear" />
+          <rect x="172" y="92" width="14" height="34" rx="7" class="av-ear" />
+          <rect x="62" y="74" width="96" height="66" rx="22" fill="#1d2b45" />
+          <g class="av-eyes">
+            <g class="av-eye"><ellipse cx="90" cy="100" rx="11" ry="13" class="av-glow" /><circle cx="93" cy="96" r="3.5" fill="#fff" /></g>
+            <g class="av-eye"><ellipse cx="130" cy="100" rx="11" ry="13" class="av-glow" /><circle cx="133" cy="96" r="3.5" fill="#fff" /></g>
+          </g>
+          <ellipse id="mouth" cx="110" cy="126" rx="14" ry="3" class="av-glow" />
+          <rect x="70" y="166" width="80" height="44" rx="16" class="av-body" />
+          <text x="110" y="194" text-anchor="middle" font-family="monospace" font-size="16" fill="#fff" font-weight="700">&lt;/&gt;</text>
+        </svg>
+        <div class="av-status" id="avStatus">Ready</div>
+      </div>
+
+      <div class="caption" id="caption" aria-live="polite">Press <b>Start lesson</b> to begin.</div>
+
+      <div class="actions">
+        <button id="startBtn" class="primary">▶ Start lesson</button>
+        <button id="repeatBtn" disabled>↺ Repeat</button>
+        <button id="nextBtn" disabled>Next page →</button>
+      </div>
+
+      <div class="talk">
+        <button id="micBtn" class="mic" title="Hold a conversation: tap and speak" aria-label="Speak">🎤</button>
+        <form id="chatForm" class="chat-form">
+          <input id="chatInput" placeholder="Ask a doubt or answer here…" autocomplete="off" />
+          <button type="submit">Send</button>
+        </form>
+      </div>
+      <details class="log"><summary>Conversation</summary><div id="log"></div></details>
+    </section>
+
+    <section class="board-panel">
+      <div class="board-head">
+        <span id="boardTitle">Whiteboard</span>
+        <span id="pageInfo"></span>
+      </div>
+      <div class="board" id="board">
+        <div class="board-empty">Choose a chapter and press Start lesson.</div>
+      </div>
+    </section>
+  </main>
+
+  <dialog id="progressDialog">
+    <div class="dlg-head"><h2>Your progress</h2><button id="closeProgress" class="chip">Close</button></div>
+    <div id="progressBody"></div>
+  </dialog>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>

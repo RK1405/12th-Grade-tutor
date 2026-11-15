@@ -1,0 +1,35 @@
+{
+  "id": "ch01",
+  "title": "Function",
+  "titleTa": "செயற்கூறு",
+  "source": "Sample chapter written for testing. Replace it with your textbook (see README: Load your textbook).",
+  "pages": [
+    {
+      "page": 1,
+      "text": "Introduction. A large program is easier to write, read and test when it is split into small named blocks of code. Such a block is called a subroutine. Subroutines are the basic building blocks of a program. In programming languages a subroutine is usually called a function. A function is a unit of code that does a particular job. Once written, a function can be used (called) many times from different parts of the program, so we do not need to repeat the same code. Advantages of functions: they reduce duplication of code, they make a large program easier to understand by breaking it into small parts, they make testing and correcting errors easier, and they allow code to be reused in other programs."
+    },
+    {
+      "page": 2,
+      "text": "Function definition. A function definition gives the function a name, lists the inputs it needs, and contains the statements that do the work. Example in Python:\n\ndef rectangle_area(length, breadth):\n    area = length * breadth\n    return area\n\nHere rectangle_area is the function name. length and breadth are parameters. The return statement sends the result back to the place where the function was called. Calling the function: print(rectangle_area(5, 3)) prints 15. The values 5 and 3 are arguments."
+    },
+    {
+      "page": 3,
+      "text": "Parameters and arguments. Parameters are the variables written in the function definition. Arguments are the actual values passed to the function when it is called. In def add(a, b): a and b are parameters. In add(10, 20), 10 and 20 are arguments. Parameters may be written without a data type, and the language works out the type from the arguments, or with an explicit data type in some languages. Interface and implementation. An interface describes what a function or object does: its name, its inputs and the result it gives. An implementation is the actual code that carries out the work. A user only needs to know the interface to use a function; the implementation can be changed later without affecting the user. Example: a TV remote's buttons are the interface; the electronics inside are the implementation."
+    },
+    {
+      "page": 4,
+      "text": "Pure and impure functions. A pure function always gives the same result for the same arguments, and it has no side effects: it does not change any variable or data outside itself. Example: def square(x): return x * x. square(4) is always 16. An impure function may give different results for the same arguments, or it changes something outside itself (a side effect), such as a global variable, a file, or printing to the screen. Example: import random; def roll(): return random.randint(1, 6) gives a different value each time. Another example:\n\ncount = 0\ndef increment():\n    global count\n    count = count + 1\n    return count\n\nincrement() changes the global variable count, so it is impure. Pure functions are easier to test and to reason about."
+    }
+  ],
+  "demo": {
+    "concepts": ["Subroutine", "Function definition", "Parameters vs arguments", "Interface vs implementation", "Pure vs impure functions"],
+    "questions": [
+      { "id": "q1", "type": "mcq", "concept": "Subroutine", "question": "Small named blocks of code that are the building blocks of a program are called:", "code": "", "options": ["Subroutines", "Variables", "Comments", "Operators"], "answer": "Subroutines", "explanation": "Subroutines (functions) are the basic building blocks of a program." },
+      { "id": "q2", "type": "mcq", "concept": "Parameters vs arguments", "question": "In add(10, 20), what are 10 and 20?", "code": "", "options": ["Parameters", "Arguments", "Return values", "Keywords"], "answer": "Arguments", "explanation": "Values passed at the time of the call are arguments." },
+      { "id": "q3", "type": "predict_output", "concept": "Function definition", "question": "What is printed?", "code": "def rectangle_area(length, breadth):\n    return length * breadth\nprint(rectangle_area(4, 2))", "options": [], "answer": "8", "explanation": "4 × 2 = 8 is returned and printed." },
+      { "id": "q4", "type": "mcq", "concept": "Interface vs implementation", "question": "The buttons on a TV remote are an example of:", "code": "", "options": ["Implementation", "Interface", "Argument", "Side effect"], "answer": "Interface", "explanation": "The interface is what the user sees and uses." },
+      { "id": "q5", "type": "short", "concept": "Pure vs impure functions", "question": "Why is a function that changes a global variable called impure?", "code": "", "options": [], "answer": "Because it has a side effect: it changes data outside the function.", "explanation": "Changing something outside the function is a side effect, so it is impure." },
+      { "id": "q6", "type": "mcq", "concept": "Pure vs impure functions", "question": "Which function is pure?", "code": "", "options": ["def square(x): return x * x", "def roll(): return random.randint(1, 6)", "def show(x): print(x)", "def inc(): global c; c += 1"], "answer": "def square(x): return x * x", "explanation": "square always gives the same result for the same input and has no side effects." }
+    ]
+  }
+}
