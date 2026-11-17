@@ -10,7 +10,7 @@
      "page": 1,
      "steps": [
       {
-       "say": "Hello! I am Kavi, your computer science tutor. Today we start the chapter on functions. Let's learn it one page at a time.",
+       "say": "Hello! I am Guru, your computer science tutor. Today we start the chapter on functions. Let's learn it one page at a time.",
        "board": [
         {
          "kind": "heading",
@@ -1412,7 +1412,7 @@
      "page": 1,
      "steps": [
       {
-       "say": "வணக்கம்! நான் கவி, உங்கள் கணினி அறிவியல் ஆசிரியர். இன்று செயற்கூறு (function) பாடத்தைத் தொடங்குகிறோம். ஒவ்வொரு பக்கமாகப் படிப்போம்.",
+       "say": "வணக்கம்! நான் குரு, உங்கள் கணினி அறிவியல் ஆசிரியர். இன்று செயற்கூறு (function) பாடத்தைத் தொடங்குகிறோம். ஒவ்வொரு பக்கமாகப் படிப்போம்.",
        "board": [
         {
          "kind": "heading",

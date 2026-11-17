@@ -65,7 +65,7 @@ function stopTalking() {
 function addLog(role, text) {
   const d = document.createElement("div");
   d.className = "t " + role;
-  d.textContent = (role === "student" ? "You: " : "Kavi: ") + text;
+  d.textContent = (role === "student" ? "You: " : "Guru: ") + text;
   els.log.append(d);
   els.log.scrollTop = els.log.scrollHeight;
   state.conversation.push({ role, text });

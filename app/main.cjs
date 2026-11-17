@@ -11,7 +11,7 @@ function createWindow() {
     height: 860,
     minWidth: 800,
     minHeight: 600,
-    title: "Kavi CS Tutor",
+    title: "Guru CS Tutor",
     backgroundColor: "#eef2f7",
     autoHideMenuBar: true,
     webPreferences: { contextIsolation: true, nodeIntegration: false, sandbox: true },

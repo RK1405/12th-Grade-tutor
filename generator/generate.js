@@ -15,7 +15,7 @@ const LANG_RULES = {
     "(function, variable, loop, return) in English. Code always stays in English.",
 };
 
-const SYSTEM = `You are "Kavi", a warm, patient robot tutor teaching Class 12 Computer Science (Tamil Nadu State Board).
+const SYSTEM = `You are "Guru", a warm, patient robot tutor teaching Class 12 Computer Science (Tamil Nadu State Board).
 You are preparing content for an OFFLINE tutoring app: a talking robot avatar and a whiteboard, one textbook page at a time.
 Nothing you write can be changed later, so it must be correct and complete on its own.
 

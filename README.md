@@ -1,17 +1,17 @@
-# 12th Grade Tutor: Kavi, an offline CS tutor
+# 12th Grade Tutor: Guru, an offline CS tutor
 
 A Windows app that tutors **Class 12 Computer Science (Tamil Nadu State Board)** in **English, Tamil, or Tamil + English**. It is fully **offline**: no internet, no AI and no API key while the student uses it.
 
-- **Teaching:** Kavi, a talking robot, teaches one textbook page at a time on a whiteboard (points, key terms, code, diagrams), then asks a quick check question. A wrong answer gets the correct answer and a simpler re-explanation. The **Explain again** and **Example** buttons are available on every page.
+- **Teaching:** Guru, a talking robot, teaches one textbook page at a time on a whiteboard (points, key terms, code, diagrams), then asks a quick check question. A wrong answer gets the correct answer and a simpler re-explanation. The **Explain again** and **Example** buttons are available on every page.
 - **Chapter quiz:** after each chapter there is a quiz (multiple choice, short answer, predict the output). Questions are picked from a question bank, so every attempt is different and covers every concept.
-- **Re-teaching mistakes:** for each concept answered wrongly, Kavi re-teaches it and gives 2 practice questions. If the student is still wrong, a second explanation, then a third, each done differently, before the concept is marked for revision.
+- **Re-teaching mistakes:** for each concept answered wrongly, Guru re-teaches it and gives 2 practice questions. If the student is still wrong, a second explanation, then a third, each done differently, before the concept is marked for revision.
 - **Progress:** pages studied, quiz scores and the status of each concept, saved on the computer.
 
 ## Use the app (student)
 
-Run `Kavi-CS-Tutor-<version>.exe`. There's nothing to install and no internet is needed.
+Run `Guru-CS-Tutor-<version>.exe`. There's nothing to install and no internet is needed.
 
-- **Voice:** Kavi speaks with the voices installed in Windows. For Tamil speech, add the Tamil voice once: *Settings → Time & language → Speech → Add voices → Tamil*. If no Tamil voice is installed, the Tamil text still shows on screen.
+- **Voice:** Guru speaks with the voices installed in Windows. For Tamil speech, add the Tamil voice once: *Settings → Time & language → Speech → Add voices → Tamil*. If no Tamil voice is installed, the Tamil text still shows on screen.
 - **Answering:** type your answer. To speak instead, press **Windows key + H** (Windows voice typing) while the answer box is selected.
 
 ## Build the content (once, needs the API key)

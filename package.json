@@ -1,6 +1,6 @@
 {
-  "name": "kavi-cs-tutor",
-  "version": "1.0.0",
+  "name": "guru-cs-tutor",
+  "version": "1.1.0",
   "description": "Offline voice + whiteboard tutor for Class 12 Computer Science (Tamil Nadu State Board)",
   "main": "app/main.cjs",
   "scripts": {
@@ -25,11 +25,11 @@
     "pdfjs-dist": "^6.5.438",
     "zod": "^4.6.7"
   },
-  "productName": "Kavi CS Tutor",
+  "productName": "Guru CS Tutor",
   "private": true,
   "build": {
-    "appId": "in.rk1405.kavi-cs-tutor",
-    "productName": "Kavi CS Tutor",
+    "appId": "in.rk1405.guru-cs-tutor",
+    "productName": "Guru CS Tutor",
     "directories": {
       "output": "dist"
     },
@@ -50,7 +50,7 @@
       "signAndEditExecutable": false
     },
     "portable": {
-      "artifactName": "Kavi-CS-Tutor-${version}.exe"
+      "artifactName": "Guru-CS-Tutor-${version}.exe"
     }
   }
 }

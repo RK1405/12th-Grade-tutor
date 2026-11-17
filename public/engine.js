@@ -3,7 +3,7 @@
 // No network, no AI, no API key.
 
 const MAX_QUIZ = 10;
-const PROGRESS_KEY = "kavi-progress-v1";
+const PROGRESS_KEY = "guru-progress-v1";
 
 const index = () => window.BOOK_INDEX || [];
 const loaded = {};
