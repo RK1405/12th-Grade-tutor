@@ -1,0 +1,91 @@
+# Generates the whole textbook (all chapters, Tamil + English) on GitHub's servers,
+# saves the results to the repo after every chapter, and publishes the website.
+#
+# One-time setup: Settings -> Secrets and variables -> Actions -> New repository secret
+#   Name: ANTHROPIC_API_KEY   Secret: your key (sk-ant-api03-...)
+# Then: Actions -> "Generate full textbook" -> Run workflow.
+# Safe to run again: finished chapters/pages are skipped, so a re-run only fills gaps.
+name: Generate full textbook
+
+on:
+  workflow_dispatch:
+    inputs:
+      chapters:
+        description: "Chapters to generate (e.g. ch01,ch02) - leave 'all' for the whole book"
+        default: all
+      langs:
+        description: "Languages (en, ta, mix)"
+        default: ta,en
+      model:
+        description: "Claude model"
+        default: claude-sonnet-5-5
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: generate
+  cancel-in-progress: false
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    env:
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      TUTOR_MODEL: ${{ inputs.model }}
+      ELECTRON_SKIP_BINARY_DOWNLOAD: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci --ignore-scripts
+
+      - name: Check the API key
+        run: |
+          if [ -z "$ANTHROPIC_API_KEY" ]; then
+            echo "::error::The ANTHROPIC_API_KEY secret is missing. Add it under Settings -> Secrets and variables -> Actions."
+            exit 1
+          fi
+          node scripts/check-key.js
+
+      - name: Read the textbook and generate lessons, chapter by chapter
+        run: |
+          git config user.name "guru-content-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if [ "${{ inputs.chapters }}" = "all" ]; then
+            CHAPTERS=$(node -e 'console.log(require("./content/book.config.json").chapters.map(c=>c.id).join(" "))')
+          else
+            CHAPTERS=$(echo "${{ inputs.chapters }}" | tr ',' ' ')
+          fi
+          for ch in $CHAPTERS; do
+            echo "::group::$ch"
+            # Each step skips work already done; the second pass retries anything that failed.
+            node scripts/ingest-pdf.js --only "$ch" || node scripts/ingest-pdf.js --only "$ch" || true
+            node scripts/build-content.js --only "$ch" --langs "${{ inputs.langs }}" || true
+            node scripts/build-content.js --only "$ch" --langs "${{ inputs.langs }}" || true
+            # Save progress after every chapter so nothing paid for is ever lost.
+            git add content public/content
+            if ! git diff --cached --quiet; then
+              git commit -q -m "Generated content: $ch (${{ inputs.langs }}, ${{ inputs.model }})"
+              git pull -q --rebase origin main && git push -q origin HEAD:main
+            fi
+            echo "::endgroup::"
+          done
+          node scripts/build-content.js --assemble
+          echo "Chapters now in the app:"
+          node -e 'global.window={};require("./public/content/index.js");for(const c of window.BOOK_INDEX)console.log(" ",c.id,c.title,c.langs.join("+"),c.sample?"(sample)":"")'
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+      - id: deployment
+        uses: actions/deploy-pages@v4
