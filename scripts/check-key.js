@@ -10,7 +10,7 @@ if (!key) {
   console.log("No key found. Put this line in .env (one line, no quotes):\n  ANTHROPIC_API_KEY=your-key");
   process.exit(1);
 }
-console.log(`Key found: ${key.slice(0, 14)}... (${key.length} characters)`);
+console.log(`Key found: ${key.slice(0, 12)}... (${key.length} characters; the rest is hidden)`);
 if (/^["']|["']$|\s/.test(process.env.ANTHROPIC_API_KEY || process.env.ANTHROPIC_AUTH_TOKEN || "")) {
   console.log("Warning: the key has quotes or spaces around it in .env. Remove them.");
 }
@@ -29,9 +29,9 @@ async function attempt(label, options) {
 
 console.log("Testing...");
 if (await attempt("as ANTHROPIC_API_KEY", { apiKey: key })) {
-  console.log("\nAll good. Keep this line in .env:\n  ANTHROPIC_API_KEY=" + key.slice(0, 14) + "...");
+  console.log("\nAll good. Keep this line in .env:\n  ANTHROPIC_API_KEY=" + key.slice(0, 12) + "...");
 } else if (await attempt("as ANTHROPIC_AUTH_TOKEN", { authToken: key })) {
-  console.log("\nThis key works as a token. In .env, change the line to:\n  ANTHROPIC_AUTH_TOKEN=" + key.slice(0, 14) + "...\n(remove the ANTHROPIC_API_KEY line), then run npm start.");
+  console.log("\nThis key works as a token. In .env, change the line to:\n  ANTHROPIC_AUTH_TOKEN=" + key.slice(0, 12) + "...\n(remove the ANTHROPIC_API_KEY line), then run npm start.");
 } else {
   console.log(
     "\nThis key does not work with the Claude API.\n" +
