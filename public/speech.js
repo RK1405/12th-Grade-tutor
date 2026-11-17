@@ -18,6 +18,28 @@ function pickVoice(lang) {
   }
   return null;
 }
+// Voices load asynchronously in Chrome/Edge: wait (briefly) until the list is available.
+export function voicesReady(ms = 2500) {
+  if (!synth) return Promise.resolve([]);
+  loadVoices();
+  if (voices.length) return Promise.resolve(voices);
+  return new Promise((resolve) => {
+    const t = setTimeout(() => resolve(loadVoices()), ms);
+    synth.addEventListener?.("voiceschanged", () => {
+      clearTimeout(t);
+      resolve(loadVoices());
+    }, { once: true });
+  });
+}
+
+// The voice Guru will use for a language, or null if the device has none for it.
+export function voiceFor(lang) {
+  const v = pickVoice(lang);
+  if (!v) return null;
+  if (lang !== "en" && !v.lang.toLowerCase().startsWith("ta")) return null; // never read Tamil with an English voice
+  return v;
+}
+
 export function hasTamilVoice() {
   return !!voices.find((v) => v.lang.toLowerCase().startsWith("ta"));
 }
@@ -40,10 +62,10 @@ export function speak(text, lang, { onStart, onBoundary, onEnd } = {}) {
         return resolve();
       }
       const u = new SpeechSynthesisUtterance(parts[i++]);
-      if (voice) {
-        u.voice = voice;
-        u.lang = voice.lang;
-      } else u.lang = lang === "en" ? "en-IN" : "ta-IN";
+      u.lang = voice ? voice.lang : lang === "en" ? "en-IN" : "ta-IN";
+      try {
+        if (voice) u.voice = voice;
+      } catch {} // keep going with the language's default voice
       u.rate = 0.95;
       // Safety net: if no voice is installed, onend may never fire; move on after a reading-time delay.
       let finished = false;
@@ -57,7 +79,11 @@ export function speak(text, lang, { onStart, onBoundary, onEnd } = {}) {
       u.onboundary = () => onBoundary?.();
       u.onend = done;
       u.onerror = done;
-      synth.speak(u);
+      try {
+        synth.speak(u);
+      } catch {
+        done(); // never let a speech error stop the lesson
+      }
     };
     next();
   });

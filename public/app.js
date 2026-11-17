@@ -1,4 +1,4 @@
-import { speak, stopSpeaking, listen, stopListening, canListen, hasTamilVoice } from "./speech.js";
+import { speak, stopSpeaking, listen, stopListening, canListen, voicesReady, voiceFor } from "./speech.js";
 import { api } from "./engine.js";
 
 const $ = (id) => document.getElementById(id);
@@ -42,10 +42,32 @@ function mouthMove(on) {
   mouthTimer = setInterval(() => els.mouth.setAttribute("ry", String(2 + Math.random() * 8)), 110);
 }
 
+// Tell the student clearly when the computer has no voice for the chosen language.
+function showVoiceHelp(l) {
+  const box = $("voiceBanner");
+  const isWin = /Windows/.test(navigator.userAgent);
+  box.innerHTML = l === "en"
+    ? "🔇 No English voice found on this device. Lessons will show as text."
+    : "🔇 இந்தக் கணினியில் தமிழ் குரல் இல்லை, அதனால் பாடம் எழுத்தாக மட்டும் காட்டப்படும். / No Tamil voice on this computer. " +
+      (isWin
+        ? "<b>Fix:</b> Windows Settings → Time &amp; language → Speech → <b>Add voices</b> → Tamil, then restart Guru. (In a browser, Microsoft Edge also has Tamil voices.)"
+        : "Install a Tamil text-to-speech voice, or use Microsoft Edge.");
+  box.hidden = false;
+}
+async function checkVoice() {
+  await voicesReady();
+  const l = lang();
+  if (state.voiceOn && !voiceFor(l)) showVoiceHelp(l);
+  else $("voiceBanner").hidden = true;
+}
+
 async function say(text) {
   els.caption.textContent = text;
   addLog("tutor", text);
-  if (!state.voiceOn) {
+  const speechLang = state.contentLang || lang();
+  const canSpeak = state.voiceOn && !!voiceFor(speechLang);
+  if (state.voiceOn && !canSpeak) showVoiceHelp(speechLang);
+  if (!canSpeak) {
     // Give the student time to read when the voice is off.
     await new Promise((r) => setTimeout(r, Math.min(6000, 600 + text.length * 25)));
     return;
@@ -471,6 +493,7 @@ async function init() {
   els.lang.value = localGet("lang", "en");
   setVoiceLabel();
   selectChapter();
+  checkVoice();
   if (!canListen) {
     // The desktop app has no built-in speech recognition: type, or use Windows voice typing (Win + H).
     els.mic.hidden = true;
@@ -482,9 +505,9 @@ async function init() {
     localSet("lang", lang());
     state.contentLang = null;
     updateButtons();
-    if (lang() !== "en" && !hasTamilVoice()) els.caption.textContent = "ℹ This browser has no Tamil voice. Tamil text will still show; for Tamil speech use Microsoft Edge or Chrome on Android.";
+    checkVoice();
   };
-  els.voice.onclick = () => { state.voiceOn = !state.voiceOn; localSet("voiceOn", state.voiceOn ? "1" : "0"); if (!state.voiceOn) stopTalking(); setVoiceLabel(); };
+  els.voice.onclick = () => { state.voiceOn = !state.voiceOn; localSet("voiceOn", state.voiceOn ? "1" : "0"); if (!state.voiceOn) stopTalking(); setVoiceLabel(); checkVoice(); };
   els.start.onclick = () => state.chapter && loadPage(0).catch(() => {});
   els.repeat.onclick = () => repeatPage().catch(() => {});
   els.next.onclick = () => nextPage().catch(() => {});
