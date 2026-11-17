@@ -8,12 +8,12 @@
     "check-key": "node --env-file-if-exists=.env scripts/check-key.js",
     "ingest": "node --env-file-if-exists=.env scripts/ingest-pdf.js",
     "build-content": "node --env-file-if-exists=.env scripts/build-content.js",
-    "dist": "electron-builder --win portable --x64"
+    "dist": "electron-builder --win portable --x64",
+    "preview": "node scripts/preview.js"
   },
   "author": "RK1405",
   "license": "UNLICENSED",
   "type": "module",
-  "dependencies": {},
   "devDependencies": {
     "@anthropic-ai/sdk": "^1.8.0",
     "@fontsource/hind-madurai": "^5.0.13",
