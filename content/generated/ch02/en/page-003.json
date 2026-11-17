@@ -1,0 +1,149 @@
+{
+ "steps": [
+  {
+   "say": "On the last page we met constructors and selectors using the city and point examples. Now page fifteen gives us a short but very important note, and then starts the idea of building an abstract data type with rational numbers.",
+   "board": [
+    {
+     "kind": "heading",
+     "title": "Data Abstraction: Note and Rational Numbers",
+     "body": ""
+    }
+   ]
+  },
+  {
+   "say": "First, the note. Data abstraction is used to declare an Abstract Data Type, or ADT. An ADT is nothing but a collection of constructors and selectors. Remember this line for your board exam.",
+   "board": [
+    {
+     "kind": "keyterm",
+     "title": "ADT",
+     "body": "A collection of constructors and selectors"
+    }
+   ]
+  },
+  {
+   "say": "A constructor builds an object by joining many small pieces of information. A selector does the opposite job. It picks out one small piece of information from the object.",
+   "board": [
+    {
+     "kind": "point",
+     "title": "Constructor: builds object from many pieces",
+     "body": ""
+    },
+    {
+     "kind": "point",
+     "title": "Selector: gets one piece from the object",
+     "body": ""
+    }
+   ]
+  },
+  {
+   "say": "Now section 2.4. The main aim of data abstraction is to write the program so that it works on abstract data. While using the data, the program just makes some assumptions about it. The real, concrete data is defined separately, as a different part of the program.",
+   "board": [
+    {
+     "kind": "point",
+     "title": "Aim: program works on abstract data",
+     "body": ""
+    }
+   ]
+  },
+  {
+   "say": "So every program has two parts. One part works on the abstract data. The other part defines the concrete representation, using a set of functions that implement the abstract data type.",
+   "board": [
+    {
+     "kind": "diagram",
+     "title": "Two parts of a program",
+     "body": "flowchart TD\nA[\"Program\"] --> B[\"Part 1: uses abstract data\"]\nA --> C[\"Part 2: concrete representation\"]"
+    }
+   ]
+  },
+  {
+   "say": "To understand this, the book uses rational numbers. A rational number is a ratio of two whole numbers, like eight by three. It is written as numerator by denominator. If we divide eight by three in the computer, we get a rounded decimal, two point six six six six. The exact value is lost. So to keep it exact, we must keep numerator and denominator together.",
+   "board": [
+    {
+     "kind": "example",
+     "title": "8/3 = 2.6666666666666665 (approximate)",
+     "body": ""
+    },
+    {
+     "kind": "point",
+     "title": "Exact form needs numerator and denominator together",
+     "body": ""
+    }
+   ]
+  },
+  {
+   "say": "Now we use wishful thinking. We simply wish that we can build a rational number from a numerator and denominator, and can also pick them out again. That means we assume a constructor and selectors exist, without yet knowing how they work. This is a powerful technique in program design.",
+   "board": [
+    {
+     "kind": "keyterm",
+     "title": "Wishful thinking",
+     "body": "Deciding and designing as if the functions exist, based on belief, before knowing how they are implemented"
+    }
+   ]
+  },
+  {
+   "say": "Good work. Remember for exams: ADT is a set of constructors and selectors, and wishful thinking is the design technique used here.",
+   "board": [
+    {
+     "kind": "warning",
+     "title": "Exam: ADT = constructors + selectors",
+     "body": ""
+    }
+   ]
+  }
+ ],
+ "explainAgain": [
+  {
+   "say": "Think of a school canteen. You order a dosa and pick up a plate. You do not need to know how the cook makes it. You only need to know what to ask for and what you will get.",
+   "board": [
+    {
+     "kind": "point",
+     "title": "Canteen: use the dosa, not the recipe",
+     "body": ""
+    }
+   ]
+  },
+  {
+   "say": "A constructor is like the cook who puts rice, dal and water together to make the batter. A selector is like you picking one item from the plate, say the chutney. Together they make an ADT.",
+   "board": [
+    {
+     "kind": "point",
+     "title": "Constructor = make; Selector = pick one part",
+     "body": ""
+    }
+   ]
+  },
+  {
+   "say": "Wishful thinking is like planning a class party and saying, someone will bring the snacks. You plan first. The details are filled in later.",
+   "board": [
+    {
+     "kind": "point",
+     "title": "Wishful thinking: plan first, details later",
+     "body": ""
+    }
+   ]
+  }
+ ],
+ "example": [
+  {
+   "say": "Here is the rational number ADT from the book. The function rational is the constructor, and it builds a rational number from numerator x and denominator y. The functions numer and denom are selectors. They return the numerator and the denominator. Notice that they are declared but not yet defined.",
+   "board": [
+    {
+     "kind": "code",
+     "title": "Rational number ADT",
+     "body": "-- constructor\n-- constructs a rational number with numerator x, denominator y\nrational(x, y)\n-- selector\nnumer(x) → returns the numerator of rational number x\ndenom(y) → returns the denominator of rational number y"
+    }
+   ]
+  }
+ ],
+ "checkQuestion": {
+  "question": "What is an Abstract Data Type, and what is the job of a constructor and of a selector?",
+  "idealAnswer": "An Abstract Data Type is a collection of constructors and selectors. A constructor builds an object from many pieces of information. A selector gets one piece of information out of the object.",
+  "keywords": [
+   "collection",
+   "constructor",
+   "selector",
+   "builds object",
+   "ADT"
+  ]
+ }
+}

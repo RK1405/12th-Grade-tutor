@@ -1,0 +1,252 @@
+{
+ "concepts": [
+  "Data Abstraction",
+  "Abstract Data Type (ADT)",
+  "Constructors and Selectors",
+  "Concrete vs Abstract Data Types",
+  "Rational number ADT",
+  "Lists and Pairs",
+  "Tuples",
+  "Classes (Structures) for Data Abstraction"
+ ],
+ "questions": [
+  {
+   "id": "q1",
+   "type": "mcq",
+   "concept": "Constructors and Selectors",
+   "question": "Which function is used to build an abstract data type?",
+   "code": "",
+   "options": [
+    "Constructors",
+    "Destructors",
+    "Recursive",
+    "Nested"
+   ],
+   "answer": "Constructors",
+   "keywords": [],
+   "explanation": "Constructor functions create the abstract data type object."
+  },
+  {
+   "id": "q2",
+   "type": "mcq",
+   "concept": "Constructors and Selectors",
+   "question": "Which function retrieves information from a data type?",
+   "code": "",
+   "options": [
+    "Constructors",
+    "Selectors",
+    "Recursive",
+    "Nested"
+   ],
+   "answer": "Selectors",
+   "keywords": [],
+   "explanation": "Selectors get the individual pieces of information out of an object."
+  },
+  {
+   "id": "q3",
+   "type": "mcq",
+   "concept": "Concrete vs Abstract Data Types",
+   "question": "A data type whose representation is known is called:",
+   "code": "",
+   "options": [
+    "Abstract datatype",
+    "Concrete datatype",
+    "Pair",
+    "Selector"
+   ],
+   "answer": "Concrete datatype",
+   "keywords": [],
+   "explanation": "For a concrete data type the representation is known; for an abstract one it is not."
+  },
+  {
+   "id": "q4",
+   "type": "mcq",
+   "concept": "Concrete vs Abstract Data Types",
+   "question": "A data type whose representation is unknown is called:",
+   "code": "",
+   "options": [
+    "Built in datatype",
+    "Concrete datatype",
+    "Abstract datatype",
+    "Derived datatype"
+   ],
+   "answer": "Abstract datatype",
+   "keywords": [],
+   "explanation": "An ADT hides how it is represented and implemented."
+  },
+  {
+   "id": "q5",
+   "type": "mcq",
+   "concept": "Tuples",
+   "question": "Which sequence of values cannot be changed after creation?",
+   "code": "",
+   "options": [
+    "List",
+    "Tuple",
+    "Class",
+    "Built in"
+   ],
+   "answer": "Tuple",
+   "keywords": [],
+   "explanation": "Tuple elements are immutable, unlike list elements."
+  },
+  {
+   "id": "q6",
+   "type": "mcq",
+   "concept": "Lists and Pairs",
+   "question": "Which structure is written with expressions inside square brackets?",
+   "code": "",
+   "options": [
+    "Tuples",
+    "Lists",
+    "Classes",
+    "Quadrats"
+   ],
+   "answer": "Lists",
+   "keywords": [],
+   "explanation": "A list literal uses comma separated values inside square brackets."
+  },
+  {
+   "id": "q7",
+   "type": "mcq",
+   "concept": "Classes (Structures) for Data Abstraction",
+   "question": "Which of these lets us name the different parts of a multi-item object?",
+   "code": "",
+   "options": [
+    "Tuples",
+    "Lists",
+    "Classes",
+    "Pairs"
+   ],
+   "answer": "Classes",
+   "keywords": [],
+   "explanation": "A class or structure gives a name to every field, unlike a list."
+  },
+  {
+   "id": "q8",
+   "type": "mcq",
+   "concept": "Data Abstraction",
+   "question": "What is abstraction?",
+   "code": "",
+   "options": [
+    "Hiding details and giving only the essentials",
+    "Showing all implementation details",
+    "Storing data in memory",
+    "Copying a program"
+   ],
+   "answer": "Hiding details and giving only the essentials",
+   "keywords": [],
+   "explanation": "Abstraction hides details and provides only what is needed."
+  },
+  {
+   "id": "q9",
+   "type": "short",
+   "concept": "Abstract Data Type (ADT)",
+   "question": "What is an Abstract Data Type?",
+   "code": "",
+   "options": [],
+   "answer": "An ADT is a type for objects whose definition says what operations are to be done, but not how they are implemented or how data is stored.",
+   "keywords": [
+    "operations",
+    "what",
+    "not how",
+    "implementation hidden"
+   ],
+   "explanation": "ADT specifies behaviour, not implementation."
+  },
+  {
+   "id": "q10",
+   "type": "short",
+   "concept": "Constructors and Selectors",
+   "question": "Differentiate constructors and selectors.",
+   "code": "",
+   "options": [],
+   "answer": "Constructors build the abstract data object from pieces of data; selectors retrieve individual pieces of information from the object.",
+   "keywords": [
+    "constructor builds",
+    "selector retrieves",
+    "object"
+   ],
+   "explanation": "Example: makecity builds a city, getlat reads its latitude."
+  },
+  {
+   "id": "q11",
+   "type": "short",
+   "concept": "Lists and Pairs",
+   "question": "What is a pair? Give an example.",
+   "code": "",
+   "options": [],
+   "answer": "A pair is a compound structure that binds two values together, for example the list [10, 20].",
+   "keywords": [
+    "two values",
+    "compound",
+    "list",
+    "tuple"
+   ],
+   "explanation": "Pairs can be made with lists or tuples."
+  },
+  {
+   "id": "q12",
+   "type": "short",
+   "concept": "Rational number ADT",
+   "question": "In the rational number ADT, which are the constructor and the selectors?",
+   "code": "",
+   "options": [],
+   "answer": "rational(x, y) is the constructor; numer() and denom() are the selectors.",
+   "keywords": [
+    "rational",
+    "numer",
+    "denom"
+   ],
+   "explanation": "The book declares them but does not define their working."
+  },
+  {
+   "id": "q13",
+   "type": "short",
+   "concept": "Tuples",
+   "question": "How does a tuple differ from a list?",
+   "code": "",
+   "options": [],
+   "answer": "A tuple is written in parentheses and its elements cannot be changed, while list elements can be changed.",
+   "keywords": [
+    "parentheses",
+    "immutable",
+    "list mutable"
+   ],
+   "explanation": "Both store comma separated values."
+  },
+  {
+   "id": "q14",
+   "type": "predict_output",
+   "concept": "Lists and Pairs",
+   "question": "What is the value of x and y after this?",
+   "code": "lst := [10, 20]\nx, y := lst",
+   "options": [],
+   "answer": "x = 10, y = 20",
+   "keywords": [],
+   "explanation": "Multiple assignment unpacks the list into x and y."
+  },
+  {
+   "id": "q15",
+   "type": "predict_output",
+   "concept": "Tuples",
+   "question": "What does nums[1] give?",
+   "code": "nums := (1, 2)\nnums[1]",
+   "options": [],
+   "answer": "2",
+   "keywords": [],
+   "explanation": "Indexing starts at 0, so index 1 is the second element."
+  },
+  {
+   "id": "q16",
+   "type": "predict_output",
+   "concept": "Rational number ADT",
+   "question": "What is the output of numer(x)/denom(y) here?",
+   "code": "x,y := 8,3\nrational(x,y)\nnumer(x)/denom(y)",
+   "options": [],
+   "answer": "2.6666666666666665",
+   "keywords": [],
+   "explanation": "8 divided by 3 gives a floating point approximation."
+  }
+ ]
+}

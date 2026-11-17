@@ -1,0 +1,156 @@
+{
+ "steps": [
+  {
+   "say": "On the previous page we learned that an Abstract Data Type tells us what operations are needed, not how they are done. Now let us see how this idea works in real life and how it is built.",
+   "board": [
+    {
+     "kind": "heading",
+     "title": "Data Abstraction: Implementation and Constructors, Selectors",
+     "body": ""
+    }
+   ]
+  },
+  {
+   "say": "The textbook says an ADT can be implemented in many different ways. For example, a List ADT can be implemented using a singly linked list or a doubly linked list. The user of the List ADT does not mind which one is used.",
+   "board": [
+    {
+     "kind": "point",
+     "title": "One ADT, many implementations",
+     "body": ""
+    },
+    {
+     "kind": "example",
+     "title": "List ADT: singly linked list or doubly linked list",
+     "body": ""
+    }
+   ]
+  },
+  {
+   "say": "In the same way, the Stack ADT and the Queue ADT can be implemented using a List. So the same ADT can sit on top of different structures.",
+   "board": [
+    {
+     "kind": "point",
+     "title": "Stack ADT and Queue ADT can use a List",
+     "body": ""
+    }
+   ]
+  },
+  {
+   "say": "Data abstraction reflects how we think about the world. To drive a car, you need not know how the engine is built or what material the tyres are made of. You only need to know how to operate the car.",
+   "board": [
+    {
+     "kind": "keyterm",
+     "title": "Abstraction",
+     "body": "Hiding the details and showing only what is essential"
+    }
+   ]
+  },
+  {
+   "say": "To implement data abstraction, we need two kinds of functions. They are constructors and selectors. This is very important for your board exam.",
+   "board": [
+    {
+     "kind": "point",
+     "title": "Two functions needed: Constructors and Selectors",
+     "body": ""
+    }
+   ]
+  },
+  {
+   "say": "A constructor function is used to build the abstract data type. A selector function is used to get information out of the data type.",
+   "board": [
+    {
+     "kind": "keyterm",
+     "title": "Constructor",
+     "body": "Builds or creates the abstract data object"
+    },
+    {
+     "kind": "keyterm",
+     "title": "Selector",
+     "body": "Retrieves information from the data object"
+    }
+   ]
+  },
+  {
+   "say": "Let us look at the city example. Suppose city is an abstract data type that stores a name, a latitude and a longitude. We create a city object with the constructor makecity, giving name, lat and lon. Then selectors getname, getlat and getlon give us each piece back.",
+   "board": [
+    {
+     "kind": "code",
+     "title": "Constructor for city",
+     "body": "city:= makecity (name, lat, lon)"
+    },
+    {
+     "kind": "point",
+     "title": "Selectors: getname(city), getlat(city), getlon(city)",
+     "body": ""
+    }
+   ]
+  },
+  {
+   "say": "A function called distance can use these selectors to find the distance between two cities. It takes the latitude and longitude of both cities using selectors, and then applies the distance formula. Notice that we never need to know how the selectors work inside. We just assume someone else has defined them. The symbol colon equals is read as assigned as, or becomes.",
+   "board": [
+    {
+     "kind": "code",
+     "title": "distance using selectors",
+     "body": "distance(city1, city2):\n    lt1, lg1 := getlat(city1), getlon(city1)\n    lt2, lg2 := getlat(city2), getlon(city2)\n    return ((lt1 - lt2)**2 + (lg1 - lg2)**2))1/2"
+    }
+   ]
+  }
+ ],
+ "explainAgain": [
+  {
+   "say": "Think of a school canteen. You tell the counter what you want and pay. You do not need to know how the food is cooked in the kitchen. The counter is the simple view. The kitchen is the hidden detail. That is abstraction.",
+   "board": [
+    {
+     "kind": "point",
+     "title": "Canteen counter = what we use; kitchen = hidden",
+     "body": ""
+    }
+   ]
+  },
+  {
+   "say": "Now think of a school ID card. The office makes the card from your name, class and photo. That is the constructor. When the teacher reads your name or class from the card, that is a selector. Constructor builds, selector reads.",
+   "board": [
+    {
+     "kind": "point",
+     "title": "Making ID card = constructor",
+     "body": ""
+    },
+    {
+     "kind": "point",
+     "title": "Reading name from card = selector",
+     "body": ""
+    }
+   ]
+  }
+ ],
+ "example": [
+  {
+   "say": "Here is a worked example. We make a city called Chennai with its latitude and longitude. The constructor makecity builds the object. Then getname gives us the name Chennai, getlat gives the latitude and getlon gives the longitude. Makecity is the constructor, and the three get functions are selectors.",
+   "board": [
+    {
+     "kind": "example",
+     "title": "c := makecity(Chennai, 13.08, 80.27); getname(c) gives Chennai",
+     "body": ""
+    },
+    {
+     "kind": "point",
+     "title": "Constructor: makecity. Selectors: getname, getlat, getlon",
+     "body": ""
+    }
+   ]
+  }
+ ],
+ "checkQuestion": {
+  "question": "What is the difference between a constructor and a selector in data abstraction?",
+  "idealAnswer": "A constructor function is used to build or create the abstract data type object, for example makecity. A selector function is used to retrieve information from the data type, for example getlat.",
+  "keywords": [
+   "constructor",
+   "selector",
+   "create",
+   "build",
+   "retrieve",
+   "ஆக்கி",
+   "செலக்டர்"
+  ]
+ }
+}

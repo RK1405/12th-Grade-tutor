@@ -1,0 +1,138 @@
+{
+ "steps": [
+  {
+   "say": "On the last page we saw that a class lets us name every part of a multi-part object, like Person with firstName, lastName, id and email. Now let us understand what this class really means.",
+   "board": [
+    {
+     "kind": "heading",
+     "title": "Class: a new data type",
+     "body": ""
+    }
+   ]
+  },
+  {
+   "say": "A class structure defines the shape of a multi-part object. This definition adds a new data type to the program. Here, Person is the type.",
+   "board": [
+    {
+     "kind": "keyterm",
+     "title": "Class",
+     "body": "Defines the shape of a multi-part object and adds a new data type"
+    }
+   ]
+  },
+  {
+   "say": "Once the type is defined, we can create new variables of that type. In our example, Person is the class or type, and p1 is one particular object of it.",
+   "board": [
+    {
+     "kind": "example",
+     "title": "Person = class, p1 = object",
+     "body": "p1 := Person()"
+    }
+   ]
+  },
+  {
+   "say": "Think of a cookie cutter. One cutter can make many cookies. In the same way, one class can create many objects. The class is the cutter and each object is a cookie.",
+   "board": [
+    {
+     "kind": "diagram",
+     "title": "One class, many objects",
+     "body": "flowchart TD\nA[\"Class Person (cookie cutter)\"] --> B[\"Object p1\"]\nA --> C[\"Object p2\"]\nA --> D[\"Object p3\"]"
+    }
+   ]
+  },
+  {
+   "say": "A class holds not only data but also functions. These functions belong to the class because they work on the data of the class. For example, they can change or examine the data of a Person object.",
+   "board": [
+    {
+     "kind": "point",
+     "title": "Class = data + functions that work on that data",
+     "body": ""
+    }
+   ]
+  },
+  {
+   "say": "So a class is a package of data and the functions that act on that data. This shows that abstraction helps us handle complex data in a simple way. This is a good point to write in your board exam.",
+   "board": [
+    {
+     "kind": "warning",
+     "title": "Exam: abstraction makes complex data simple to handle",
+     "body": ""
+    }
+   ]
+  },
+  {
+   "say": "Now remember the key points of this chapter. An ADT says what operations are to be done, not how. Constructors create the data type. Selectors retrieve information from it. A concrete data type has a known structure, but an abstract data type has an unknown structure.",
+   "board": [
+    {
+     "kind": "point",
+     "title": "ADT: what, not how. Structure unknown",
+     "body": ""
+    },
+    {
+     "kind": "point",
+     "title": "Constructor creates; selector retrieves",
+     "body": ""
+    }
+   ]
+  }
+ ],
+ "explainAgain": [
+  {
+   "say": "Imagine your school gives every student an admission form. The blank form is the class. It has fixed boxes for name, roll number and address.",
+   "board": [
+    {
+     "kind": "point",
+     "title": "Class = blank form with fixed boxes",
+     "body": ""
+    }
+   ]
+  },
+  {
+   "say": "When you fill the form with your details, that filled form is an object. Many students can fill many forms from the same blank form. So one class makes many objects.",
+   "board": [
+    {
+     "kind": "point",
+     "title": "Object = a filled form",
+     "body": ""
+    }
+   ]
+  },
+  {
+   "say": "Also, the school office has rules to check or update a form. Those are the functions of the class. Data and the functions together make a class.",
+   "board": []
+  }
+ ],
+ "example": [
+  {
+   "say": "Let us take a Student class with fields rno, name and mark. Student is the type. We create s1 as one object, and s2 as another object. Both follow the same shape, but each keeps its own values.",
+   "board": [
+    {
+     "kind": "code",
+     "title": "Student class example",
+     "body": "class Student:\n    creation()\n    rno := 0\n    name := \" \"\n    mark := 0\n\ns1 := Student()\ns2 := Student()"
+    }
+   ]
+  },
+  {
+   "say": "Here Student is the class or type. s1 and s2 are objects, just like cookies from one cutter.",
+   "board": [
+    {
+     "kind": "example",
+     "title": "Student = type; s1, s2 = objects",
+     "body": ""
+    }
+   ]
+  }
+ ],
+ "checkQuestion": {
+  "question": "What is a class, and how is the class Person related to the object p1?",
+  "idealAnswer": "A class is a structure that defines a new data type with data and the functions that work on that data. Person is the class or type, and p1 is one particular object created from it. Many objects can be made from one class, like many cookies from one cookie cutter.",
+  "keywords": [
+   "class",
+   "new data type",
+   "object",
+   "functions",
+   "கிளாஸ்"
+  ]
+ }
+}

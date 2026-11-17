@@ -1,0 +1,143 @@
+{
+ "steps": [
+  {
+   "say": "On the previous page we met constructors and selectors, and the idea that the user need not know how they work inside. Now let us use that idea on rational numbers.",
+   "board": [
+    {
+     "kind": "heading",
+     "title": "ADT of Rational Numbers",
+     "body": ""
+    }
+   ]
+  },
+  {
+   "say": "A rational number is a ratio of two whole numbers, like eight by three. If we divide in Python, we get 2.6666666666666665. The exact value is lost. To keep it exact, we must keep the numerator and the denominator together.",
+   "board": [
+    {
+     "kind": "point",
+     "title": "8/3 as division = 2.6666666666666665 (not exact)",
+     "body": ""
+    },
+    {
+     "kind": "point",
+     "title": "Exact form needs numerator and denominator together",
+     "body": ""
+    }
+   ]
+  },
+  {
+   "say": "So we design an ADT. It has one constructor and two selectors. The constructor is rational, which takes x and y and builds a rational number with numerator x and denominator y.",
+   "board": [
+    {
+     "kind": "keyterm",
+     "title": "rational(x, y)",
+     "body": "Constructor. Builds a rational number with numerator x and denominator y."
+    }
+   ]
+  },
+  {
+   "say": "The two selectors are numer and denom. Numer returns the numerator of a rational number. Denom returns the denominator. Selectors only fetch the parts, they do not build anything.",
+   "board": [
+    {
+     "kind": "keyterm",
+     "title": "numer(x) and denom(y)",
+     "body": "Selectors. numer returns the numerator, denom returns the denominator."
+    }
+   ]
+  },
+  {
+   "say": "Here is the textbook ADT. Notice the double dash lines are comments.",
+   "board": [
+    {
+     "kind": "code",
+     "title": "Rational number ADT",
+     "body": "-- constructor\n-- constructs a rational number with numerator x, denominator y\nrational(x, y)\n-- selector\nnumer(x) → returns the numerator of rational number x\ndenom(y) → returns the denominator of rational number y"
+    }
+   ]
+  },
+  {
+   "say": "Very important point. Here the constructor and selectors are only declared, not defined. We have not said how they work. This is wishful thinking. We assume they exist and write our program using them. Someone can define them later.",
+   "board": [
+    {
+     "kind": "warning",
+     "title": "Declared but NOT defined. This is wishful thinking.",
+     "body": ""
+    }
+   ]
+  },
+  {
+   "say": "The pseudo code uses them like this. Set x and y to eight and three. Build the rational number. Then numer of x divided by denom of y gives 2.6666666666666665.",
+   "board": [
+    {
+     "kind": "code",
+     "title": "Using the ADT",
+     "body": "x,y:=8,3\nrational(x,y)\nnumer(x)/denum(y)\n-- output : 2.6666666666666665"
+    }
+   ]
+  },
+  {
+   "say": "Every program has two parts. One part works on the abstract data. The other part defines the concrete representation using some functions. Remember this for your board exam. Well done!",
+   "board": [
+    {
+     "kind": "point",
+     "title": "Program = part using abstract data + part defining concrete form",
+     "body": ""
+    }
+   ]
+  }
+ ],
+ "explainAgain": [
+  {
+   "say": "Think of a school canteen. You say, give me one samosa. You do not worry how it is made. You only need to know what you can ask for.",
+   "board": [
+    {
+     "kind": "point",
+     "title": "Order from the menu without knowing the recipe",
+     "body": ""
+    }
+   ]
+  },
+  {
+   "say": "In the same way, rational makes a fraction, numer gives the top number, and denom gives the bottom number. We use these three tools, and someone else decides how to build them.",
+   "board": [
+    {
+     "kind": "point",
+     "title": "rational = make, numer = top, denom = bottom",
+     "body": ""
+    }
+   ]
+  },
+  {
+   "say": "Assuming these tools exist before writing them is called wishful thinking. It lets us plan the program first and fill in the details later.",
+   "board": []
+  }
+ ],
+ "example": [
+  {
+   "say": "Worked example. We want the rational number three by four. We call rational with three and four. Then numer returns three, and denom returns four.",
+   "board": [
+    {
+     "kind": "example",
+     "title": "Rational number 3/4",
+     "body": "r = rational(3, 4)\nnumer(r) -> 3\ndenom(r) -> 4"
+    }
+   ]
+  },
+  {
+   "say": "Rational is the constructor because it builds the number. Numer and denom are selectors because they only fetch its parts.",
+   "board": []
+  }
+ ],
+ "checkQuestion": {
+  "question": "In the rational number ADT, which function is the constructor, which are the selectors, and what is wishful thinking?",
+  "idealAnswer": "rational is the constructor. numer and denom are the selectors. Wishful thinking means using the constructor and selectors in the program, assuming they work, even though they are declared but not yet defined.",
+  "keywords": [
+   "rational",
+   "constructor",
+   "numer",
+   "denom",
+   "selectors",
+   "wishful thinking"
+  ]
+ }
+}

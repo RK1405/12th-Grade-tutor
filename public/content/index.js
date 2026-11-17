@@ -1,1 +1,1 @@
-window.BOOK_INDEX=[{"id":"ch01","title":"Function","titleTa":"செயற்கூறு","pages":8,"langs":["en","ta"]}];
+window.BOOK_INDEX=[{"id":"ch01","title":"Function","titleTa":"செயற்கூறு","pages":8,"langs":["en","ta"]},{"id":"ch02","title":"Data Abstraction","titleTa":"தரவு அருவமாக்கம்","pages":8,"langs":["en","ta"]}];

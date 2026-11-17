@@ -1,0 +1,120 @@
+{
+ "steps": [
+  {
+   "say": "On the last page we learned that an abstract data type hides details, and that we need two kinds of functions, constructors and selectors. Now let us see them in action on page 14.",
+   "board": [
+    {
+     "kind": "heading",
+     "title": "Constructors and Selectors",
+     "body": ""
+    }
+   ]
+  },
+  {
+   "say": "A constructor function builds an object of the abstract data type. In our city example, makecity takes a name, a latitude and a longitude. Those three values are passed as parameters. It gives back one city object.",
+   "board": [
+    {
+     "kind": "keyterm",
+     "title": "Constructor",
+     "body": "Builds an abstract data type object from the given values"
+    },
+    {
+     "kind": "diagram",
+     "title": "Figure 1: Constructor",
+     "body": "flowchart TD\nA[\"name, lat, lon\"] --> B[\"makecity()\"]\nB --> C[\"city object\"]"
+    }
+   ]
+  },
+  {
+   "say": "A selector function does the opposite job. It takes the city object and gives back one piece of information from it. We have three selectors here. getname gives the name. getlat gives the latitude. getlon gives the longitude.",
+   "board": [
+    {
+     "kind": "keyterm",
+     "title": "Selector",
+     "body": "Retrieves one piece of information from the data type"
+    },
+    {
+     "kind": "diagram",
+     "title": "Figure 2: Selectors",
+     "body": "flowchart TD\nA[\"city object\"] --> B[\"getname()\"]\nA --> C[\"getlat()\"]\nA --> D[\"getlon()\"]"
+    }
+   ]
+  },
+  {
+   "say": "Notice that the city object is passed as the parameter to each selector. We do not need to know how these functions work inside. We simply trust that someone else has defined them. That is abstraction.",
+   "board": [
+    {
+     "kind": "point",
+     "title": "We use the functions without knowing how they work inside",
+     "body": ""
+    }
+   ]
+  },
+  {
+   "say": "Here is another example with a point. The constructor makepoint takes x and y and returns them as a pair. The selector xcoord returns the first item, at position zero. The selector ycoord returns the second item, at position one. In the book, double dash marks a comment.",
+   "board": [
+    {
+     "kind": "code",
+     "title": "Point ADT",
+     "body": "-- constructor\nmakepoint(x, y):\n    return x, y\n-- selector\nxcoord(point):\n    return point[0]\n-- selector\nycoord(point):\n    return point[1]"
+    }
+   ]
+  },
+  {
+   "say": "Remember this for your exam. Constructors create an object from several pieces of data. Selectors pull out one small piece from the object. Together, they define an abstract data type. You are doing very well!",
+   "board": [
+    {
+     "kind": "warning",
+     "title": "Exam: Constructor creates, Selector retrieves. Do not mix them up!",
+     "body": ""
+    }
+   ]
+  }
+ ],
+ "explainAgain": [
+  {
+   "say": "Think of a school ID card. The office makes your card using your name, class and photo. That is like a constructor. It puts many details into one object.",
+   "board": [
+    {
+     "kind": "point",
+     "title": "Constructor = office making your ID card",
+     "body": ""
+    }
+   ]
+  },
+  {
+   "say": "Later, the teacher reads only your name, or only your class, from that card. That is like a selector. It picks one detail out of the whole object. The teacher does not need to know how the card was printed.",
+   "board": [
+    {
+     "kind": "point",
+     "title": "Selector = reading one detail from the card",
+     "body": ""
+    }
+   ]
+  }
+ ],
+ "example": [
+  {
+   "say": "Let us work through one example. We build a city called Chennai with latitude 13 and longitude 80. The constructor makes the object. Then the selector getlat returns 13, and getlon returns 80.",
+   "board": [
+    {
+     "kind": "example",
+     "title": "City example",
+     "body": "city := makecity(\"Chennai\", 13, 80)   -- constructor\ngetname(city)  -> Chennai   -- selector\ngetlat(city)   -> 13        -- selector\ngetlon(city)   -> 80        -- selector"
+    }
+   ]
+  }
+ ],
+ "checkQuestion": {
+  "question": "What is the difference between a constructor and a selector? Give one example of each from the city example.",
+  "idealAnswer": "A constructor builds an abstract data type object from the given values, for example makecity of name, lat and lon. A selector retrieves a piece of information from the object, for example getlat of city.",
+  "keywords": [
+   "constructor",
+   "selector",
+   "create",
+   "retrieve",
+   "makecity",
+   "getlat"
+  ]
+ }
+}

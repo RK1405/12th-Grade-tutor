@@ -1,0 +1,25 @@
+{
+ "steps": [
+  {
+   "say": "On the last page we saw two ways to read a list: multiple assignment and the square bracket selector. Now let us see how these ideas lead to the concept of a pair.",
+   "board": [
+    {
+     "kind": "heading",
+     "title": "Lists as Pairs",
+     "body": ""
+    }
+   ]
+  },
+  {
+   "say": "",
+   "board": []
+  }
+ ],
+ "explainAgain": [],
+ "example": [],
+ "checkQuestion": {
+  "question": "",
+  "idealAnswer": "",
+  "keywords": []
+ }
+}

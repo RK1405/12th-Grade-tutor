@@ -1,0 +1,150 @@
+{
+ "steps": [
+  {
+   "say": "Hello and welcome, dear student! I am Guru, your robot tutor. Today we begin Unit One, Chapter Two: Data Abstraction. Do not worry, we will go step by step.",
+   "board": [
+    {
+     "kind": "heading",
+     "title": "Chapter 2: Data Abstraction",
+     "body": ""
+    }
+   ]
+  },
+  {
+   "say": "By the end of this chapter you will understand abstract data types, the difference between concrete and abstract data types, pairs, and how abstraction works with classes and structures.",
+   "board": [
+    {
+     "kind": "point",
+     "title": "Goals: ADT, concrete vs abstract, pairs, structures",
+     "body": ""
+    }
+   ]
+  },
+  {
+   "say": "Let us start with section 2.1. Data abstraction is a powerful idea in computer science. It lets programmers treat program code as an object, just like a vehicle, a pencil, or a person.",
+   "board": [
+    {
+     "kind": "keyterm",
+     "title": "Data Abstraction",
+     "body": "Treating code and data as an object; we need to know what it does, not how it works."
+    }
+   ]
+  },
+  {
+   "say": "A programmer only needs to know what the object does. He does not need to worry about how it is done inside. This is very useful in a project where many programmers work together.",
+   "board": [
+    {
+     "kind": "point",
+     "title": "Know WHAT it does, not HOW",
+     "body": ""
+    }
+   ]
+  },
+  {
+   "say": "In a team, no member needs to read every line of another person's code. They simply trust that it does its job. Think of your class group project. You use your friend's part without reading his notes.",
+   "board": [
+    {
+     "kind": "point",
+     "title": "Useful in team projects",
+     "body": ""
+    }
+   ]
+  },
+  {
+   "say": "Abstraction also gives modularity to a program. Modularity means a program is divided into many small parts, called modules. Classes are the way we build Abstract Data Types, shortly called ADT.",
+   "board": [
+    {
+     "kind": "keyterm",
+     "title": "Modularity",
+     "body": "Dividing a program into separate modules."
+    }
+   ]
+  },
+  {
+   "say": "Now, section 2.2. An Abstract Data Type is a type, or class, of objects. Its definition says what operations must be done. It does not say how they are done. It does not say how data is stored in memory or which algorithm is used. That is why it is called abstract.",
+   "board": [
+    {
+     "kind": "keyterm",
+     "title": "Abstract Data Type (ADT)",
+     "body": "A type of object defined by WHAT operations it supports, not HOW they are implemented."
+    }
+   ]
+  },
+  {
+   "say": "Abstraction means hiding the details and showing only what is essential. This definition is important for your board exam. An ADT can be implemented in many ways. For example, a List ADT can use a singly linked list or a doubly linked list.",
+   "board": [
+    {
+     "kind": "warning",
+     "title": "Exam: Abstraction = hide details, show essentials",
+     "body": ""
+    }
+   ]
+  }
+ ],
+ "explainAgain": [
+  {
+   "say": "Let us think of a television remote. You press the volume button and the sound increases. You do not know the circuits inside. You only know what each button does.",
+   "board": [
+    {
+     "kind": "point",
+     "title": "Remote: buttons = operations",
+     "body": ""
+    }
+   ]
+  },
+  {
+   "say": "An abstract data type is like that remote. It tells you the buttons you can press, which are the operations. How the circuit works inside is hidden. Different companies may build different circuits, but the remote feels the same to you.",
+   "board": [
+    {
+     "kind": "point",
+     "title": "Inside details hidden; use is the same",
+     "body": ""
+    }
+   ]
+  },
+  {
+   "say": "So remember: abstraction means using something without worrying about how it is built.",
+   "board": [
+    {
+     "kind": "keyterm",
+     "title": "Abstraction",
+     "body": "Hide the details, show only the essentials."
+    }
+   ]
+  }
+ ],
+ "example": [
+  {
+   "say": "Here is the textbook idea with a car. To drive a car, you do not need to know how the engine is built or what material the tyres are made of. You only need training to operate the car. The steering, the accelerator and the brake are what you use. The engine is hidden.",
+   "board": [
+    {
+     "kind": "example",
+     "title": "Car: drive it without knowing the engine",
+     "body": ""
+    }
+   ]
+  },
+  {
+   "say": "In the same way, a List ADT can be built using a singly linked list or a doubly linked list. The user of the List ADT works the same way in both cases. Stack ADT and Queue ADT can also be built using a List.",
+   "board": [
+    {
+     "kind": "diagram",
+     "title": "One ADT, many implementations",
+     "body": "flowchart TD\nA[\"List ADT\"] --> B[\"Singly linked list\"]\nA --> C[\"Doubly linked list\"]"
+    }
+   ]
+  }
+ ],
+ "checkQuestion": {
+  "question": "In your own words, what is an Abstract Data Type, and what does it not tell us?",
+  "idealAnswer": "An Abstract Data Type is a type or class of objects whose definition says what operations are to be performed. It does not say how the data is stored in memory or how the operations are implemented.",
+  "keywords": [
+   "operations",
+   "what",
+   "not how",
+   "implementation",
+   "செயல்பாடுகள்",
+   "abstract"
+  ]
+ }
+}

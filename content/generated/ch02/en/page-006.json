@@ -1,0 +1,119 @@
+{
+ "steps": [
+  {
+   "say": "On the last page we saw that a list can hold the four colours in Mastermind under one name, Predict. Now let us see where a list becomes confusing, and how a class solves it.",
+   "board": [
+    {
+     "kind": "heading",
+     "title": "Page 18: Naming parts with a class",
+     "body": ""
+    }
+   ]
+  },
+  {
+   "say": "Take a person with four details: first name, last name, phone number and email. We can store them in a list. Here the list holds Padmashri, Baskar, a phone number and an email id.",
+   "board": [
+    {
+     "kind": "code",
+     "title": "Person as a list",
+     "body": "person:=['Padmashri', 'Baskar', '994-222-1234', 'compsci@gmail.com']"
+    }
+   ]
+  },
+  {
+   "say": "But look at this list. Nothing tells us what each item means. Is the second item a surname, or a nickname? We must remember the position of each item. That is the problem with a list for a multi-part object.",
+   "board": [
+    {
+     "kind": "warning",
+     "title": "A list does not name the parts of an object",
+     "body": ""
+    }
+   ]
+  },
+  {
+   "say": "The solution is a structure. In object oriented languages, we call it a class. In a class, every part gets its own name. Here the class Person has four fields: firstName, lastName, id and email. It also has a creation function.",
+   "board": [
+    {
+     "kind": "code",
+     "title": "Person class",
+     "body": "class Person:\n    creation( )\n    firstName := \" \"\n    lastName := \" \"\n    id := \" \"\n    email := \" \""
+    }
+   ]
+  },
+  {
+   "say": "This defines a new data type called Person. The class name is Person. The creation function belongs to this new data type. The variables firstName, lastName, id and email are called fields.",
+   "board": [
+    {
+     "kind": "keyterm",
+     "title": "Field",
+     "body": "A named variable that belongs to a class."
+    }
+   ]
+  },
+  {
+   "say": "Now the main function uses it. First, p1 is created as a Person object. Then each field is given a value, like Padmashri for firstName and Baskar for lastName. If we print firstName, the output is Padmashri.",
+   "board": [
+    {
+     "kind": "code",
+     "title": "Using Person in main()",
+     "body": "p1:=Person()\nfirstName := \"Padmashri\"\nlastName := \"Baskar\"\nid := \"994-222-1234\"\nemail := \"compsci@gmail.com\"\n-- output of firstName : Padmashri"
+    }
+   ]
+  },
+  {
+   "say": "Remember for the exam: a list does not allow naming the different parts of a multi-item object, but a class does. Well done, you are doing great.",
+   "board": [
+    {
+     "kind": "point",
+     "title": "List: no names for parts. Class: every part named.",
+     "body": ""
+    }
+   ]
+  }
+ ],
+ "explainAgain": [
+  {
+   "say": "Think of your school ID card. If the details are printed in a single line with no labels, you must guess which one is the roll number. That is a list.",
+   "board": [
+    {
+     "kind": "point",
+     "title": "List = details with no labels",
+     "body": ""
+    }
+   ]
+  },
+  {
+   "say": "A proper ID card has labels: Name, Class, Roll number, Phone. Each detail has a name. That is a class with fields. The class is the blank card design, and each student's card is one object.",
+   "board": [
+    {
+     "kind": "point",
+     "title": "Class = card design with labels; object = filled card",
+     "body": ""
+    }
+   ]
+  }
+ ],
+ "example": [
+  {
+   "say": "Let us see an example. We create an object p1 from the class Person and set its fields. When we ask for the firstName field, we get Padmashri. We did not need to remember positions, only the field names.",
+   "board": [
+    {
+     "kind": "example",
+     "title": "p1 := Person(), firstName := Padmashri",
+     "body": "Asking for firstName gives: Padmashri"
+    }
+   ]
+  }
+ ],
+ "checkQuestion": {
+  "question": "Why do we use a class instead of a list to store details of a person such as first name, last name, id and email?",
+  "idealAnswer": "A list does not allow us to name the different parts of a multi-item object, so we cannot tell what each item means. A class lets us give a name to every part, called a field, such as firstName and email.",
+  "keywords": [
+   "name",
+   "class",
+   "field",
+   "list",
+   "பெயர்"
+  ]
+ }
+}
