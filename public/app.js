@@ -254,7 +254,7 @@ async function repeatPage() {
 
 // ---------- quiz ----------
 async function startQuiz() {
-  stopTalking();
+  interrupt(); // stop any lesson still drawing on the board
   state.mode = "quiz";
   clearBoard(T("Chapter quiz", "பாடத் தேர்வு"));
   els.pageInfo.textContent = "";
@@ -338,6 +338,7 @@ async function submitQuiz() {
 }
 
 async function showResults(res) {
+  interrupt();
   state.mode = "results";
   updateButtons();
   els.board.innerHTML = `<div class="quiz">
@@ -367,6 +368,7 @@ async function showResults(res) {
 
 // ---------- re-teaching loop ----------
 async function nextReteach() {
+  interrupt();
   state.current = state.queue.shift();
   if (!state.current) return chapterDone();
   const { concept, mistakes, attempt } = state.current;
