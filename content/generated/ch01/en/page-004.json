@@ -1,0 +1,139 @@
+{
+ "steps": [
+  {
+   "say": "On the last page we saw interface versus implementation, and we met pure functions that give the same answer for the same arguments. Now we see why pure functions are so useful.",
+   "board": [
+    {
+     "kind": "heading",
+     "title": "Pure functions: benefits and impure functions",
+     "body": ""
+    }
+   ]
+  },
+  {
+   "say": "The first benefit is speed. If a function is pure, calling it again with the same arguments gives the same answer. So the compiler needs to call it only once and can reuse the result.",
+   "board": [
+    {
+     "kind": "point",
+     "title": "Pure function: same arguments, same result, so call only once",
+     "body": ""
+    }
+   ]
+  },
+  {
+   "say": "The book shows a function called length. It sets i to zero, and then checks whether i is less than strlen of s. Each time the check runs, strlen of s is called, and strlen has to go through the whole string s.",
+   "board": [
+    {
+     "kind": "code",
+     "title": "Length function from the book",
+     "body": "let length s:=\n    i: = 0\n    if i <strlen (s) then\n    -- Do something which doesn't affect s\n    ++i"
+    }
+   ]
+  },
+  {
+   "say": "If strlen is pure, and s is not changed inside the loop, the compiler can remove the extra calls. The loop then calls strlen only one time.",
+   "board": [
+    {
+     "kind": "point",
+     "title": "strlen pure and s unchanged: unnecessary calls removed",
+     "body": ""
+    }
+   ]
+  },
+  {
+   "say": "Why is strlen pure? It takes one argument, the string s, and calculates its length. It reads from memory but does not change any values. The value it returns depends only on that input.",
+   "board": [
+    {
+     "kind": "keyterm",
+     "title": "strlen is pure",
+     "body": "Takes one argument, reads memory, changes nothing, result depends only on the argument"
+    }
+   ]
+  },
+  {
+   "say": "Remember this note for the exam. When a pure function is evaluated, there is no side effect.",
+   "board": [
+    {
+     "kind": "warning",
+     "title": "Pure function: no side effects",
+     "body": ""
+    }
+   ]
+  },
+  {
+   "say": "Next, impure functions. A function that depends on variables or functions outside its own definition may not behave the same on every call. Even without arguments, something inside it can cause side effects. Such a function is called an impure function.",
+   "board": [
+    {
+     "kind": "keyterm",
+     "title": "Impure function",
+     "body": "Depends on outside things, so the same call may give different results, and it may cause side effects"
+    }
+   ]
+  },
+  {
+   "say": "The book's example is random. Each call to random can give a different value. So in the book's code, a is random, and the function returns a if it is above ten, else it returns ten. We cannot say for sure what comes out. Learn this example for your exam.",
+   "board": [
+    {
+     "kind": "code",
+     "title": "Impure example: random",
+     "body": "let a:= random()\n    if a > 10 then\n        return: a\n    else\n        return: 10"
+    }
+   ]
+  }
+ ],
+ "explainAgain": [
+  {
+   "say": "Think of a pure function like a school calculator. Press seven times seven and you get forty nine, every single time. The calculator needs nothing else to decide the answer.",
+   "board": [
+    {
+     "kind": "point",
+     "title": "Pure = calculator: same input, same output",
+     "body": ""
+    }
+   ]
+  },
+  {
+   "say": "Because the answer never changes, the compiler can remember it. It need not recompute it again and again. That is like writing down a result in your notebook and just looking at it later.",
+   "board": [
+    {
+     "kind": "point",
+     "title": "Same answer, so compute once and reuse",
+     "body": ""
+    }
+   ]
+  },
+  {
+   "say": "An impure function is like rolling a dice. The same action can give a different result each time. Random and date are such functions.",
+   "board": [
+    {
+     "kind": "point",
+     "title": "Impure = dice: result can change",
+     "body": ""
+    }
+   ]
+  }
+ ],
+ "example": [
+  {
+   "say": "Let us take the strlen example step by step. Suppose s is the word school. A loop keeps checking whether i is less than strlen of s. If strlen is not known to be pure, it counts the letters every time, so six letters are counted again and again. Since strlen is pure and s never changes, the answer six stays the same. So it is calculated once and reused.",
+   "board": [
+    {
+     "kind": "example",
+     "title": "s = school: strlen gives 6 every time, so compute once",
+     "body": ""
+    }
+   ]
+  }
+ ],
+ "checkQuestion": {
+  "question": "Why is strlen called a pure function?",
+  "idealAnswer": "Strlen takes only one argument, the string, and calculates its length. It reads from memory but does not change any values, so the same argument always gives the same result, with no side effects.",
+  "keywords": [
+   "same",
+   "argument",
+   "length",
+   "no side effect",
+   "does not change"
+  ]
+ }
+}

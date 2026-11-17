@@ -1,0 +1,282 @@
+{
+ "concept": "Impure Functions and Side Effects",
+ "variants": [
+  {
+   "steps": [
+    {
+     "say": "Let us look at impure functions again with a fresh idea. Think of a vending machine. A pure function is like a calculator. Same buttons, same answer, every time.",
+     "board": [
+      {
+       "kind": "heading",
+       "title": "Impure Functions and Side Effects",
+       "body": ""
+      },
+      {
+       "kind": "point",
+       "title": "Pure: same input gives same output, no side effects",
+       "body": ""
+      }
+     ]
+    },
+    {
+     "say": "An impure function is like a canteen counter where the price depends on the rush, or the stock left. The answer depends on something outside your input. It can also change things outside, like a shared register in the school office.",
+     "board": [
+      {
+       "kind": "keyterm",
+       "title": "Impure function",
+       "body": "Output may differ for the same arguments, or it changes things outside the function."
+      }
+     ]
+    },
+    {
+     "say": "A side effect is any change the function makes to the outside world, for example changing a variable that lives outside the function. The book says a side effect is not always bad. Sometimes it is useful.",
+     "board": [
+      {
+       "kind": "keyterm",
+       "title": "Side effect",
+       "body": "A change visible outside the function, such as changing an outside variable."
+      },
+      {
+       "kind": "warning",
+       "title": "Side effects are not always harmful",
+       "body": ""
+      }
+     ]
+    },
+    {
+     "say": "Now the worked example from the book. The variable y starts at zero. The function inc takes x, adds x to y, and returns y. Call inc with 5 and you get 5. Call inc with 5 again and you get 10. Same input, different output.",
+     "board": [
+      {
+       "kind": "code",
+       "title": "inc function",
+       "body": "y := 0\nlet inc (x: int): int :=\n  y := y + x\n  return (y)"
+      },
+      {
+       "kind": "example",
+       "title": "inc(5) gives 5, then inc(5) gives 10",
+       "body": ""
+      }
+     ]
+    },
+    {
+     "say": "The side effect of inc is that it changes the outside variable y. Another book example is random, which gives different outputs for the same call. Remember this for the board exam: pure functions have no side effects, impure functions may have them.",
+     "board": [
+      {
+       "kind": "point",
+       "title": "Examples of impure: random(), date(), inc()",
+       "body": ""
+      }
+     ]
+    }
+   ],
+   "practice": [
+    {
+     "id": "p1",
+     "type": "mcq",
+     "concept": "Impure Functions and Side Effects",
+     "question": "Which of these is an impure function?",
+     "code": "",
+     "options": [
+      "random()",
+      "square(x) which returns x times x",
+      "sin(0)",
+      "a function returning the larger of two given numbers"
+     ],
+     "answer": "random()",
+     "keywords": [],
+     "explanation": "random() gives different outputs for the same call, so it is impure."
+    },
+    {
+     "id": "p2",
+     "type": "predict_output",
+     "concept": "Impure Functions and Side Effects",
+     "question": "y starts at 0. What does the second call return?",
+     "code": "y := 0\nlet inc (x: int): int :=\n  y := y + x\n  return (y)\ninc(5)\ninc(5)",
+     "options": [],
+     "answer": "10",
+     "keywords": [],
+     "explanation": "The first call makes y 5. The second adds 5 more, so y and the result become 10."
+    }
+   ]
+  },
+  {
+   "steps": [
+    {
+     "say": "Let us go step by step in simple words. First, a function takes input and gives output. That is its job.",
+     "board": [
+      {
+       "kind": "point",
+       "title": "Function: input in, output out",
+       "body": ""
+      }
+     ]
+    },
+    {
+     "say": "Think of a water tap in your school. If you turn it the same way, you expect the same flow. A pure function is like that. It depends only on what you give it.",
+     "board": [
+      {
+       "kind": "point",
+       "title": "Pure: depends only on its arguments",
+       "body": ""
+      }
+     ]
+    },
+    {
+     "say": "Now think of a tap whose flow depends on what other classes are using at that time. You turn it the same way, but get different water. That is an impure function. It depends on things outside.",
+     "board": [
+      {
+       "kind": "point",
+       "title": "Impure: depends on outside things",
+       "body": ""
+      },
+      {
+       "kind": "keyterm",
+       "title": "Impure function",
+       "body": "Same arguments may give different results."
+      }
+     ]
+    },
+    {
+     "say": "A side effect means the function changes something outside itself. Like a student who borrows the class duster and moves it to another room. Others now see a change. In code, it is changing an outside variable.",
+     "board": [
+      {
+       "kind": "keyterm",
+       "title": "Side effect",
+       "body": "Changing something outside the function."
+      }
+     ]
+    },
+    {
+     "say": "Common mistakes. First, do not think side effects are always bad. The book says they can be useful. Second, do not think a function is pure just because it has no arguments. Third, do not forget that random and date are impure.",
+     "board": [
+      {
+       "kind": "warning",
+       "title": "Side effects are not always bad",
+       "body": ""
+      },
+      {
+       "kind": "warning",
+       "title": "No arguments does not mean pure",
+       "body": ""
+      }
+     ]
+    }
+   ],
+   "practice": [
+    {
+     "id": "p1",
+     "type": "short",
+     "concept": "Impure Functions and Side Effects",
+     "question": "What is a side effect of a function?",
+     "code": "",
+     "options": [],
+     "answer": "A side effect is a change the function makes outside itself, such as changing an outside variable.",
+     "keywords": [
+      "change",
+      "outside",
+      "variable"
+     ],
+     "explanation": "A side effect is an observable change outside the function, like modifying an outside variable."
+    },
+    {
+     "id": "p2",
+     "type": "mcq",
+     "concept": "Impure Functions and Side Effects",
+     "question": "Which statement about side effects is correct according to the textbook?",
+     "code": "",
+     "options": [
+      "They are sometimes useful",
+      "They are always harmful",
+      "They happen only in pure functions",
+      "They never change outside variables"
+     ],
+     "answer": "They are sometimes useful",
+     "keywords": [],
+     "explanation": "The textbook says a side effect is not a harmful act and can be useful at times."
+    }
+   ]
+  },
+  {
+   "steps": [
+    {
+     "say": "Let us start from what you already know. A function is a small block of code that you can call again and again. Example: square of a number.",
+     "board": [
+      {
+       "kind": "code",
+       "title": "square",
+       "body": "let square x :=\n  return: x * x"
+      }
+     ]
+    },
+    {
+     "say": "Square of 4 is always 16. Every time. This is a pure function. Its answer depends only on the input.",
+     "board": [
+      {
+       "kind": "point",
+       "title": "square(4) is always 16: pure",
+       "body": ""
+      }
+     ]
+    },
+    {
+     "say": "Now imagine a function that gives you the time right now. Ask twice and you get different answers. Same call, different result. This is an impure function.",
+     "board": [
+      {
+       "kind": "point",
+       "title": "date() changes every time: impure",
+       "body": ""
+      }
+     ]
+    },
+    {
+     "say": "Also, if a function changes a variable outside itself, that change is called a side effect. Remember two things: impure means different answers or outside changes. A side effect means a change outside the function.",
+     "board": [
+      {
+       "kind": "keyterm",
+       "title": "Side effect",
+       "body": "A change made outside the function."
+      },
+      {
+       "kind": "point",
+       "title": "Impure functions can have side effects",
+       "body": ""
+      }
+     ]
+    }
+   ],
+   "practice": [
+    {
+     "id": "p1",
+     "type": "mcq",
+     "concept": "Impure Functions and Side Effects",
+     "question": "A function gives different outputs for the same input. What type of function is it?",
+     "code": "",
+     "options": [
+      "Impure function",
+      "Pure function",
+      "Static function",
+      "Recursive function only"
+     ],
+     "answer": "Impure function",
+     "keywords": [],
+     "explanation": "Different outputs for the same arguments mean the function is impure."
+    },
+    {
+     "id": "p2",
+     "type": "short",
+     "concept": "Impure Functions and Side Effects",
+     "question": "In the function inc, which outside variable is changed, and what is this called?",
+     "code": "y := 0\nlet inc (x: int): int :=\n  y := y + x\n  return (y)",
+     "options": [],
+     "answer": "The outside variable y is changed, and this is called a side effect.",
+     "keywords": [
+      "y",
+      "side effect",
+      "outside"
+     ],
+     "explanation": "inc changes the outside variable y, which is its side effect."
+    }
+   ]
+  }
+ ]
+}

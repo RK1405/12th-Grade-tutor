@@ -1,0 +1,129 @@
+{
+ "steps": [
+  {
+   "say": "On the last page we met pure functions and impure functions, and we saw that side effects are not always bad. Now let us see a clear example of a side effect.",
+   "board": [
+    {
+     "kind": "heading",
+     "title": "Side Effects, Pure vs Impure, GCD",
+     "body": ""
+    }
+   ]
+  },
+  {
+   "say": "Here is the textbook example. A variable y is set to zero outside the function. The function inc takes an integer x, adds x to y, and returns y. So the function changes a variable that lives outside it.",
+   "board": [
+    {
+     "kind": "code",
+     "title": "Side effect example",
+     "body": "y := 0\nlet inc (x: int) : int :=\n  y := y + x\n  return (y)"
+    }
+   ]
+  },
+  {
+   "say": "Because y changes inside the function, the answer is different every time we call it. Calling inc with 1 gives 1 the first time, then 2, then 3. The side effect of inc is changing the outside variable y.",
+   "board": [
+    {
+     "kind": "warning",
+     "title": "Same input, different output means impure",
+     "body": ""
+    }
+   ]
+  },
+  {
+   "say": "Some side effects are easy to spot, and some need careful thinking. Now the table of differences. A pure function depends only on its arguments. Same arguments always give the same result, and it has no side effects. It does not change its arguments.",
+   "board": [
+    {
+     "kind": "keyterm",
+     "title": "Pure function",
+     "body": "Output depends only on arguments. Same input gives same output. No side effects."
+    }
+   ]
+  },
+  {
+   "say": "An impure function does not depend only on its arguments. The same arguments can give different results. Examples are random and date. It may also change its arguments. This difference is very important for the board exam.",
+   "board": [
+    {
+     "kind": "keyterm",
+     "title": "Impure function",
+     "body": "Output may differ for same input. Examples: random(), date(). May change arguments."
+    }
+   ]
+  },
+  {
+   "say": "Next, the gcd function, a pure function that finds the greatest common divisor of two positive integers. If b is not zero, it calls itself with b and the remainder of a divided by b. Otherwise it returns a. This is a recursive function.",
+   "board": [
+    {
+     "kind": "code",
+     "title": "GCD function",
+     "body": "let rec gcd a b :=\n if b <> 0 then gcd b (a mod b)\n else\n return a"
+    }
+   ]
+  },
+  {
+   "say": "The outputs are as follows. gcd of 13 and 27 gives 1. gcd of 20536 and 7826 gives 2. The function keeps calling itself until b becomes zero. Remember that it passes b and a mod b as the new a and b.",
+   "board": [
+    {
+     "kind": "example",
+     "title": "gcd 13 27 gives 1; gcd 20536 7826 gives 2",
+     "body": ""
+    }
+   ]
+  }
+ ],
+ "explainAgain": [
+  {
+   "say": "Think of a pure function like a calculator's square button. Press it with 5 and you always get 25. Nothing else changes.",
+   "board": [
+    {
+     "kind": "point",
+     "title": "Pure = calculator square button",
+     "body": ""
+    }
+   ]
+  },
+  {
+   "say": "An impure function is like a school canteen token counter. Each time you ask, the number you get is different, because a counter outside keeps changing. That is the variable y in inc. Changing something outside the function is a side effect.",
+   "board": [
+    {
+     "kind": "point",
+     "title": "Impure = counter that changes each time",
+     "body": ""
+    }
+   ]
+  },
+  {
+   "say": "And gcd is like a repeated division game. You keep replacing the pair with b and the remainder, until the remainder is zero. The last non-zero number is your answer.",
+   "board": [
+    {
+     "kind": "point",
+     "title": "gcd: repeat until b is 0, then answer is a",
+     "body": ""
+    }
+   ]
+  }
+ ],
+ "example": [
+  {
+   "say": "Let us trace gcd 20 and 8. Here b is 8, not zero, so we call gcd of 8 and 20 mod 8, which is 4. Now b is 4, so we call gcd of 4 and 8 mod 4, which is 0. Now b is zero, so the function returns a, which is 4. So gcd of 20 and 8 is 4.",
+   "board": [
+    {
+     "kind": "example",
+     "title": "Trace of gcd 20 8",
+     "body": "gcd 20 8 -> gcd 8 4 -> gcd 4 0 -> returns 4"
+    }
+   ]
+  }
+ ],
+ "checkQuestion": {
+  "question": "In the example with the function inc and the outside variable y, why is inc an impure function, and what is its side effect?",
+  "idealAnswer": "Inc is impure because it changes the outside variable y, so the same input gives different results on different calls. Its side effect is changing the value of the external variable y.",
+  "keywords": [
+   "impure",
+   "side effect",
+   "outside variable",
+   "changes y",
+   "different output"
+  ]
+ }
+}

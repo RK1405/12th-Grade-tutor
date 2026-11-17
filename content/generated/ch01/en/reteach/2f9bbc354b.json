@@ -1,0 +1,269 @@
+{
+ "concept": "Recursive Functions",
+ "variants": [
+  {
+   "steps": [
+    {
+     "say": "Let us look again at recursive functions. A recursive function is a function that calls itself. The textbook says: a function definition that calls itself is called a recursive function.",
+     "board": [
+      {
+       "kind": "heading",
+       "title": "Recursive Function",
+       "body": ""
+      },
+      {
+       "kind": "keyterm",
+       "title": "Recursive function",
+       "body": "A function that calls itself"
+      }
+     ]
+    },
+    {
+     "say": "Here is a new analogy. Imagine you are standing in a long queue in school and want to know your position. You ask the student in front, how many are ahead of you? That student asks the next one, and so on. The first student says, I am number one. Then the answers come back down the line, each adding one.",
+     "board": [
+      {
+       "kind": "point",
+       "title": "Queue analogy: ask the person ahead, until the first one answers",
+       "body": ""
+      }
+     ]
+    },
+    {
+     "say": "In a function, the first student is the stopping condition. It is also called the base case. Without it, the function would call itself forever. In the textbook, the keyword let rec is used to define a recursive function. The word rec is short for recursive.",
+     "board": [
+      {
+       "kind": "keyterm",
+       "title": "let rec",
+       "body": "Keyword used to define a recursive function"
+      },
+      {
+       "kind": "warning",
+       "title": "No stopping condition means endless calls",
+       "body": ""
+      }
+     ]
+    },
+    {
+     "say": "Now the worked example from the book: factorial. If n is zero, the answer is 1. Otherwise the answer is n times factorial of n minus 1.",
+     "board": [
+      {
+       "kind": "code",
+       "title": "Factorial",
+       "body": "(Requires: n>= 0)\nlet rec fact n :=\n    if n = 0 then 1\n    else\n        n * fact(n-1)"
+      }
+     ]
+    },
+    {
+     "say": "Let us trace fact of 3. It becomes 3 times fact of 2. That is 3 times 2 times fact of 1. That is 3 times 2 times 1 times fact of 0. Fact of 0 is 1. So the answer is 6. Remember this for the board exam.",
+     "board": [
+      {
+       "kind": "example",
+       "title": "fact 3 = 3 * 2 * 1 * 1 = 6",
+       "body": ""
+      }
+     ]
+    }
+   ],
+   "practice": [
+    {
+     "id": "p1",
+     "type": "mcq",
+     "concept": "Recursive Functions",
+     "question": "What is a recursive function?",
+     "code": "",
+     "options": [
+      "A function that calls itself",
+      "A function that has no parameters",
+      "A function that changes outside variables",
+      "A function that never returns a value"
+     ],
+     "answer": "A function that calls itself",
+     "keywords": [],
+     "explanation": "The textbook defines a recursive function as one that calls itself."
+    },
+    {
+     "id": "p2",
+     "type": "predict_output",
+     "concept": "Recursive Functions",
+     "question": "What is the value of fact 4?",
+     "code": "let rec fact n :=\n    if n = 0 then 1\n    else\n        n * fact(n-1)",
+     "options": [],
+     "answer": "24",
+     "keywords": [],
+     "explanation": "4 * 3 * 2 * 1 * 1 = 24."
+    }
+   ]
+  },
+  {
+   "steps": [
+    {
+     "say": "Let us go slowly. Step one: a function is a small block of code that does one job. Step two: a recursive function is a function that uses itself inside its own body.",
+     "board": [
+      {
+       "kind": "point",
+       "title": "Recursive = function calls itself",
+       "body": ""
+      }
+     ]
+    },
+    {
+     "say": "A different analogy: a stack of Russian dolls. You open one doll and find a smaller doll inside. You keep opening until you reach the smallest doll that cannot be opened. That smallest doll is the stopping point.",
+     "board": [
+      {
+       "kind": "point",
+       "title": "Dolls inside dolls: open until the smallest one",
+       "body": ""
+      }
+     ]
+    },
+    {
+     "say": "Every recursive function has two parts. Part one is the stopping condition, which gives the answer directly. Part two is the self call, with a smaller input. In the book, the stopping part is if n equals 0 then 1. The self call is n times fact of n minus 1.",
+     "board": [
+      {
+       "kind": "diagram",
+       "title": "Two parts",
+       "body": "flowchart TD\nA[\"Call fact n\"] --> B{\"n = 0?\"}\nB -- \"Yes\" --> C[\"Return 1\"]\nB -- \"No\" --> D[\"n * fact(n-1)\"]\nD --> A"
+      }
+     ]
+    },
+    {
+     "say": "Now a simple example from the book's practice section: sum of numbers up to n. The sum of n is n plus the sum of n minus 1. When n is zero, the answer is zero.",
+     "board": [
+      {
+       "kind": "code",
+       "title": "Sum up to n",
+       "body": "let rec sum n :=\n    if n = 0 then 0\n    else n + sum(n-1)"
+      }
+     ]
+    },
+    {
+     "say": "Common mistakes. First, forgetting the stopping condition. Second, writing let instead of let rec. Third, not making the input smaller, like calling the same value again. The book's pow example had this error: it called pow b of a minus 1, instead of pow a of b minus 1.",
+     "board": [
+      {
+       "kind": "warning",
+       "title": "Mistakes: no base case, missing rec, input not getting smaller",
+       "body": ""
+      }
+     ]
+    }
+   ],
+   "practice": [
+    {
+     "id": "p1",
+     "type": "mcq",
+     "concept": "Recursive Functions",
+     "question": "Which keyword is used in the textbook to define a recursive function?",
+     "code": "",
+     "options": [
+      "let rec",
+      "let only",
+      "return",
+      "requires"
+     ],
+     "answer": "let rec",
+     "keywords": [],
+     "explanation": "The word rec after let tells that the function calls itself."
+    },
+    {
+     "id": "p2",
+     "type": "short",
+     "concept": "Recursive Functions",
+     "question": "Why does a recursive function need a stopping condition?",
+     "code": "",
+     "options": [],
+     "answer": "Without a stopping condition the function would keep calling itself forever; the stopping condition ends the recursion.",
+     "keywords": [
+      "stopping condition",
+      "calls itself",
+      "ends",
+      "forever"
+     ],
+     "explanation": "The stopping condition gives a direct answer and ends the chain of calls."
+    }
+   ]
+  },
+  {
+   "steps": [
+    {
+     "say": "Let us start from what you already know. You know a function, like square of x, which returns x times x. Now think of a function that uses itself to do part of its work. That is a recursive function.",
+     "board": [
+      {
+       "kind": "point",
+       "title": "Recursive function calls itself",
+       "body": ""
+      }
+     ]
+    },
+    {
+     "say": "Think of climbing stairs. To reach step 3, you first reach step 2. To reach step 2, you first reach step 1. Step 0 is the ground, where you start. Ground is where we stop.",
+     "board": [
+      {
+       "kind": "point",
+       "title": "Step 3 needs step 2, needs step 1, needs ground",
+       "body": ""
+      }
+     ]
+    },
+    {
+     "say": "Here is the simplest recursive function. It finds the sum up to n. If n is zero, answer is zero. Otherwise, answer is n plus the sum up to n minus 1.",
+     "board": [
+      {
+       "kind": "code",
+       "title": "Simple example",
+       "body": "let rec sum n :=\n    if n = 0 then 0\n    else n + sum(n-1)"
+      }
+     ]
+    },
+    {
+     "say": "For sum of 2: it is 2 plus sum of 1. Sum of 1 is 1 plus sum of 0. Sum of 0 is 0. So the answer is 3.",
+     "board": [
+      {
+       "kind": "example",
+       "title": "sum 2 = 2 + 1 + 0 = 3",
+       "body": ""
+      }
+     ]
+    },
+    {
+     "say": "Remember: use let rec, keep a stopping condition, and make the input smaller each time. Well done, you can do this!",
+     "board": [
+      {
+       "kind": "keyterm",
+       "title": "let rec",
+       "body": "Defines a function that calls itself"
+      }
+     ]
+    }
+   ],
+   "practice": [
+    {
+     "id": "p1",
+     "type": "predict_output",
+     "concept": "Recursive Functions",
+     "question": "What is sum 3?",
+     "code": "let rec sum n :=\n    if n = 0 then 0\n    else n + sum(n-1)",
+     "options": [],
+     "answer": "6",
+     "keywords": [],
+     "explanation": "3 + 2 + 1 + 0 = 6."
+    },
+    {
+     "id": "p2",
+     "type": "mcq",
+     "concept": "Recursive Functions",
+     "question": "In fact n, which statement stops the recursion?",
+     "code": "let rec fact n :=\n    if n = 0 then 1\n    else n * fact(n-1)",
+     "options": [
+      "if n = 0 then 1",
+      "n * fact(n-1)",
+      "let rec fact n",
+      "else"
+     ],
+     "answer": "if n = 0 then 1",
+     "keywords": [],
+     "explanation": "When n is 0, it returns 1 directly without calling itself."
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,278 @@
+{
+ "concept": "Subroutines and Functions",
+ "variants": [
+  {
+   "steps": [
+    {
+     "say": "Let us look at subroutines and functions in a fresh way. Think of a school bell system. The peon does not invent how to ring the bell every time. There is one fixed routine, and he repeats it whenever needed. A subroutine is just like that. It is a small block of code that does one particular job and can be used again and again.",
+     "board": [
+      {
+       "kind": "heading",
+       "title": "Subroutines and Functions",
+       "body": ""
+      },
+      {
+       "kind": "keyterm",
+       "title": "Subroutine",
+       "body": "A small block of code used again and again to do a particular task"
+      }
+     ]
+    },
+    {
+     "say": "In programming languages, subroutines are called functions. So function and subroutine mean almost the same thing in this chapter. The textbook says a function is a unit of code defined within a bigger program. It can take inputs like variables or expressions, and it gives a fixed output.",
+     "board": [
+      {
+       "kind": "keyterm",
+       "title": "Function",
+       "body": "A unit of code defined inside a larger program; takes inputs and gives a fixed output"
+      }
+     ]
+    },
+    {
+     "say": "Now a worked example. Suppose you must find the square of a number in ten places of your program. Instead of writing the multiplication ten times, you write one function called square. It takes x and returns x times x. Then you simply call it whenever you need it.",
+     "board": [
+      {
+       "kind": "example",
+       "title": "Square function",
+       "body": "let square x := return: x * x"
+      }
+     ]
+    },
+    {
+     "say": "Notice two words. The variable x in the function definition is called a parameter. The actual value you send, like 5, is called an argument. So square called with 5 gives 25. Parameters are in the definition. Arguments are the values passed in.",
+     "board": [
+      {
+       "kind": "point",
+       "title": "Parameter = variable in definition; Argument = value passed",
+       "body": ""
+      }
+     ]
+    },
+    {
+     "say": "For the board exam, remember this. Subroutines are the basic building blocks of computer languages. They are used when more than one statement must be repeated many times. Also remember that a definition is not an expression. It binds a value to a name, like a colon equals twenty four binding the value twenty four to the name a.",
+     "board": [
+      {
+       "kind": "warning",
+       "title": "A definition is not an expression; it binds a value to a name",
+       "body": ""
+      }
+     ]
+    }
+   ],
+   "practice": [
+    {
+     "id": "p1",
+     "type": "mcq",
+     "concept": "Subroutines and Functions",
+     "question": "Why do we use a subroutine in a program?",
+     "code": "",
+     "options": [
+      "To repeat a particular task without rewriting the statements",
+      "To make the computer run slower",
+      "To remove all variables from the program",
+      "To store files on the disk"
+     ],
+     "answer": "To repeat a particular task without rewriting the statements",
+     "keywords": [],
+     "explanation": "A subroutine is a small block of code used repeatedly to do a specific task."
+    },
+    {
+     "id": "p2",
+     "type": "short",
+     "concept": "Subroutines and Functions",
+     "question": "What are subroutines called in programming languages?",
+     "code": "",
+     "options": [],
+     "answer": "In programming languages, subroutines are called functions.",
+     "keywords": [
+      "functions",
+      "subroutines"
+     ],
+     "explanation": "The textbook says subroutines are known as functions in programming languages."
+    }
+   ]
+  },
+  {
+   "steps": [
+    {
+     "say": "Let us make this very simple, step by step. Imagine a tea stall. The tea maker has one recipe. Every time a customer asks for tea, he follows the same recipe. He does not make a new recipe each time. This recipe is like a function.",
+     "board": [
+      {
+       "kind": "heading",
+       "title": "Function = a recipe you reuse",
+       "body": ""
+      }
+     ]
+    },
+    {
+     "say": "Step one. Sometimes the same few lines of code must run many times. Writing them again and again is tiring and risky. Step two. So we put those lines in one small block and give it a name. This block is called a subroutine. In programming languages, we call it a function.",
+     "board": [
+      {
+       "kind": "point",
+       "title": "Same lines needed many times: make a named block",
+       "body": ""
+      },
+      {
+       "kind": "keyterm",
+       "title": "Subroutine = Function",
+       "body": "Small reusable block of code"
+      }
+     ]
+    },
+    {
+     "say": "Step three. A function can take inputs. In our tea stall, the inputs are milk and sugar. In code, the names for inputs inside the definition are parameters. The real values we give while calling are arguments. Step four. The function then gives back an output.",
+     "board": [
+      {
+       "kind": "diagram",
+       "title": "Input to output",
+       "body": "flowchart TD\nA[\"Arguments\"] --> B[\"Function\"]\nB --> C[\"Output\"]"
+      }
+     ]
+    },
+    {
+     "say": "Now common mistakes. First mistake: mixing up parameter and argument. Parameter is the variable in the definition. Argument is the value passed. Second mistake: thinking a function runs only once. It can be used many times. Third mistake: thinking a definition is an expression. It is not. It only binds a value to a name.",
+     "board": [
+      {
+       "kind": "warning",
+       "title": "Do not mix parameter with argument",
+       "body": ""
+      },
+      {
+       "kind": "warning",
+       "title": "A definition is not an expression",
+       "body": ""
+      }
+     ]
+    },
+    {
+     "say": "You are doing well. Keep this in mind. A function is a unit of code defined in a bigger program, and it gives a fixed output for the inputs. This is a favourite two mark question.",
+     "board": [
+      {
+       "kind": "point",
+       "title": "Function: unit of code in a larger program",
+       "body": ""
+      }
+     ]
+    }
+   ],
+   "practice": [
+    {
+     "id": "p1",
+     "type": "mcq",
+     "concept": "Subroutines and Functions",
+     "question": "In a function definition, the variables written in the definition are called what?",
+     "code": "",
+     "options": [
+      "Parameters",
+      "Arguments",
+      "Interfaces",
+      "Side effects"
+     ],
+     "answer": "Parameters",
+     "keywords": [],
+     "explanation": "Parameters are the variables in the function definition. Arguments are the values passed."
+    },
+    {
+     "id": "p2",
+     "type": "short",
+     "concept": "Subroutines and Functions",
+     "question": "What does the definition a := (24) tell us?",
+     "code": "",
+     "options": [],
+     "answer": "It binds the value 24 to the name a. It is a definition, not an expression.",
+     "keywords": [
+      "binds",
+      "value",
+      "name",
+      "definition"
+     ],
+     "explanation": "Definitions bind values to names, and they are not expressions."
+    }
+   ]
+  },
+  {
+   "steps": [
+    {
+     "say": "Let us start from the very basics. You already know that a program is a list of statements. Sometimes we need the same few statements again and again. What can we do? We can put them together in one small block.",
+     "board": [
+      {
+       "kind": "heading",
+       "title": "Starting simple",
+       "body": ""
+      },
+      {
+       "kind": "point",
+       "title": "Program = list of statements",
+       "body": ""
+      }
+     ]
+    },
+    {
+     "say": "That small block is called a subroutine. We give it a name. Whenever we need that work, we just use the name. In programming languages, a subroutine is called a function.",
+     "board": [
+      {
+       "kind": "keyterm",
+       "title": "Function",
+       "body": "A named small block of code that does one task"
+      }
+     ]
+    },
+    {
+     "say": "Here is a very simple example. A function called square takes a number x. It gives back x times x. If we give 4, we get 16. If we give 5, we get 25. We wrote the code once, but used it many times.",
+     "board": [
+      {
+       "kind": "example",
+       "title": "Square",
+       "body": "let square x := return: x * x"
+      }
+     ]
+    },
+    {
+     "say": "Remember two words. The variable x in the definition is a parameter. The value like 4 that we give is an argument. If you remember this, you can answer many board questions. Well done for trying again!",
+     "board": [
+      {
+       "kind": "point",
+       "title": "Parameter in definition, argument in call",
+       "body": ""
+      }
+     ]
+    }
+   ],
+   "practice": [
+    {
+     "id": "p1",
+     "type": "mcq",
+     "concept": "Subroutines and Functions",
+     "question": "In the function square x, which one is the argument when we call square with 4?",
+     "code": "let square x := return: x * x",
+     "options": [
+      "4",
+      "x",
+      "square",
+      "return"
+     ],
+     "answer": "4",
+     "keywords": [],
+     "explanation": "The value passed during the call, 4, is the argument. The variable x is the parameter."
+    },
+    {
+     "id": "p2",
+     "type": "short",
+     "concept": "Subroutines and Functions",
+     "question": "Define a subroutine in one sentence.",
+     "code": "",
+     "options": [],
+     "answer": "A subroutine is a small block of code used again and again to perform a particular task.",
+     "keywords": [
+      "small",
+      "block",
+      "code",
+      "repeat",
+      "task"
+     ],
+     "explanation": "The textbook defines subroutines as small program blocks used repeatedly for a specific task."
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,124 @@
+{
+ "steps": [
+  {
+   "say": "On the last page we saw how a function is defined, with parameters and arguments, and the let rec syntax. Now we continue with recursive functions, function types, and then the idea of interface versus implementation.",
+   "board": [
+    {
+     "kind": "heading",
+     "title": "Recursive Functions, Function Types, Interface",
+     "body": ""
+    }
+   ]
+  },
+  {
+   "say": "A function that calls itself is called a recursive function. This is why we write let rec, where rec stands for recursive. This is an important definition for your board exam.",
+   "board": [
+    {
+     "kind": "keyterm",
+     "title": "Recursive function",
+     "body": "A function definition that calls itself"
+    }
+   ]
+  },
+  {
+   "say": "Here is the factorial example. It requires that n is greater than or equal to zero. If n is zero, the answer is one. Otherwise, the answer is n multiplied by factorial of n minus one. The case n equals zero stops the recursion.",
+   "board": [
+    {
+     "kind": "code",
+     "title": "Factorial",
+     "body": "(Requires: n>= 0)\nlet rec fact n :=\n    if n = 0 then 1\n    else\n        n * fact(n-1)"
+    }
+   ]
+  },
+  {
+   "say": "Next, function types. The type x arrow y means the function takes one input of type x and returns an output of type y. The type x1 arrow x2 arrow y takes two inputs, of types x1 and x2, and returns type y. In general, x1 to xn arrow y means n inputs and one output of type y.",
+   "board": [
+    {
+     "kind": "code",
+     "title": "Function type syntax",
+     "body": "x → y\nx1 → x2 → y\nx1 → ... → xn → y"
+    }
+   ]
+  },
+  {
+   "say": "Remember this note. All functions are static definitions. There is no such thing as a dynamic function definition.",
+   "board": [
+    {
+     "kind": "warning",
+     "title": "All function definitions are static, none are dynamic",
+     "body": ""
+    }
+   ]
+  },
+  {
+   "say": "Now, interface versus implementation. An interface is the set of actions an object can perform. Think of a light switch. You press it and the bulb glows. You do not need to know how it glows. In object oriented programming, an interface is the description of all the functions an object supports. A bulb-like object would have turn_on and turn_off.",
+   "board": [
+    {
+     "kind": "keyterm",
+     "title": "Interface",
+     "body": "Set of actions an object can perform; defines them but does not do them"
+    },
+    {
+     "kind": "keyterm",
+     "title": "Implementation",
+     "body": "Carries out the instructions defined in the interface"
+    }
+   ]
+  },
+  {
+   "say": "Please note the difference. The interface defines what an object can do, but does not actually do it. The implementation carries out those instructions. This difference often comes in the two mark questions.",
+   "board": [
+    {
+     "kind": "point",
+     "title": "Interface = what can be done; Implementation = how it is done",
+     "body": ""
+    }
+   ]
+  }
+ ],
+ "explainAgain": [
+  {
+   "say": "Think of a school bell routine. A teacher says, find the factorial of five. To do this, you need factorial of four, and for that factorial of three, and so on, until you reach zero, which is simply one. Then you multiply back up. That is a function calling itself on a smaller problem.",
+   "board": [
+    {
+     "kind": "point",
+     "title": "Recursion: solve a smaller copy of the same problem until a stopping case",
+     "body": ""
+    }
+   ]
+  },
+  {
+   "say": "For interface, think of a TV remote. The buttons are the interface. The circuits inside the TV are the implementation. You only press buttons and never worry about the circuits.",
+   "board": [
+    {
+     "kind": "point",
+     "title": "Remote buttons = interface; inside circuits = implementation",
+     "body": ""
+    }
+   ]
+  }
+ ],
+ "example": [
+  {
+   "say": "Let us trace fact of three. Fact three is three times fact two. Fact two is two times fact one. Fact one is one times fact zero. Fact zero is one, so the recursion stops. Multiplying back, one times one is one, two times one is two, and three times two is six. So fact of three is six.",
+   "board": [
+    {
+     "kind": "example",
+     "title": "fact 3 = 3 * fact 2 = 3 * 2 * fact 1 = 3 * 2 * 1 * fact 0 = 3 * 2 * 1 * 1 = 6",
+     "body": ""
+    }
+   ]
+  }
+ ],
+ "checkQuestion": {
+  "question": "What is a recursive function, and which keyword is used to define it in the textbook syntax?",
+  "idealAnswer": "A recursive function is a function that calls itself. It is defined using the keyword let rec, where rec stands for recursive.",
+  "keywords": [
+   "calls itself",
+   "let rec",
+   "rec",
+   "recursive",
+   "தற்சுழற்சி"
+  ]
+ }
+}

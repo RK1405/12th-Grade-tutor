@@ -1,0 +1,165 @@
+{
+ "steps": [
+  {
+   "say": "Vanakkam! I am Guru, your robot tutor. Welcome to Unit 1, Chapter 1, called Function. In Tamil, we say seyarkooru. I am happy to learn this with you today.",
+   "board": [
+    {
+     "kind": "heading",
+     "title": "Unit 1 - Chapter 1: Function",
+     "body": ""
+    }
+   ]
+  },
+  {
+   "say": "By the end of this chapter, you will know what a function is, what parameters and arguments are, the difference between interface and implementation, pure functions, and side effects. Today, on page one, we start with the introduction and the idea of a subroutine.",
+   "board": [
+    {
+     "kind": "point",
+     "title": "Function, parameters, arguments",
+     "body": ""
+    },
+    {
+     "kind": "point",
+     "title": "Interface vs implementation, pure functions, side effects",
+     "body": ""
+    }
+   ]
+  },
+  {
+   "say": "The book says that the time taken to finish a task is the most important factor when we write and evaluate an algorithm. This time should not depend on the programming language, the compiler, or the computer we use. Algorithms are carried out using the statements of a programming language.",
+   "board": [
+    {
+     "kind": "point",
+     "title": "Algorithm time should not depend on language, compiler or computer",
+     "body": ""
+    }
+   ]
+  },
+  {
+   "say": "Sometimes, more than one statement must be repeated many times to do one task. For this, we use subroutines. A subroutine is a small block of a program used to do one particular task again and again.",
+   "board": [
+    {
+     "kind": "keyterm",
+     "title": "Subroutine",
+     "body": "A small block of code used to do a particular task again and again."
+    }
+   ]
+  },
+  {
+   "say": "Subroutines are the basic building blocks of computer languages. In programming languages, these subroutines are called functions. This is very important for your exam.",
+   "board": [
+    {
+     "kind": "keyterm",
+     "title": "Function",
+     "body": "In programming languages, subroutines are called functions."
+    }
+   ]
+  },
+  {
+   "say": "Now section 1.2. A function is a unit of code that is defined within a bigger program. It contains blocks of code that work on different kinds of inputs, such as variables and expressions, and give a consistent output.",
+   "board": [
+    {
+     "kind": "point",
+     "title": "Function = unit of code inside a larger program",
+     "body": ""
+    },
+    {
+     "kind": "point",
+     "title": "Inputs: variables, expressions. Output: consistent",
+     "body": ""
+    }
+   ]
+  },
+  {
+   "say": "Next, function specification. Look at a colon equal to open bracket 24 close bracket. Here, the 24 is not an expression. It is a definition. A definition binds a value to a name. So here, the value 24 is bound to the name a. Definitions are not expressions, and expressions are not definitions. They are different syntactic blocks. But a definition can contain expressions inside it, and the reverse can also happen.",
+   "board": [
+    {
+     "kind": "code",
+     "title": "Definition binds value to name",
+     "body": "a:=(24)"
+    },
+    {
+     "kind": "warning",
+     "title": "A definition is not an expression",
+     "body": ""
+    }
+   ]
+  },
+  {
+   "say": "Finally, a key pair of terms. Parameters are the variables in a function definition. Arguments are the values passed to the function definition. We will see examples on the next page. Remember this pair for the board exam.",
+   "board": [
+    {
+     "kind": "keyterm",
+     "title": "Parameter",
+     "body": "A variable in the function definition."
+    },
+    {
+     "kind": "keyterm",
+     "title": "Argument",
+     "body": "A value passed to the function definition."
+    }
+   ]
+  }
+ ],
+ "explainAgain": [
+  {
+   "say": "Think of a school canteen. Every day, the same steps repeat: take the order, collect the money, give the snack. Instead of explaining all steps each time, the canteen has one fixed routine. That routine is like a function.",
+   "board": [
+    {
+     "kind": "point",
+     "title": "Function = a reusable routine, like a canteen routine",
+     "body": ""
+    }
+   ]
+  },
+  {
+   "say": "Now parameters and arguments. A parameter is like an empty slot on the order form, named snack. An argument is what you actually write there, say samosa. The slot is the parameter. The actual value is the argument.",
+   "board": [
+    {
+     "kind": "point",
+     "title": "Parameter = empty slot; argument = actual value filled in",
+     "body": ""
+    }
+   ]
+  },
+  {
+   "say": "And a definition is like writing a name on a tiffin box. You are tying a value to a name. In a colon equal to 24, the name a is tied to the value 24.",
+   "board": [
+    {
+     "kind": "point",
+     "title": "Definition = tying a value to a name",
+     "body": ""
+    }
+   ]
+  }
+ ],
+ "example": [
+  {
+   "say": "Let us see a worked example. Suppose a program must find the square of numbers many times. Instead of writing x times x again and again, we write it once as a function and call it with different values. Here x is the parameter. When we call square with 5, the value 5 is the argument, and the answer is 25. Calling with 6 gives 36.",
+   "board": [
+    {
+     "kind": "code",
+     "title": "Square function",
+     "body": "let square x :=\n  return: x * x\n\nsquare 5  -> 25\nsquare 6  -> 36"
+    },
+    {
+     "kind": "example",
+     "title": "x is the parameter; 5 and 6 are arguments",
+     "body": ""
+    }
+   ]
+  }
+ ],
+ "checkQuestion": {
+  "question": "What is a subroutine, and what is it called in programming languages? Also, what is the difference between a parameter and an argument?",
+  "idealAnswer": "A subroutine is a small block of a program used to do a particular task again and again. In programming languages, subroutines are called functions. Parameters are the variables in a function definition. Arguments are the values passed to the function definition.",
+  "keywords": [
+   "subroutine",
+   "function",
+   "parameter",
+   "argument",
+   "துணை நிரல்",
+   "செயற்கூறு"
+  ]
+ }
+}

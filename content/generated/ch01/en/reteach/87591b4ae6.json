@@ -1,0 +1,289 @@
+{
+ "concept": "Interface vs Implementation",
+ "variants": [
+  {
+   "steps": [
+    {
+     "say": "Let us learn this again with a new picture. Think of a restaurant. You are the customer. You read the menu and order a dosa. You do not enter the kitchen.",
+     "board": [
+      {
+       "kind": "heading",
+       "title": "Interface vs Implementation",
+       "body": ""
+      }
+     ]
+    },
+    {
+     "say": "The menu is the interface. It tells you what you can ask for. It does not cook anything by itself.",
+     "board": [
+      {
+       "kind": "keyterm",
+       "title": "Interface",
+       "body": "The set of actions an object can do. It defines the actions but does not actually perform them."
+      }
+     ]
+    },
+    {
+     "say": "The kitchen is the implementation. The cook follows the steps and really makes the dosa. This is where the work happens.",
+     "board": [
+      {
+       "kind": "keyterm",
+       "title": "Implementation",
+       "body": "Carries out the actions defined in the interface."
+      }
+     ]
+    },
+    {
+     "say": "Now a textbook example. A tube light or bulb has a switch. Anything that behaves like a bulb must have turn on and turn off functions. That list of functions is the interface. How the bulb actually glows is the implementation.",
+     "board": [
+      {
+       "kind": "example",
+       "title": "Bulb: turn_on() and turn_off() are the interface",
+       "body": ""
+      }
+     ]
+    },
+    {
+     "say": "Another worked example is the car. The driver presses the accelerator and asks for speed 70. The accelerator is the interface between the driver and the engine. The engine burns fuel and makes power. That is the implementation, and it is hidden from the driver.",
+     "board": [
+      {
+       "kind": "diagram",
+       "title": "Car example",
+       "body": "flowchart TD\nA[\"Driver\"] --> B[\"Accelerator: speed(70)\"]\nB --> C[\"Engine does the work\"]"
+      }
+     ]
+    },
+    {
+     "say": "For the board exam, remember this. The interface defines what can be done. The implementation does it. They are kept separate. This is a favourite two mark question, so you can do it!",
+     "board": [
+      {
+       "kind": "warning",
+       "title": "Exam: Interface only defines actions; Implementation performs them",
+       "body": ""
+      }
+     ]
+    }
+   ],
+   "practice": [
+    {
+     "id": "p1",
+     "type": "mcq",
+     "concept": "Interface vs Implementation",
+     "question": "In the restaurant analogy, which one is the interface?",
+     "code": "",
+     "options": [
+      "The menu card",
+      "The kitchen",
+      "The cook",
+      "The cooking steps"
+     ],
+     "answer": "The menu card",
+     "keywords": [],
+     "explanation": "The menu tells what you can order, like an interface. The kitchen and cook do the real work, like the implementation."
+    },
+    {
+     "id": "p2",
+     "type": "short",
+     "concept": "Interface vs Implementation",
+     "question": "In the car example, what is the interface and what is the implementation?",
+     "code": "",
+     "options": [],
+     "answer": "The accelerator is the interface between the driver and the engine. The engine doing the actual work is the implementation.",
+     "keywords": [
+      "accelerator",
+      "interface",
+      "engine",
+      "implementation"
+     ],
+     "explanation": "The driver uses only the accelerator. The engine's internal working is hidden and is the implementation."
+    }
+   ]
+  },
+  {
+   "steps": [
+    {
+     "say": "Let us go slowly now. Two words matter here. Interface and implementation. Let us understand each in simple words.",
+     "board": [
+      {
+       "kind": "heading",
+       "title": "Two words: Interface, Implementation",
+       "body": ""
+      }
+     ]
+    },
+    {
+     "say": "Step one. An interface is a list of things an object can do. It only says what. It does not do the work.",
+     "board": [
+      {
+       "kind": "point",
+       "title": "Interface = list of what can be done",
+       "body": ""
+      }
+     ]
+    },
+    {
+     "say": "Step two. Implementation is the real work. It follows the instructions given in the interface.",
+     "board": [
+      {
+       "kind": "point",
+       "title": "Implementation = doing the work",
+       "body": ""
+      }
+     ]
+    },
+    {
+     "say": "Here is a school analogy. The school timetable says which subject is in which period. That is like the interface. The teacher actually teaching in the class is the implementation.",
+     "board": [
+      {
+       "kind": "example",
+       "title": "Timetable = interface; Teaching = implementation",
+       "body": ""
+      }
+     ]
+    },
+    {
+     "say": "Now the code example from the book. The function min takes three values x, y and z, and gives the smallest. A person who calls min only needs to know its name and inputs. The if conditions inside are the implementation.",
+     "board": [
+      {
+       "kind": "code",
+       "title": "min function",
+       "body": "let min x y z :=\n if x < y then\n  if x < z then x else z\n else\n  if y < z then y else z"
+      }
+     ]
+    },
+    {
+     "say": "Common mistakes. First, do not say the interface does the work. It does not. Second, do not mix them up. The interface is the what, and the implementation is the how.",
+     "board": [
+      {
+       "kind": "warning",
+       "title": "Interface does NOT do the work",
+       "body": ""
+      }
+     ]
+    }
+   ],
+   "practice": [
+    {
+     "id": "p1",
+     "type": "mcq",
+     "concept": "Interface vs Implementation",
+     "question": "Which statement is correct?",
+     "code": "",
+     "options": [
+      "Implementation carries out the actions defined in the interface",
+      "Interface carries out the actions and implementation only lists them",
+      "Both are exactly the same thing",
+      "Interface is the hidden inner working of an object"
+     ],
+     "answer": "Implementation carries out the actions defined in the interface",
+     "keywords": [],
+     "explanation": "The interface only defines the actions. The implementation really performs them."
+    },
+    {
+     "id": "p2",
+     "type": "short",
+     "concept": "Interface vs Implementation",
+     "question": "Using the school timetable analogy, explain interface and implementation in one or two sentences.",
+     "code": "",
+     "options": [],
+     "answer": "The timetable only lists what happens in each period, so it is the interface. The teacher actually teaching is the implementation.",
+     "keywords": [
+      "timetable",
+      "interface",
+      "teacher",
+      "implementation"
+     ],
+     "explanation": "The timetable defines what should happen but does not teach. The teaching is the real work, which is the implementation."
+    }
+   ]
+  },
+  {
+   "steps": [
+    {
+     "say": "Let us start from the very basics. You already know how to use a mobile phone. You use it without knowing its circuits. Keep this in mind.",
+     "board": [
+      {
+       "kind": "heading",
+       "title": "Start: using without knowing inside",
+       "body": ""
+      }
+     ]
+    },
+    {
+     "say": "On a phone you tap the call button. The button is what you use. This is like an interface.",
+     "board": [
+      {
+       "kind": "point",
+       "title": "Call button = interface",
+       "body": ""
+      }
+     ]
+    },
+    {
+     "say": "Inside, circuits and software connect the call. You do not see this. This is like the implementation.",
+     "board": [
+      {
+       "kind": "point",
+       "title": "Circuits and software = implementation",
+       "body": ""
+      }
+     ]
+    },
+    {
+     "say": "The same idea comes from the textbook. A bulb has a switch. Pressing it makes the bulb glow. You need not know how it glows.",
+     "board": [
+      {
+       "kind": "example",
+       "title": "Switch = interface; how it glows = implementation",
+       "body": ""
+      }
+     ]
+    },
+    {
+     "say": "So remember one line. Interface tells what can be done. Implementation does it. Well done, you can get this right!",
+     "board": [
+      {
+       "kind": "keyterm",
+       "title": "Interface vs Implementation",
+       "body": "Interface defines actions. Implementation performs them."
+      }
+     ]
+    }
+   ],
+   "practice": [
+    {
+     "id": "p1",
+     "type": "mcq",
+     "concept": "Interface vs Implementation",
+     "question": "A bulb has turn_on() and turn_off() functions. What are these functions called together?",
+     "code": "",
+     "options": [
+      "The interface",
+      "The implementation",
+      "The compiler",
+      "The side effect"
+     ],
+     "answer": "The interface",
+     "keywords": [],
+     "explanation": "The list of actions an object can do is its interface. How the bulb actually glows is the implementation."
+    },
+    {
+     "id": "p2",
+     "type": "short",
+     "concept": "Interface vs Implementation",
+     "question": "On a phone, which part is the interface and which is the implementation?",
+     "code": "",
+     "options": [],
+     "answer": "The call button you tap is the interface. The hidden circuits and software that connect the call are the implementation.",
+     "keywords": [
+      "button",
+      "interface",
+      "circuits",
+      "implementation"
+     ],
+     "explanation": "The user only uses the button. The inner working that does the job is the implementation."
+    }
+   ]
+  }
+ ]
+}

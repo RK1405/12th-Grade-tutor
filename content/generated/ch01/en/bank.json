@@ -1,0 +1,257 @@
+{
+ "concepts": [
+  "Subroutines and Functions",
+  "Function Definition and Syntax",
+  "Parameters and Arguments",
+  "Recursive Functions",
+  "Interface vs Implementation",
+  "Pure Functions",
+  "Impure Functions and Side Effects"
+ ],
+ "questions": [
+  {
+   "id": "q1",
+   "type": "mcq",
+   "concept": "Subroutines and Functions",
+   "question": "What is a small part of a program that is used repeatedly to perform a particular task called?",
+   "code": "",
+   "options": [
+    "Subroutine",
+    "Files",
+    "Pseudo code",
+    "Modules"
+   ],
+   "answer": "Subroutine",
+   "keywords": [],
+   "explanation": "A subroutine is a small block of code used again and again for a specific task. In programming languages, subroutines are called functions."
+  },
+  {
+   "id": "q2",
+   "type": "short",
+   "concept": "Subroutines and Functions",
+   "question": "What is a function in a programming language?",
+   "code": "",
+   "options": [],
+   "answer": "A function is a unit of code defined within a larger program. It contains blocks of code that work on inputs like variables and expressions to give a consistent output.",
+   "keywords": [
+    "unit of code",
+    "larger program",
+    "inputs",
+    "output"
+   ],
+   "explanation": "The textbook defines a function as a unit of code within a larger program that works on various inputs to give a consistent output."
+  },
+  {
+   "id": "q3",
+   "type": "mcq",
+   "concept": "Function Definition and Syntax",
+   "question": "In a = (24), what does the definition do?",
+   "code": "",
+   "options": [
+    "It binds the value 24 to the name a",
+    "It compares a with 24",
+    "It makes 24 an expression",
+    "It creates a recursive function"
+   ],
+   "answer": "It binds the value 24 to the name a",
+   "keywords": [],
+   "explanation": "Definitions bind values to names. Here 24 is bound to the name a. Definitions are not expressions."
+  },
+  {
+   "id": "q4",
+   "type": "mcq",
+   "concept": "Function Definition and Syntax",
+   "question": "Which special word introduces a function definition in the syntax of this chapter?",
+   "code": "",
+   "options": [
+    "let",
+    "def",
+    "define",
+    "func"
+   ],
+   "answer": "let",
+   "keywords": [],
+   "explanation": "A definition is introduced with the keyword let, followed by the function name, its parameters and the expression after :=."
+  },
+  {
+   "id": "q5",
+   "type": "short",
+   "concept": "Function Definition and Syntax",
+   "question": "Why are brackets compulsory when writing type annotations for parameters?",
+   "code": "",
+   "options": [],
+   "answer": "When we write data types for the parameters, the brackets ( ) are required in the function definition, as in (a: int) (b: int).",
+   "keywords": [
+    "type annotation",
+    "brackets",
+    "parentheses",
+    "data type"
+   ],
+   "explanation": "The textbook says parentheses are necessary when writing type annotations of parameters."
+  },
+  {
+   "id": "q6",
+   "type": "mcq",
+   "concept": "Parameters and Arguments",
+   "question": "What are the values passed to a function definition called?",
+   "code": "",
+   "options": [
+    "Arguments",
+    "Parameters",
+    "Subroutines",
+    "Modules"
+   ],
+   "answer": "Arguments",
+   "keywords": [],
+   "explanation": "Parameters are the variables in the function definition. Arguments are the values passed to it."
+  },
+  {
+   "id": "q7",
+   "type": "short",
+   "concept": "Parameters and Arguments",
+   "question": "Differentiate between parameters and arguments.",
+   "code": "",
+   "options": [],
+   "answer": "Parameters are the variables in a function definition. Arguments are the values passed to the function when it is called.",
+   "keywords": [
+    "variables",
+    "function definition",
+    "values passed"
+   ],
+   "explanation": "This is a basic board question. Parameters belong to the definition, arguments belong to the call."
+  },
+  {
+   "id": "q8",
+   "type": "mcq",
+   "concept": "Recursive Functions",
+   "question": "Which keyword is used to define a recursive function?",
+   "code": "",
+   "options": [
+    "let rec",
+    "let",
+    "rec only",
+    "loop"
+   ],
+   "answer": "let rec",
+   "keywords": [],
+   "explanation": "A function that calls itself is recursive. It is defined using let rec instead of let."
+  },
+  {
+   "id": "q9",
+   "type": "short",
+   "concept": "Recursive Functions",
+   "question": "In the gcd function, which statement stops the recursion?",
+   "code": "let rec gcd a b :=\n if b <> 0 then gcd b (a mod b)\n else\n return a",
+   "options": [],
+   "answer": "The else part, return a, ends the recursion when b becomes 0.",
+   "keywords": [
+    "return a",
+    "b = 0",
+    "else"
+   ],
+   "explanation": "The function keeps calling itself until b is 0. Then it returns a."
+  },
+  {
+   "id": "q10",
+   "type": "mcq",
+   "concept": "Interface vs Implementation",
+   "question": "Which of these defines what an object can do, but does not actually do it?",
+   "code": "",
+   "options": [
+    "Interface",
+    "Implementation",
+    "Compiler",
+    "Operating system"
+   ],
+   "answer": "Interface",
+   "keywords": [],
+   "explanation": "An interface defines the actions an object can perform. Implementation carries out the commands defined in the interface."
+  },
+  {
+   "id": "q11",
+   "type": "short",
+   "concept": "Interface vs Implementation",
+   "question": "Differentiate interface and implementation with an example.",
+   "code": "",
+   "options": [],
+   "answer": "An interface only defines what an object can do, like the accelerator of a car. Implementation actually carries out those actions, like the engine doing the work.",
+   "keywords": [
+    "defines actions",
+    "carries out",
+    "accelerator",
+    "engine"
+   ],
+   "explanation": "The driver uses the accelerator, which is the interface, without knowing the engine's inner working."
+  },
+  {
+   "id": "q12",
+   "type": "mcq",
+   "concept": "Pure Functions",
+   "question": "A function that always gives the same result for the same arguments and has no side effects is called:",
+   "code": "",
+   "options": [
+    "Pure function",
+    "Impure function",
+    "Partial function",
+    "Dynamic function"
+   ],
+   "answer": "Pure function",
+   "keywords": [],
+   "explanation": "Examples are sin(0), which is always 0, and square x."
+  },
+  {
+   "id": "q13",
+   "type": "short",
+   "concept": "Pure Functions",
+   "question": "Why is strlen called a pure function?",
+   "code": "",
+   "options": [],
+   "answer": "strlen takes one variable and finds its length. It only reads the input and does not change any values, so the same input always gives the same result.",
+   "keywords": [
+    "length",
+    "does not change",
+    "same input",
+    "same output"
+   ],
+   "explanation": "Since strlen is pure, repeated calls can be avoided in a loop."
+  },
+  {
+   "id": "q14",
+   "type": "short",
+   "concept": "Impure Functions and Side Effects",
+   "question": "What is a side effect? Explain with an example.",
+   "code": "y := 0\nlet inc (x: int): int :=\n y := y + x\n return (y)",
+   "options": [],
+   "answer": "A side effect is a change made outside the function. In inc, the outside variable y is changed each time, so the result differs on every call.",
+   "keywords": [
+    "outside variable",
+    "changes y",
+    "different result",
+    "impure"
+   ],
+   "explanation": "The inc function changes the external variable y, so it is impure."
+  },
+  {
+   "id": "q15",
+   "type": "predict_output",
+   "concept": "Recursive Functions",
+   "question": "What is the output of gcd 13 27 for the textbook function?",
+   "code": "let rec gcd a b :=\n if b <> 0 then gcd b (a mod b)\n else\n return a",
+   "options": [],
+   "answer": "1",
+   "keywords": [],
+   "explanation": "13 and 27 have no common factor other than 1, so gcd is 1."
+  },
+  {
+   "id": "q16",
+   "type": "predict_output",
+   "concept": "Pure Functions",
+   "question": "What is the output of gcd 20536 7826 as shown in the textbook?",
+   "code": "let rec gcd a b :=\n if b <> 0 then gcd b (a mod b)\n else\n return a",
+   "options": [],
+   "answer": "2",
+   "keywords": [],
+   "explanation": "The textbook output for these two numbers is 2."
+  }
+ ]
+}

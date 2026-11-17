@@ -1,0 +1,158 @@
+{
+ "steps": [
+  {
+   "say": "In the last page we saw the monochromatize function that solves the chameleons problem using a function. Now this final page is the chapter summary. Let us revise every key idea, because these are very important for the board exam.",
+   "board": [
+    {
+     "kind": "heading",
+     "title": "Chapter Summary: Function",
+     "body": ""
+    }
+   ]
+  },
+  {
+   "say": "First, algorithms are carried out using the statements of a programming language. When some statements must be repeated many times, we put them in a subroutine. A subroutine is a small part of a program used again and again for one particular task. In programming languages, subroutines are called functions.",
+   "board": [
+    {
+     "kind": "keyterm",
+     "title": "Subroutine",
+     "body": "Small part of a program used repeatedly for a particular task"
+    },
+    {
+     "kind": "keyterm",
+     "title": "Function",
+     "body": "A unit of code, usually defined within a bigger program"
+    }
+   ]
+  },
+  {
+   "say": "A function works on many kinds of inputs, like variables and expressions, and gives a consistent output. Also remember that definitions have distinct syntax blocks. A definition binds a value to a name. It is not an expression.",
+   "board": [
+    {
+     "kind": "point",
+     "title": "Function: many inputs, consistent output",
+     "body": ""
+    },
+    {
+     "kind": "point",
+     "title": "Definition binds a value to a name; it is not an expression",
+     "body": ""
+    }
+   ]
+  },
+  {
+   "say": "Next, parameters and arguments. Parameters are the variables in the function definition. Arguments are the values passed to the function definition. When we write type annotations in a function definition, the brackets are compulsory. This is a favourite one mark question.",
+   "board": [
+    {
+     "kind": "keyterm",
+     "title": "Parameters",
+     "body": "Variables in the function definition"
+    },
+    {
+     "kind": "keyterm",
+     "title": "Arguments",
+     "body": "Values passed to the function definition"
+    },
+    {
+     "kind": "warning",
+     "title": "Type annotations need parentheses ( )",
+     "body": ""
+    }
+   ]
+  },
+  {
+   "say": "Now interface and implementation. An interface is the set of actions an object can do. It defines the actions, but does not actually perform them. Implementation carries out the instructions defined in the interface. Think of the accelerator of a car. The pedal is the interface. The engine working inside is the implementation.",
+   "board": [
+    {
+     "kind": "keyterm",
+     "title": "Interface",
+     "body": "Set of actions an object can do; only defines them"
+    },
+    {
+     "kind": "keyterm",
+     "title": "Implementation",
+     "body": "Carries out the instructions defined in the interface"
+    }
+   ]
+  },
+  {
+   "say": "Finally, pure and impure functions. A pure function gives the same answer whenever the same arguments are passed, and it has no side effects. An example is sin of zero, or the square function. A function that has side effects, even without parameters, is an impure function. Examples are random and date. Changing a variable outside the function is a side effect.",
+   "board": [
+    {
+     "kind": "keyterm",
+     "title": "Pure function",
+     "body": "Same arguments, same result; no side effects"
+    },
+    {
+     "kind": "keyterm",
+     "title": "Impure function",
+     "body": "Has side effects; result may differ, e.g. random(), date()"
+    }
+   ]
+  },
+  {
+   "say": "Well done! If you remember these points, you can answer the two mark, three mark and five mark questions of this chapter confidently.",
+   "board": []
+  }
+ ],
+ "explainAgain": [
+  {
+   "say": "Think of a function like a tuition teacher's fixed method for solving one type of sum. You give the numbers, and the method gives you the answer. You can use the same method again and again, so you do not rewrite the steps each time.",
+   "board": [
+    {
+     "kind": "point",
+     "title": "Function = reusable method for one task",
+     "body": ""
+    }
+   ]
+  },
+  {
+   "say": "Parameters are the empty boxes written in the question paper. Arguments are the actual numbers you fill in. An interface is like the buttons on a calculator. Implementation is the circuit inside that does the work.",
+   "board": [
+    {
+     "kind": "point",
+     "title": "Parameter = empty box; Argument = value filled in",
+     "body": ""
+    }
+   ]
+  },
+  {
+   "say": "A pure function is like a vending machine with a fixed price. Same coin, same biscuit, every time. An impure function is like a lucky draw. The same ticket may give a different result each time.",
+   "board": [
+    {
+     "kind": "point",
+     "title": "Pure = predictable; Impure = unpredictable or changes outside things",
+     "body": ""
+    }
+   ]
+  }
+ ],
+ "example": [
+  {
+   "say": "Let us decide whether two functions are pure or impure. The first function, square, returns x times x. The second function, inc, adds x to an outside variable y and returns y. Square gives the same output for the same input, so it is pure. Inc changes the outside variable y, so the answer changes every call. So inc is impure, and its side effect is changing y.",
+   "board": [
+    {
+     "kind": "code",
+     "title": "Pure: square",
+     "body": "let square x:=\n return: x * x"
+    },
+    {
+     "kind": "code",
+     "title": "Impure: inc",
+     "body": "y: = 0\nlet inc (x: int): int: =\n y: = y + x\nreturn (y)"
+    }
+   ]
+  }
+ ],
+ "checkQuestion": {
+  "question": "What is the difference between a pure function and an impure function?",
+  "idealAnswer": "A pure function always returns the same result for the same arguments and has no side effects, for example square or sin of zero. An impure function may give different results for the same arguments or change outside variables, so it has side effects, for example random or date.",
+  "keywords": [
+   "same result",
+   "same arguments",
+   "side effects",
+   "impure",
+   "pure"
+  ]
+ }
+}

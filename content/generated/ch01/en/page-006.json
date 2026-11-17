@@ -1,0 +1,109 @@
+{
+ "steps": [
+  {
+   "say": "On the last page we saw pure and impure functions, and the gcd example. Now we use a function to solve the Chameleons of Chromeland problem you studied in Class 11.",
+   "board": [
+    {
+     "kind": "heading",
+     "title": "Chameleons of Chromeland using a function",
+     "body": ""
+    }
+   ]
+  },
+  {
+   "say": "Let a, b and c be the number of chameleons of three colours. Their starting values are capital A, B and C. The input condition is that a equals b. When two chameleons of different colours meet, both change to the third colour. At the end, all chameleons must show one colour.",
+   "board": [
+    {
+     "kind": "keyterm",
+     "title": "Input condition",
+     "body": "a = b, with a = A, b = B, c = C"
+    }
+   ]
+  },
+  {
+   "say": "The algorithm is named monochromatize, and we write it as monochromatize of a, b, c. The output relation is that a and b both become zero, and c becomes A plus B plus C.",
+   "board": [
+    {
+     "kind": "point",
+     "title": "Output: a = b = 0 and c = A + B + C",
+     "body": ""
+    }
+   ]
+  },
+  {
+   "say": "In every iteration, one chameleon of each of the two equal groups meets and changes to the third colour. So a goes down by one, b goes down by one, and c goes up by two. Look at the table with 4, 4 and 6. After four iterations we get 0, 0 and 14. Note that 4 plus 4 plus 6 is also 14.",
+   "board": [
+    {
+     "kind": "example",
+     "title": "A, B, C = 4, 4, 6",
+     "body": "iteration 0: 4 4 6\niteration 1: 3 3 8\niteration 2: 2 2 10\niteration 3: 1 1 12\niteration 4: 0 0 14"
+    }
+   ]
+  },
+  {
+   "say": "The flowchart takes input a, b, c. It checks whether a is greater than zero. If true, it updates a, b, c to a minus 1, b minus 1, c plus 2, and repeats. If false, a and b are zero and c is A plus B plus C, and we output a, b, c.",
+   "board": [
+    {
+     "kind": "diagram",
+     "title": "Monochromatize flowchart",
+     "body": "flowchart TD\nA[\"Input a, b, c\"] --> B{\"a > 0 ?\"}\nB -- \"True\" --> C[\"a, b, c := a-1, b-1, c+2\"]\nC --> B\nB -- \"False\" --> D[\"Output a, b, c\"]"
+    }
+   ]
+  },
+  {
+   "say": "Now the function as written in the book. It is a recursive function, so it uses let rec. If a is greater than zero, we update a, b and c. Otherwise we call monochromatize again. Finally it returns a, b, c. Please copy the code exactly as in your textbook for the exam.",
+   "board": [
+    {
+     "kind": "code",
+     "title": "monochromatize function",
+     "body": "let rec monochromatize a b c :=\n    if a > 0 then\n        a, b, c := a-1, b-1, c+2\n    else\n        monochromatize a b c\n    return a, b, c"
+    }
+   ]
+  }
+ ],
+ "explainAgain": [
+  {
+   "say": "Think of a class with three groups of students: red, green and blue. Red and green have equal numbers. Each time one red and one green student meet, both change to blue house. So red and green reduce by one, and blue grows by two.",
+   "board": [
+    {
+     "kind": "point",
+     "title": "Two equal groups join the third group",
+     "body": ""
+    }
+   ]
+  },
+  {
+   "say": "We repeat this until red and green are zero. Then everyone is in blue. The total number of students never changes. That is why c finally equals A plus B plus C.",
+   "board": [
+    {
+     "kind": "point",
+     "title": "Total A + B + C stays the same",
+     "body": ""
+    }
+   ]
+  }
+ ],
+ "example": [
+  {
+   "say": "Worked example with A, B, C equal to 2, 2 and 3. Start: 2, 2, 3. After one meeting: 1, 1, 5. After two meetings: 0, 0, 7. The output is a equals b equals 0 and c equals 7, which is 2 plus 2 plus 3.",
+   "board": [
+    {
+     "kind": "example",
+     "title": "A, B, C = 2, 2, 3",
+     "body": "0: 2 2 3\n1: 1 1 5\n2: 0 0 7\nc = 2+2+3 = 7"
+    }
+   ]
+  }
+ ],
+ "checkQuestion": {
+  "question": "In each iteration of the monochromatize algorithm, how do the values of a, b and c change, and what are the final values?",
+  "idealAnswer": "In each iteration a decreases by one, b decreases by one and c increases by two. At the end a and b are zero and c equals A plus B plus C.",
+  "keywords": [
+   "a decreases by 1",
+   "b decreases by 1",
+   "c increases by 2",
+   "a = b = 0",
+   "A+B+C"
+  ]
+ }
+}

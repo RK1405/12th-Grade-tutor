@@ -1,0 +1,122 @@
+{
+ "steps": [
+  {
+   "say": "On the last page we saw what an interface is, using the example of a light switch. Now we continue with the properties of an interface and the car example.",
+   "board": [
+    {
+     "kind": "heading",
+     "title": "1.3.1 Properties of Interface",
+     "body": ""
+    }
+   ]
+  },
+  {
+   "say": "First, the class template specifies the interface that is needed to create an object properly and to make it work. In object oriented languages, the class is where the interface is described.",
+   "board": [
+    {
+     "kind": "point",
+     "title": "Class template specifies the interface needed to create and use an object",
+     "body": ""
+    }
+   ]
+  },
+  {
+   "say": "Second, by passing function calls to an object, we can control its properties and attributes. We only call the function. We do not touch the insides.",
+   "board": [
+    {
+     "kind": "point",
+     "title": "Calling functions on an object controls its behaviour",
+     "body": ""
+    }
+   ]
+  },
+  {
+   "say": "Now the car example. A driver wants to increase the speed. He does not need to know how the engine works inside. He just presses the accelerator.",
+   "board": [
+    {
+     "kind": "keyterm",
+     "title": "Accelerator",
+     "body": "The interface between the driver (calling object) and the engine (called object)."
+    }
+   ]
+  },
+  {
+   "say": "The calling function would be speed of 70. This is the interface. Inside, the engine mixes fuel, air, pressure and electricity to create power and move the vehicle. The driver is shielded from all this. So the interface is separated from the implementation.",
+   "board": [
+    {
+     "kind": "diagram",
+     "title": "Car example",
+     "body": "flowchart TD\nA[\"Driver calls speed(70)\"] --> B{\"Required speed reached?\"}\nB -->|\"No\"| C[\"Engine pulls more fuel\"]\nC --> B\nB -->|\"Yes\"| D[\"Return\"]"
+    }
+   ]
+  },
+  {
+   "say": "The page ends with a simple implementation. The function min takes three values x, y and z, and finds the smallest using nested if conditions. First it compares x and y. Then the smaller one is compared with z.",
+   "board": [
+    {
+     "kind": "code",
+     "title": "min of three values",
+     "body": "let min x y z :=\n if x < y then\n  if x < z then x else z\n else\n  if y < z then y else z"
+    }
+   ]
+  },
+  {
+   "say": "For the board exam, remember this. The interface defines what can be done. The implementation actually does it. This difference is asked often, so write it with the car or bulb example.",
+   "board": [
+    {
+     "kind": "warning",
+     "title": "Interface only defines actions. Implementation performs them.",
+     "body": ""
+    }
+   ]
+  }
+ ],
+ "explainAgain": [
+  {
+   "say": "Think of a TV remote. You press the volume button and the sound increases. You do not know the circuits inside the TV.",
+   "board": [
+    {
+     "kind": "point",
+     "title": "Remote buttons = interface",
+     "body": ""
+    }
+   ]
+  },
+  {
+   "say": "The buttons are the interface. The circuits inside which really change the volume are the implementation. The company can change the circuits, but you still press the same button.",
+   "board": [
+    {
+     "kind": "point",
+     "title": "Circuits inside = implementation",
+     "body": ""
+    }
+   ]
+  },
+  {
+   "say": "In the same way, the accelerator is the interface of a car, and the engine is the implementation.",
+   "board": []
+  }
+ ],
+ "example": [
+  {
+   "say": "Let us trace the min function with x equal to 5, y equal to 3, z equal to 4. First, is x less than y? 5 is not less than 3, so we go to the else part. There we check whether y is less than z. 3 is less than 4, so the answer is y, which is 3.",
+   "board": [
+    {
+     "kind": "example",
+     "title": "min 5 3 4",
+     "body": "x<y? 5<3 No\ny<z? 3<4 Yes\nResult = 3"
+    }
+   ]
+  }
+ ],
+ "checkQuestion": {
+  "question": "In the car example, what is the interface and what is the implementation?",
+  "idealAnswer": "The accelerator is the interface between the driver and the engine. The engine, which uses fuel, air and electricity to move the car, is the implementation. The interface is separated from the implementation.",
+  "keywords": [
+   "accelerator",
+   "interface",
+   "engine",
+   "implementation"
+  ]
+ }
+}

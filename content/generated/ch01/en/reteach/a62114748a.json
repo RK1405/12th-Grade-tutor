@@ -1,0 +1,289 @@
+{
+ "concept": "Parameters and Arguments",
+ "variants": [
+  {
+   "steps": [
+    {
+     "say": "Let us look at this idea again with a new picture. Think of a school tiffin box with an empty slot. The slot is a parameter. The idli you put in today is the argument.",
+     "board": [
+      {
+       "kind": "heading",
+       "title": "Parameters and Arguments",
+       "body": ""
+      },
+      {
+       "kind": "keyterm",
+       "title": "Parameter",
+       "body": "A variable written in the function definition. It is an empty slot."
+      }
+     ]
+    },
+    {
+     "say": "The textbook says the same. Parameters are the variables in the function definition. Arguments are the values passed to the function definition. The slot is fixed when we write the function. The value is filled in when we use it.",
+     "board": [
+      {
+       "kind": "keyterm",
+       "title": "Argument",
+       "body": "A value passed to the function. It fills the slot."
+      }
+     ]
+    },
+    {
+     "say": "Now a worked example. Look at the function square. Its definition has one variable, x. So x is the parameter. Suppose we call square with the value 5. Then 5 is the argument. While the function runs, x holds 5.",
+     "board": [
+      {
+       "kind": "code",
+       "title": "Definition and call",
+       "body": "let square x :=\n    return: x * x\n\nsquare 5"
+      },
+      {
+       "kind": "example",
+       "title": "x is the parameter, 5 is the argument",
+       "body": ""
+      }
+     ]
+    },
+    {
+     "say": "Take the textbook function pow, with two parameters a and b. If we call pow with 2 and 3, then a gets 2 and b gets 3. The first argument goes to the first parameter. The second goes to the second.",
+     "board": [
+      {
+       "kind": "diagram",
+       "title": "Passing arguments",
+       "body": "flowchart TD\nA[\"Call: pow 2 3\"] --> B[\"a gets 2\"]\nA --> C[\"b gets 3\"]\nB --> D[\"Function body runs\"]\nC --> D"
+      }
+     ]
+    },
+    {
+     "say": "Remember for the board exam. Parameters are in the definition. Arguments are in the call. The textbook also says that when we write type annotations like a colon int, the brackets are compulsory.",
+     "board": [
+      {
+       "kind": "warning",
+       "title": "Do not mix them up: definition = parameter, call = argument",
+       "body": ""
+      }
+     ]
+    }
+   ],
+   "practice": [
+    {
+     "id": "p1",
+     "type": "mcq",
+     "concept": "Parameters and Arguments",
+     "question": "In the call fact 5 of the function let rec fact n, what is 5?",
+     "code": "",
+     "options": [
+      "A parameter",
+      "An argument",
+      "A function name",
+      "A data type"
+     ],
+     "answer": "An argument",
+     "keywords": [],
+     "explanation": "5 is the value passed to the function, so it is an argument. The variable n is the parameter."
+    },
+    {
+     "id": "p2",
+     "type": "short",
+     "concept": "Parameters and Arguments",
+     "question": "In let min x y z, name the parameters. What are they called when we call min 4 9 2?",
+     "code": "",
+     "options": [],
+     "answer": "The parameters are x, y and z. The values 4, 9 and 2 are the arguments.",
+     "keywords": [
+      "x y z",
+      "parameters",
+      "4 9 2",
+      "arguments"
+     ],
+     "explanation": "Variables in the definition are parameters. The values given in the call are arguments."
+    }
+   ]
+  },
+  {
+   "steps": [
+    {
+     "say": "Let us go slowly now. Two words are confusing: parameter and argument. We will fix them with one simple picture.",
+     "board": [
+      {
+       "kind": "heading",
+       "title": "Parameter vs Argument, step by step",
+       "body": ""
+      }
+     ]
+    },
+    {
+     "say": "Think of a water bottle and the water. The bottle is empty and waiting. That is the parameter. The water you pour is the argument.",
+     "board": [
+      {
+       "kind": "point",
+       "title": "Bottle = parameter, water = argument",
+       "body": ""
+      }
+     ]
+    },
+    {
+     "say": "Step one. When we write a function, we give names to the inputs. These names are parameters. Step two. When we use the function, we give real values. These values are arguments.",
+     "board": [
+      {
+       "kind": "point",
+       "title": "Write the function: parameters",
+       "body": ""
+      },
+      {
+       "kind": "point",
+       "title": "Use the function: arguments",
+       "body": ""
+      }
+     ]
+    },
+    {
+     "say": "See this example. In the function sum x y, the names x and y are parameters. If we call sum 3 4, then 3 and 4 are arguments. The value 3 goes into x, and 4 goes into y.",
+     "board": [
+      {
+       "kind": "code",
+       "title": "Example",
+       "body": "let sum x y :=\n    return x + y\n\nsum 3 4"
+      }
+     ]
+    },
+    {
+     "say": "Common mistakes. First, calling the value a parameter. Second, thinking arguments are written inside the definition. Third, mixing up the order. The first value goes to the first name.",
+     "board": [
+      {
+       "kind": "warning",
+       "title": "Mistakes: swapping the two words, wrong order",
+       "body": ""
+      }
+     ]
+    },
+    {
+     "say": "A quick check. Variables in the definition are parameters. Values passed in are arguments. Well done for trying again. You can do this!",
+     "board": [
+      {
+       "kind": "keyterm",
+       "title": "Argument",
+       "body": "The value passed to the function definition."
+      }
+     ]
+    }
+   ],
+   "practice": [
+    {
+     "id": "p1",
+     "type": "mcq",
+     "concept": "Parameters and Arguments",
+     "question": "Which of these is written in the function definition?",
+     "code": "",
+     "options": [
+      "Parameter",
+      "Argument",
+      "Output",
+      "Answer"
+     ],
+     "answer": "Parameter",
+     "keywords": [],
+     "explanation": "Parameters are the variables in the function definition. Arguments are given only when the function is called."
+    },
+    {
+     "id": "p2",
+     "type": "predict_output",
+     "concept": "Parameters and Arguments",
+     "question": "What does this call return? Treat the code like the textbook pseudocode.",
+     "code": "let double x :=\n    return: x * 2\n\ndouble 6",
+     "options": [],
+     "answer": "12",
+     "keywords": [],
+     "explanation": "The argument 6 goes to the parameter x, and 6 times 2 is 12."
+    }
+   ]
+  },
+  {
+   "steps": [
+    {
+     "say": "Let us start from the very basics. You already know a variable. A variable is a name that holds a value, like a marks in a box labelled maths.",
+     "board": [
+      {
+       "kind": "heading",
+       "title": "Starting from variables",
+       "body": ""
+      }
+     ]
+    },
+    {
+     "say": "A function is a small piece of code that does one job. To do its job, it often needs some input values. So we give it variables to hold those inputs.",
+     "board": [
+      {
+       "kind": "point",
+       "title": "A function needs inputs to do its job",
+       "body": ""
+      }
+     ]
+    },
+    {
+     "say": "The variables in the function definition are called parameters. This is the first thing to remember.",
+     "board": [
+      {
+       "kind": "keyterm",
+       "title": "Parameter",
+       "body": "Variable in the function definition"
+      }
+     ]
+    },
+    {
+     "say": "The actual values we give while using the function are called arguments. This is the second thing to remember.",
+     "board": [
+      {
+       "kind": "keyterm",
+       "title": "Argument",
+       "body": "Value passed to the function"
+      }
+     ]
+    },
+    {
+     "say": "A very simple example. In the function square x, x is the parameter. When we write square 4, the value 4 is the argument.",
+     "board": [
+      {
+       "kind": "code",
+       "title": "Simple example",
+       "body": "let square x :=\n    return: x * x\n\nsquare 4"
+      }
+     ]
+    }
+   ],
+   "practice": [
+    {
+     "id": "p1",
+     "type": "mcq",
+     "concept": "Parameters and Arguments",
+     "question": "What are the values passed to a function definition called?",
+     "code": "",
+     "options": [
+      "Arguments",
+      "Parameters",
+      "Subroutines",
+      "Interfaces"
+     ],
+     "answer": "Arguments",
+     "keywords": [],
+     "explanation": "The textbook says arguments are the values passed to the function definition."
+    },
+    {
+     "id": "p2",
+     "type": "short",
+     "concept": "Parameters and Arguments",
+     "question": "In let gcd a b, which names are parameters?",
+     "code": "",
+     "options": [],
+     "answer": "The variables a and b are the parameters, because they are in the function definition.",
+     "keywords": [
+      "a",
+      "b",
+      "parameters",
+      "definition"
+     ],
+     "explanation": "Variables written in the function definition are parameters."
+    }
+   ]
+  }
+ ]
+}

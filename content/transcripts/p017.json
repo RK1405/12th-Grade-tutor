@@ -1,0 +1,6 @@
+{
+ "pdfPage": 17,
+ "mode": "vision",
+ "kind": "exercises",
+ "text": "பகுதி ஈ\nஅனைத்து வினாக்களுக்கும் விடையளி (5 மதிப்பெண்)\n1. அளபுருக்கள் என்றால் என்ன?\n(அ) தரவுவகை இல்லாத அளபுருக்கள்\n(ஆ) தரவு வகையுடன் கூடிய அளபுருக்கள் விவரி?\n2. பின்வரும் நிரலில்\nlet rec gcd a b :=\n    if b <> 0 then gcd b (a mod b) else return a\nஅ) செயற்கூறுவின் பெயர்\nஆ) தற்சுழற்சி செயற்கூறு கூற்று\nஇ) அளபுருக்கள் கொண்ட மாறியின் பெயர்\nஈ) செயற்கூறுவை தற்சுழற்சிக்கு அழைக்கும் கூற்று\nஉ) தற்சுழற்சியை முடிவுக்கு கொண்டுவரும் கூற்று ஆகியவற்றை எழுதுக.\n3. pure மற்றும் impure செயற்கூறுவை எடுத்துக்காட்டுடன் விளக்குக.\n4. இடைமுகம் மற்றும் செயல்படுத்துதலை எடுத்துக்காட்டுடன் விளக்குக.\nமேற்பார்வை நூல்கள்\n1. Data Structures and Algorithms in Python By Michael T.Goodrich, RobertoTamassia and Michael H. Goldwasser.\n2. Data Structure and Algorithmic Thinking in Python By Narasimha Karumanchi\n3. https://www.python.org"
+}

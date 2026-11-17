@@ -1,0 +1,281 @@
+{
+ "concept": "Function Definition and Syntax",
+ "variants": [
+  {
+   "steps": [
+    {
+     "say": "Let us look at function definitions again, with a fresh idea. Think of a function as a recipe card in your school canteen. The card has a name, a list of ingredients, and the steps to cook. Anyone can use the card again and again.",
+     "board": [
+      {
+       "kind": "heading",
+       "title": "Function = a recipe card",
+       "body": ""
+      }
+     ]
+    },
+    {
+     "say": "In our textbook, a function is written with the special word let. After let comes the function name. Then come the parameters, which are like the ingredient slots. Then the sign colon equals. After that comes the formula that gives the answer.",
+     "board": [
+      {
+       "kind": "keyterm",
+       "title": "let",
+       "body": "Special word that starts a function definition"
+      },
+      {
+       "kind": "code",
+       "title": "General syntax",
+       "body": "let rec fn a1 a2 ... an := k"
+      }
+     ]
+    },
+    {
+     "say": "Here fn is the function name. a1 to an are the parameters. The letter k is the body, the formula that is calculated. The word rec is needed only when the function calls itself. Such a function is called a recursive function. If it does not call itself, we can leave out rec.",
+     "board": [
+      {
+       "kind": "point",
+       "title": "rec only for recursive functions",
+       "body": ""
+      }
+     ]
+    },
+    {
+     "say": "Now a worked example. The factorial function. It requires that n is zero or more. If n is zero, it gives 1. Otherwise it gives n multiplied by factorial of n minus 1. Since fact calls itself, we write let rec.",
+     "board": [
+      {
+       "kind": "code",
+       "title": "Factorial",
+       "body": "(Requires: n>= 0)\nlet rec fact n :=\n    if n = 0 then 1\n    else\n        n * fact(n-1)"
+      }
+     ]
+    },
+    {
+     "say": "Remember the difference. Parameters are the variables in the definition. Arguments are the actual values passed when we call it. This is very important for your board exam.",
+     "board": [
+      {
+       "kind": "warning",
+       "title": "Parameter = variable in definition; Argument = value passed",
+       "body": ""
+      }
+     ]
+    }
+   ],
+   "practice": [
+    {
+     "id": "p1",
+     "type": "mcq",
+     "concept": "Function Definition and Syntax",
+     "question": "Which special word is added to let when a function calls itself?",
+     "code": "",
+     "options": [
+      "rec",
+      "def",
+      "loop",
+      "self"
+     ],
+     "answer": "rec",
+     "keywords": [],
+     "explanation": "A recursive function is defined using let rec instead of let."
+    },
+    {
+     "id": "p2",
+     "type": "short",
+     "concept": "Function Definition and Syntax",
+     "question": "In the syntax let rec fn a1 a2 ... an := k, what do fn and a1 to an represent?",
+     "code": "",
+     "options": [],
+     "answer": "fn is the name of the function and a1 to an are its parameters.",
+     "keywords": [
+      "name",
+      "function",
+      "parameters"
+     ],
+     "explanation": "fn names the function, and the variables a1 to an are the parameters used in the body k."
+    }
+   ]
+  },
+  {
+   "steps": [
+    {
+     "say": "Let us go slowly now, step by step. Think of a function like a tea stall machine. You put in sugar and tea powder, and it gives you tea. The machine is made once and used many times.",
+     "board": [
+      {
+       "kind": "heading",
+       "title": "Function = tea machine",
+       "body": ""
+      }
+     ]
+    },
+    {
+     "say": "Step one. Write the word let. This tells the computer we are defining a function.",
+     "board": [
+      {
+       "kind": "point",
+       "title": "Step 1: write let",
+       "body": ""
+      }
+     ]
+    },
+    {
+     "say": "Step two. Write the name of the function, for example square. Step three. Write the parameters, which are the inputs, for example x.",
+     "board": [
+      {
+       "kind": "point",
+       "title": "Step 2: name. Step 3: parameters",
+       "body": ""
+      }
+     ]
+    },
+    {
+     "say": "Step four. Write colon equals, and then the formula. For square, the formula is x multiplied by x. The function returns that value.",
+     "board": [
+      {
+       "kind": "code",
+       "title": "Square",
+       "body": "let square x:=\n return: x * x"
+      }
+     ]
+    },
+    {
+     "say": "Step five. If the function calls itself, write let rec. For example, the factorial function calls itself, so it uses let rec.",
+     "board": [
+      {
+       "kind": "point",
+       "title": "Step 5: self-call means let rec",
+       "body": ""
+      }
+     ]
+    },
+    {
+     "say": "Common mistakes. First, forgetting rec in a recursive function. Second, mixing up parameters and arguments. Third, forgetting the brackets when you write data type annotations. Brackets are compulsory there.",
+     "board": [
+      {
+       "kind": "warning",
+       "title": "Brackets needed for type annotations: (a: int)",
+       "body": ""
+      }
+     ]
+    }
+   ],
+   "practice": [
+    {
+     "id": "p1",
+     "type": "mcq",
+     "concept": "Function Definition and Syntax",
+     "question": "Which word starts a function definition in the textbook syntax?",
+     "code": "",
+     "options": [
+      "let",
+      "start",
+      "func",
+      "begin"
+     ],
+     "answer": "let",
+     "keywords": [],
+     "explanation": "A definition is introduced with the special word let."
+    },
+    {
+     "id": "p2",
+     "type": "mcq",
+     "concept": "Function Definition and Syntax",
+     "question": "In let square x := x * x, what is x?",
+     "code": "",
+     "options": [
+      "A parameter",
+      "An argument value",
+      "The function name",
+      "A keyword"
+     ],
+     "answer": "A parameter",
+     "keywords": [],
+     "explanation": "x is a variable in the function definition, so it is a parameter."
+    }
+   ]
+  },
+  {
+   "steps": [
+    {
+     "say": "Let us start from the very basics. You already know a variable stores a value. For example a is assigned 24. This binds the value 24 to the name a. That is a definition.",
+     "board": [
+      {
+       "kind": "code",
+       "title": "Definition binds value to name",
+       "body": "a:=(24)"
+      }
+     ]
+    },
+    {
+     "say": "A function is also a definition. But instead of binding a fixed value, it binds a formula to a name. Like a rule written once and used many times.",
+     "board": [
+      {
+       "kind": "point",
+       "title": "Function = named rule",
+       "body": ""
+      }
+     ]
+    },
+    {
+     "say": "A very simple example. The name is double. The input is x. The answer is x plus x.",
+     "board": [
+      {
+       "kind": "code",
+       "title": "Simple function",
+       "body": "let double x := x + x"
+      }
+     ]
+    },
+    {
+     "say": "Read it as: let, then name, then input, then colon equals, then the formula. If it calls itself, we add rec after let.",
+     "board": [
+      {
+       "kind": "point",
+       "title": "let name inputs := formula",
+       "body": ""
+      }
+     ]
+    },
+    {
+     "say": "Remember for exams. Parameters are in the definition. Arguments are the values we pass. Well done, you can do this!",
+     "board": [
+      {
+       "kind": "keyterm",
+       "title": "Argument",
+       "body": "Value passed to the function"
+      }
+     ]
+    }
+   ],
+   "practice": [
+    {
+     "id": "p1",
+     "type": "short",
+     "concept": "Function Definition and Syntax",
+     "question": "What is a recursive function?",
+     "code": "",
+     "options": [],
+     "answer": "A function that calls itself is called a recursive function.",
+     "keywords": [
+      "calls itself",
+      "recursive"
+     ],
+     "explanation": "The textbook defines a recursive function as one whose definition calls itself."
+    },
+    {
+     "id": "p2",
+     "type": "mcq",
+     "concept": "Function Definition and Syntax",
+     "question": "What are the values passed to a function definition called?",
+     "code": "",
+     "options": [
+      "Arguments",
+      "Parameters",
+      "Subroutines",
+      "Modules"
+     ],
+     "answer": "Arguments",
+     "keywords": [],
+     "explanation": "Values passed are arguments; variables in the definition are parameters."
+    }
+   ]
+  }
+ ]
+}

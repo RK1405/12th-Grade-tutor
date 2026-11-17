@@ -1,0 +1,266 @@
+{
+ "concept": "Pure Functions",
+ "variants": [
+  {
+   "steps": [
+    {
+     "say": "Let us look at pure functions again with a fresh idea. Think of a calculator button that squares a number. Press it with 5, you always get 25. Today, tomorrow, in any classroom. That is a pure function.",
+     "board": [
+      {
+       "kind": "heading",
+       "title": "Pure Functions: a fresh look",
+       "body": ""
+      },
+      {
+       "kind": "keyterm",
+       "title": "Pure function",
+       "body": "Same arguments always give the same result, with no side effects."
+      }
+     ]
+    },
+    {
+     "say": "The textbook gives the example of square. It takes x and returns x times x. The answer depends only on x. Nothing outside the function can change it, and the function changes nothing outside.",
+     "board": [
+      {
+       "kind": "code",
+       "title": "square from the textbook",
+       "body": "let square x:=\n return: x * x"
+      }
+     ]
+    },
+    {
+     "say": "Now compare with a school bell that rings at a time decided by the peon. You cannot predict it from your own input. In the same way, random gives a different answer every call, so it is impure.",
+     "board": [
+      {
+       "kind": "code",
+       "title": "Impure example",
+       "body": "let a:= random()\n if a > 10 then\n  return: a\n else\n  return: 10"
+      }
+     ]
+    },
+    {
+     "say": "Worked example. Call square with 4 three times. You get 16 each time. Now call inc with 5 when y is zero. Inc changes y to 5 and returns 5. Call it again and y becomes 10, so it returns 10. Same input, different output. So inc is impure.",
+     "board": [
+      {
+       "kind": "example",
+       "title": "square 4 gives 16 always; inc 5 gives 5, then 10",
+       "body": ""
+      }
+     ]
+    },
+    {
+     "say": "For the board exam, remember two tests. First, same arguments, same answer. Second, no change to outside variables. Pass both and the function is pure. Also, strlen is pure, and sin of zero is always zero.",
+     "board": [
+      {
+       "kind": "warning",
+       "title": "Two tests: same output AND no side effects",
+       "body": ""
+      }
+     ]
+    }
+   ],
+   "practice": [
+    {
+     "id": "p1",
+     "type": "mcq",
+     "concept": "Pure Functions",
+     "question": "Which function is pure?",
+     "code": "",
+     "options": [
+      "random()",
+      "date()",
+      "sin(0)",
+      "a function that changes an outside variable"
+     ],
+     "answer": "sin(0)",
+     "keywords": [],
+     "explanation": "sin(0) is always 0 for the same input, so it is pure."
+    },
+    {
+     "id": "p2",
+     "type": "short",
+     "concept": "Pure Functions",
+     "question": "Why is square, which returns x times x, a pure function?",
+     "code": "",
+     "options": [],
+     "answer": "For the same input it always gives the same output and it changes nothing outside the function.",
+     "keywords": [
+      "same input",
+      "same output",
+      "no side effects"
+     ],
+     "explanation": "Its result depends only on x, with no side effects."
+    }
+   ]
+  },
+  {
+   "steps": [
+    {
+     "say": "Let us go slowly, in very simple words. A pure function is like a tea stall rate board. One tea costs ten rupees. Ask for two teas, you pay twenty. Every single time.",
+     "board": [
+      {
+       "kind": "heading",
+       "title": "Pure Functions, step by step",
+       "body": ""
+      }
+     ]
+    },
+    {
+     "say": "Step one. A function takes input. These inputs are called arguments. Step two. It gives output. If the same input always gives the same output, that is the first sign of a pure function.",
+     "board": [
+      {
+       "kind": "point",
+       "title": "Step 1: same input gives same output",
+       "body": ""
+      }
+     ]
+    },
+    {
+     "say": "Step three. A pure function must not touch anything outside itself. It should not change any outside variable. Changing outside things is called a side effect.",
+     "board": [
+      {
+       "kind": "point",
+       "title": "Step 2: no side effects",
+       "body": ""
+      }
+     ]
+    },
+    {
+     "say": "Now an impure example. Here y is outside the function. Each call to inc adds x to y. So the answer keeps changing. Inc changes the outside variable y. That is a side effect.",
+     "board": [
+      {
+       "kind": "code",
+       "title": "Impure function inc",
+       "body": "y: = 0\nlet inc (x: int): int: =\n y: = y + x\nreturn (y)"
+      }
+     ]
+    },
+    {
+     "say": "Common mistakes. One, thinking side effects are always bad. The book says they can be useful. Two, thinking a function is impure only when it has parameters. Even without parameters, it can be impure, like random. Three, forgetting that pure functions can be replaced by one call if the arguments are the same.",
+     "board": [
+      {
+       "kind": "warning",
+       "title": "Side effect is not always harmful",
+       "body": ""
+      },
+      {
+       "kind": "warning",
+       "title": "No parameters does not mean pure",
+       "body": ""
+      }
+     ]
+    }
+   ],
+   "practice": [
+    {
+     "id": "p1",
+     "type": "mcq",
+     "concept": "Pure Functions",
+     "question": "A function changes the value of a variable outside itself. What is this called?",
+     "code": "",
+     "options": [
+      "Side effect",
+      "Parameter",
+      "Interface",
+      "Recursion"
+     ],
+     "answer": "Side effect",
+     "keywords": [],
+     "explanation": "Changing something outside the function is a side effect, which makes it impure."
+    },
+    {
+     "id": "p2",
+     "type": "short",
+     "concept": "Pure Functions",
+     "question": "Give one example of an impure function from the textbook and say why it is impure.",
+     "code": "",
+     "options": [],
+     "answer": "random() is impure because it gives different outputs for the same call.",
+     "keywords": [
+      "random",
+      "different output",
+      "same call"
+     ],
+     "explanation": "The textbook gives random and date as impure examples."
+    }
+   ]
+  },
+  {
+   "steps": [
+    {
+     "say": "Let us build from what you already know. You know a function takes values and gives a value back. Like a machine. Put in something, get out something.",
+     "board": [
+      {
+       "kind": "heading",
+       "title": "Pure Functions: the basics",
+       "body": ""
+      }
+     ]
+    },
+    {
+     "say": "If the machine always gives the same answer for the same input, we call it pure. Think of adding two numbers. Two plus three is always five.",
+     "board": [
+      {
+       "kind": "keyterm",
+       "title": "Pure function",
+       "body": "Same input, same output, every time."
+      }
+     ]
+    },
+    {
+     "say": "A very simple example is the square function. Square of three is nine. Always nine.",
+     "board": [
+      {
+       "kind": "code",
+       "title": "Simple pure function",
+       "body": "let square x:=\n return: x * x"
+      }
+     ]
+    },
+    {
+     "say": "If the answer can change for the same input, or the function changes outside variables, it is impure. Random is impure. Remember this one line for the exam: pure means same input, same output, no side effects.",
+     "board": [
+      {
+       "kind": "point",
+       "title": "Pure = same input, same output, no side effects",
+       "body": ""
+      }
+     ]
+    }
+   ],
+   "practice": [
+    {
+     "id": "p1",
+     "type": "mcq",
+     "concept": "Pure Functions",
+     "question": "What does a pure function give when called again with the same arguments?",
+     "code": "",
+     "options": [
+      "The same result",
+      "A different result each time",
+      "An error",
+      "A random number"
+     ],
+     "answer": "The same result",
+     "keywords": [],
+     "explanation": "A pure function depends only on its arguments, so the result is the same."
+    },
+    {
+     "id": "p2",
+     "type": "short",
+     "concept": "Pure Functions",
+     "question": "Define a pure function in one sentence.",
+     "code": "",
+     "options": [],
+     "answer": "A pure function always returns the same result for the same arguments and has no side effects.",
+     "keywords": [
+      "same arguments",
+      "same result",
+      "no side effects"
+     ],
+     "explanation": "This is the textbook definition of a pure function."
+    }
+   ]
+  }
+ ]
+}
