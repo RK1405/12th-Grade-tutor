@@ -58,6 +58,10 @@ if (!ASSEMBLE_ONLY) {
             process.stdout.write(`\r  generated ${done} piece(s)${failed ? `, ${failed} failed` : ""}   `);
             break;
           } catch (err) {
+            if (err instanceof Anthropic.BadRequestError && /credit balance/i.test(err.message)) {
+              console.error("\nYour Anthropic credit balance is too low. Add credit at console.anthropic.com -> Billing, then run this again: finished work is kept.");
+              process.exit(3);
+            }
             if (err instanceof Anthropic.AuthenticationError) {
               console.error("\nThe API key was rejected. Run `npm run check-key`.");
               process.exit(1);

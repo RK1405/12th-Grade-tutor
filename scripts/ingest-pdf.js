@@ -123,6 +123,10 @@ async function worker() {
       failed++;
       console.error(`\n  page ${n} failed: ${err.message}`);
       if (err instanceof Anthropic.AuthenticationError) process.exit(1);
+      if (err instanceof Anthropic.BadRequestError && /credit balance/i.test(err.message)) {
+        console.error("\nYour Anthropic credit balance is too low. Add credit at console.anthropic.com -> Billing, then run this again: finished pages are kept.");
+        process.exit(3);
+      }
     }
   }
 }

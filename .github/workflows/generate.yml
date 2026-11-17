@@ -57,6 +57,7 @@ jobs:
           node scripts/check-key.js
 
       - name: Read the textbook and generate lessons, chapter by chapter
+        shell: bash {0}  # keep going after a failed step; failures are handled below
         run: |
           git config user.name "guru-content-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -68,9 +69,12 @@ jobs:
           for ch in $CHAPTERS; do
             echo "::group::$ch"
             # Each step skips work already done; the second pass retries anything that failed.
-            node scripts/ingest-pdf.js --only "$ch" || node scripts/ingest-pdf.js --only "$ch" || true
-            node scripts/build-content.js --only "$ch" --langs "${{ inputs.langs }}" || true
-            node scripts/build-content.js --only "$ch" --langs "${{ inputs.langs }}" || true
+            STOP=0
+            for step in ingest build build; do
+              if [ $step = ingest ]; then node scripts/ingest-pdf.js --only "$ch"; else node scripts/build-content.js --only "$ch" --langs "${{ inputs.langs }}"; fi
+              code=$?
+              if [ $code -eq 3 ]; then STOP=1; break; fi   # credit balance too low
+            done
             # Save progress after every chapter so nothing paid for is ever lost.
             git add content public/content
             if ! git diff --cached --quiet; then
@@ -78,6 +82,10 @@ jobs:
               git pull -q --rebase origin main && git push -q origin HEAD:main
             fi
             echo "::endgroup::"
+            if [ $STOP -eq 1 ]; then
+              echo "::warning::Credit balance too low: stopped after saving the finished work. Add credit and run this workflow again to continue."
+              break
+            fi
           done
           node scripts/build-content.js --assemble
           echo "Chapters now in the app:"
